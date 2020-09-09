@@ -1,10 +1,21 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Link } from "gatsby"
 
 import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
+  const today = new Date()
+  let emojis = FUN
+  if (today.getMonth() >= 10) {
+    // zero indexed months, 10 == 11 == NOV
+    emojis = emojis.concat(CHRISTMAS)
+  } else if (today.getMonth() >= 8) {
+    // 8 == 9 == SEP
+    emojis = emojis.concat(HALLOWEEN)
+  }
+
   const rootPath = `${__PATH_PREFIX__}/`
+  const emojiIndex = useRef(Math.floor(Math.random() * emojis.length))
   let header
 
   if (location.pathname === rootPath) {
@@ -59,12 +70,34 @@ const Layout = ({ location, title, children }) => {
       <header>{header}</header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Built with
+        © {today.getFullYear()}, Built with {emojis[emojiIndex.current]} and
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
       </footer>
     </div>
   )
 }
+
+const FUN = [
+  "✨",
+  "💖",
+  "🤷🏼‍♀️",
+  "😂",
+  "🍾",
+  "🔮",
+  "🥳",
+  "🙃",
+  "🤦🏼‍♀️",
+  "🍑",
+  "🤸🏼‍♀️",
+  "🎨",
+  "🎉",
+  "🎶",
+  "😻",
+  "🥑",
+]
+
+const HALLOWEEN = ["🎃", "🎂", "🥳", "🦇", "🍂", "🍁", "🎁"]
+const CHRISTMAS = ["🎄", "🎅🏼", "⛄️", "❄️", "🤶🏼", "🌲"]
 
 export default Layout
