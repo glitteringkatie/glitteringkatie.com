@@ -48,7 +48,7 @@ const Bio = () => {
         fixed={data.avatar.childImageSharp.fixed}
         alt={author.name}
         style={{
-          marginRight: rhythm(1 / 2),
+          marginRight: rhythm(3 / 4),
           marginBottom: 0,
           minWidth: 85,
           borderRadius: `100%`,

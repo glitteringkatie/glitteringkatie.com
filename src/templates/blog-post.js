@@ -22,7 +22,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <h1
             style={{
               marginTop: rhythm(1),
-              marginBottom: 0,
+              marginBottom: rhythm(1 / 3),
             }}
           >
             {post.frontmatter.title}
