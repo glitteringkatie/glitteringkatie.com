@@ -31,7 +31,7 @@ const SEO = ({ description, lang, meta, title }) => {
   const metaDescription = description || site.siteMetadata.description
   const seoTitle =
     title === "glittering katie"
-      ? title
+      ? `${title} ✨`
       : `${title} | ${site.siteMetadata.title}`
 
   return (
@@ -41,7 +41,9 @@ const SEO = ({ description, lang, meta, title }) => {
       }}
       title={title}
       titleTemplate={
-        title === "glittering katie" ? `%s` : `%s | ${site.siteMetadata.title}`
+        title === "glittering katie"
+          ? `%s ✨`
+          : `%s | ${site.siteMetadata.title}`
       }
       meta={[
         {
