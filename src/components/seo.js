@@ -16,8 +16,10 @@ const SEO = ({ description, lang, meta, title }) => {
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
+            icon
             social {
               twitter
             }
@@ -52,6 +54,14 @@ const SEO = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
         {
+          property: `og:url`,
+          content: site.siteMetadata.siteUrl,
+        },
+        {
+          property: `og:image`,
+          content: site.siteMetadata.icon,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
@@ -62,6 +72,10 @@ const SEO = ({ description, lang, meta, title }) => {
         {
           name: `twitter:creator`,
           content: site.siteMetadata.social.twitter,
+        },
+        {
+          name: `twitter:site`,
+          content: `@${site.siteMetadata.social.twitter}`,
         },
         {
           name: `twitter:title`,
