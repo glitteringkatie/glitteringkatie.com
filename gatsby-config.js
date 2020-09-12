@@ -11,6 +11,7 @@ module.exports = {
       twitter: `glitteringkatie`,
       github: `glitteringkatie`,
     },
+    icon: `static/android-chrome-512x512.png`,
   },
   plugins: [
     {
