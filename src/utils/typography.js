@@ -24,6 +24,9 @@ Wordpress2016.overrideThemeStyles = () => {
       borderLeftColor: "#005E61",
       color: "hsla(182, 100%, 19%, 80%)",
     },
+    ".secondary": {
+      fontSize: `${Wordpress2016.scaleRatio * 0.6}rem`,
+    },
   }
 }
 

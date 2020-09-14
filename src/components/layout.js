@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Link } from "gatsby"
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
   const today = new Date()
@@ -13,51 +13,26 @@ const Layout = ({ location, title, children }) => {
     // 8 == 9 == SEP
     emojis = emojis.concat(HALLOWEEN)
   }
-
-  const rootPath = `${__PATH_PREFIX__}/`
   const emojiIndex = useRef(Math.floor(Math.random() * emojis.length))
-  let header
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
+  const header = (
+    <h1
+      className="secondary"
+      style={{
+        marginTop: 0,
+      }}
+    >
+      <Link
         style={{
-          ...scale(1),
-          marginBottom: rhythm(1),
-          marginTop: 0,
-          textAlign: "center",
+          boxShadow: `none`,
+          color: `inherit`,
         }}
+        to={`/`}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <h3
-        style={{
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
+        {title}
+      </Link>
+    </h1>
+  )
   return (
     <div
       style={{
