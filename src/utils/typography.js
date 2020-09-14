@@ -14,7 +14,7 @@ Wordpress2016.overrideThemeStyles = () => {
     a: {
       color: "#BE4B41",
     },
-    "h1,h2,h3,h4,h5,h6, h3>a": {
+    "h1,h2,h3,h4,h5,h6": {
       color: "#005E61",
     },
     body: {

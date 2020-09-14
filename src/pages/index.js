@@ -19,16 +19,16 @@ const BlogIndex = ({ data, location }) => {
         return (
           <article key={node.fields.slug}>
             <header>
-              <h2
-                className="secondary"
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+              <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <h2
+                  className="secondary"
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
                   {title}
-                </Link>
-              </h2>
+                </h2>
+              </Link>
               <small>{node.frontmatter.date}</small>
             </header>
             <section>
