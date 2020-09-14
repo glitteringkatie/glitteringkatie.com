@@ -14,7 +14,7 @@ Wordpress2016.overrideThemeStyles = () => {
     a: {
       color: "#BE4B41",
     },
-    "h1,h2,h3,h4,h5,h6, h3>a": {
+    "h1,h2,h3,h4,h5,h6": {
       color: "#005E61",
     },
     body: {
@@ -23,6 +23,9 @@ Wordpress2016.overrideThemeStyles = () => {
     blockquote: {
       borderLeftColor: "#005E61",
       color: "hsla(182, 100%, 19%, 80%)",
+    },
+    ".secondary": {
+      fontSize: `${Wordpress2016.scaleRatio * 0.6}rem`,
     },
   }
 }
