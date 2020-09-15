@@ -1,5 +1,5 @@
 ---
-title: "A Tale of Two Strategies"
+title: "📝 A Tale of Two Strategies"
 date: "2019-06-04"
 canonical: "https://medium.com/@glitteringkatie/a-tale-of-two-strategies-e1794d1c1e1a"
 ---

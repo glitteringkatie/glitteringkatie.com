@@ -1,5 +1,5 @@
 ---
-title: "The Case of the Missing Packages"
+title: "🕵🏼‍♀️ The Case of the Missing Packages"
 date: "2019-03-08"
 canonical: "https://medium.com/@glitteringkatie/the-case-of-the-missing-packages-98a3884af648"
 ---
