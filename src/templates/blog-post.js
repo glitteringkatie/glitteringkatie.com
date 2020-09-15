@@ -35,7 +35,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.date}
+            {post.frontmatter.date} • {post.timeToRead} min read
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -92,6 +92,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      timeToRead
       frontmatter {
         title
         canonical
