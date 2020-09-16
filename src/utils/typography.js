@@ -13,8 +13,16 @@ Wordpress2016.overrideThemeStyles = () => {
     },
     a: {
       color: "#BE4B41",
+      boxShadow: "none",
+      textDecoration: "none",
     },
-    "h1,h2,h3,h4,h5,h6": {
+    "a:hover, a:active": {
+      textDecoration: "underline",
+    },
+    "h1.secondary > a:hover, h2.secondary > a:hover": {
+      textDecoration: "none",
+    },
+    "h1,h2,h3,h4,h5,h6, h2.secondary > a": {
       color: "#005E61",
     },
     body: {
