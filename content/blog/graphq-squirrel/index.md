@@ -1,5 +1,5 @@
 ---
-title: "Talk: GraphQ-Squirrel"
+title: "📽 Talk: GraphQ-Squirrel"
 date: "2019-09-12"
 ---
 
