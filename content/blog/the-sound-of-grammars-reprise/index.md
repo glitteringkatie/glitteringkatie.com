@@ -6,7 +6,7 @@ canonical: "https://medium.com/@glitteringkatie/the-sound-of-grammars-reprise-47
 
 > Welcome to The Sound of Grammars (Reprise), you can catch the first part of the series [here](./the-sound-of-grammars). As a reminder, I’ve been reading _Parsing Techniques: A Practical Guide_ by Ceriel J.H. Jacobs and Dick Grune which is available as a PDF [on Grune’s site](https://dickgrune.com/Books/PTAPG_1st_Edition/BookBody.pdf).
 
-![](https://cdn-images-1.medium.com/max/2400/1*SJUChRwAHncPCSnsr8C35w.jpeg)
+![Sound of Music: Maria sings to the von Trapp children but Noam Chomsky's face is photoshopped to replace Maria's](./the-sound-of-music-reprise.jpg)
 
 ## Type 2: Context-Free Grammars
 
