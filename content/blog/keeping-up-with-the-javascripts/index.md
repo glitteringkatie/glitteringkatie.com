@@ -1,7 +1,6 @@
 ---
-title: "🍿 Keeping Up With The JavaScripts"
-date: "2019-03-08"
-canonical: "https://medium.com/@glitteringkatie/the-case-of-the-missing-packages-98a3884af648"
+title: "🍿 Keeping Up With the JavaScripts"
+date: "2020-11-23"
 ---
 
 In July 2020 I found myself as part of the many people affected by COVID-19 related layoffs. Before that, I was writing anything from Elm to Ruby to Elixir at NoRedInk. And before THAT I was working with JavaScript and React for three years at AppNexus. It was fun to get the chance to write Elm professionally! But when I found myself looking for a new job, I decided I was ready to get back into the mainstream. After not writing any JavaScript for a year and a half, I was hired at Elastic under the posting of "JavaScript Engineer".
