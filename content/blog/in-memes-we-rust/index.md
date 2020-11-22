@@ -1,7 +1,6 @@
 ---
 title: "🧽 In Memes We Rust"
 date: "2018-07-25"
-canonical: "https://medium.com/@glitteringkatie/in-memes-we-rust-5c920b1e9af7"
 ---
 
 ![Screenshot of the lyrics of Smash Mouth's All Star ran through spongemock](./theydontstop.jpg)
