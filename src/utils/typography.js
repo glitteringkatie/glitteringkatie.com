@@ -12,7 +12,7 @@ Wordpress2016.overrideThemeStyles = () => {
       fontFamily: `"Corben", "serif"`,
     },
     a: {
-      color: "#BE4B41",
+      color: "#B3473D",
       boxShadow: "none",
       textDecoration: "none",
     },
