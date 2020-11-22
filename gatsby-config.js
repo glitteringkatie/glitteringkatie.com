@@ -84,19 +84,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
-        // The property ID; the tracking code won't be generated without it
+        // your google analytics tracking id
         trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        // Puts tracking script in the head instead of the body
         head: false,
+        // enable ip anonymization
         anonymize: true,
-        // DNT = Do Not Track
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: ["/preview/**"],
-        // Defers execution of google analytics script after page load
-        defer: false,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
