@@ -3,7 +3,9 @@ title: "🍿 Keeping Up With the JavaScripts"
 date: "2020-11-23"
 ---
 
-In July 2020 I found myself as part of the many people affected by COVID-19 related layoffs. Before that, I was writing anything from Elm to Ruby to Elixir at NoRedInk. And before THAT I was working with JavaScript and React for three years at AppNexus. It was fun to get the chance to write Elm professionally! But when I found myself looking for a new job, I decided I was ready to get back into the mainstream. After not writing any JavaScript for a year and a half, I was hired at Elastic under the posting of "JavaScript Engineer".
+In July 2020 I found myself as part of the many people affected by COVID-19 related layoffs. Before that, I was writing anything from Elm to Ruby to Elixir at NoRedInk. And before _that_ I was working with JavaScript and React for three years at AppNexus.
+
+It was fun to get the chance to write Elm professionally! But when I found myself looking for a new job, I decided I was ready to get back into the mainstream. After not writing any JavaScript for a year and a half, I was hired at Elastic under the posting of "JavaScript Engineer".
 
 So how did I brush up on JavaScript?
 
@@ -19,7 +21,7 @@ A particular question I had in mind was around setState: is it more common to se
 
 I figured looking up a form would easily tell me that since forms usually have multiple variables tracked in the state. I found [a form example](https://elastic.github.io/eui/#/forms/form-layouts#form-and-form-rows) and the answer to my question: multiple calls to setState!
 
-## Muscle Memory
+## Muscle memory
 
 Alongside learning about what had _changed_ about React (not as much as I thought would have changed), I also wanted to get my muscle memory for JavaScript back. Brush off the dust, so to speak.
 
@@ -63,7 +65,7 @@ When I last was writing JavaScript, I was working with the best practice that if
 
 Verifying my assumptions and understandings with someone who works day to day in JavaScript significantly helped me gain my JavaScript confidence back.
 
-## One Month In
+## One month in
 
 I am writing JavaScript again! One month in, I have had a few moments where I've gone to write something and it comes out in pseudocode-gibberish (looking at you, [switch/case](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)), but for the most part, I'm back to writing JavaScript fluidly again.
 
