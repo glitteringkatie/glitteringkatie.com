@@ -1,7 +1,6 @@
 ---
 title: "⛰ The Sound of Grammars"
 date: "2018-04-06"
-canonical: "https://medium.com/@glitteringkatie/the-sound-of-grammars-29b54ca0aaf5"
 ---
 
 > I am currently working my way through _Parsing Techniques: A Practical Guide_ by Ceriel J.H. Jacobs and Dick Grune which is available as a [PDF on Grune’s site](https://dickgrune.com/Books/PTAPG_1st_Edition/BookBody.pdf). As I continued in the book I found myself having a hard time following classifications and grammar levels when they were used interchangeably. I am using this blog post to hash it all out for myself so I can practice keeping the order and meaning straight by explaining these concepts to my good friend, the internet.

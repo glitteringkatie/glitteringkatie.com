@@ -1,7 +1,6 @@
 ---
 title: "📝 A Tale of Two Strategies"
 date: "2019-06-04"
-canonical: "https://medium.com/@glitteringkatie/a-tale-of-two-strategies-e1794d1c1e1a"
 ---
 
 In April 2019 I gave [my first conference talk](../where-the-elm-am-i) at [Elm in the Spring](https://www.elminthespring.org/). I spoke about being in a brand new code base at the same time as a brand new city and showed that exploring one is similar to exploring the other.

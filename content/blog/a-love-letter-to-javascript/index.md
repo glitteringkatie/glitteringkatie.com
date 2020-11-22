@@ -1,7 +1,6 @@
 ---
 title: "💌 A Love Letter to JavaScript"
 date: "2020-02-14"
-canonical: "https://medium.com/@glitteringkatie/a-love-letter-to-javascript-993181fe1ed5"
 ---
 
 Dear JavaScript,

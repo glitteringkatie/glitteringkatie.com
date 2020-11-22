@@ -1,7 +1,6 @@
 ---
 title: "🕵🏼‍♀️ The Case of the Missing Packages"
 date: "2019-03-08"
-canonical: "https://medium.com/@glitteringkatie/the-case-of-the-missing-packages-98a3884af648"
 ---
 
 Onboarding: follow the instructions and most developers will get set up. But me? I’m not most developers. I’m Katie Hughes and I’m the private eye whose setup always goes awry. That is, until my bad luck met its match: a package manager by the name of [Nix](https://nixos.org/nix/).

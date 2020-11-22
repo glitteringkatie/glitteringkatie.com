@@ -1,7 +1,6 @@
 ---
 title: "⛰ The Sound of Grammars (Reprise)"
 date: "2018-04-13"
-canonical: "https://medium.com/@glitteringkatie/the-sound-of-grammars-reprise-47b7b0bc3df0"
 ---
 
 > Welcome to The Sound of Grammars (Reprise), you can catch the first part of the series [here](./the-sound-of-grammars). As a reminder, I’ve been reading _Parsing Techniques: A Practical Guide_ by Ceriel J.H. Jacobs and Dick Grune which is available as a PDF [on Grune’s site](https://dickgrune.com/Books/PTAPG_1st_Edition/BookBody.pdf).

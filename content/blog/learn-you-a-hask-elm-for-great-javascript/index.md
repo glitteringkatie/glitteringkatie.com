@@ -1,7 +1,6 @@
 ---
 title: "🌳 Learn You a Hask/Elm for Great JavaScript"
 date: "2018-03-07"
-canonical: "https://medium.com/@glitteringkatie/learn-you-a-hask-elm-for-great-javascript-933eca456c3a"
 ---
 
 A class I took in college called Programming Language Fundamentals introduced me to [Haskell](https://www.haskell.org/) and it didn’t take long until I was utterly charmed by this language. It was my first taste of the functional programming paradigm and everything I did felt like solving a riddle. Haskell made me feel clever and while programming shouldn’t be _all_ solving riddles, it is sure fun to feel clever. Before class one day, a friend who shared my enthusiasm (and who knew I liked frontend development) told me I should check out [Elm](http://elm-lang.org/). I searched for “Elm” and once google figured out I wanted the language and not “West Elm”, I found my way to their website and to the web browser wysiwyg. For once I had a hard time paying attention to my Haskell class because I was so interested in figuring out (and comparing) Elm.

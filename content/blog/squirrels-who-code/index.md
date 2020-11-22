@@ -1,7 +1,6 @@
 ---
 title: "🌰 Squirrels Who Code"
 date: "2018-04-27"
-canonical: "https://medium.com/@glitteringkatie/squirrels-who-code-e33d72fa43d9"
 ---
 
 ![Comic of Tippy Toe, the squirrel, asking Squirrel Girl what she will study at university. Squirrel Girl reveals she'll be studying computer science!](./computer-science.jpg)_source: [Spin’s interview with Ryan North](https://www.spin.com/2016/02/dinosaur-comics-ryan-north-squirrel-girl-interview/)_
