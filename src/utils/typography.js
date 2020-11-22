@@ -26,7 +26,7 @@ Wordpress2016.overrideThemeStyles = () => {
       color: "#005E61",
     },
     body: {
-      backgroundColor: "#F2F8F8",
+      backgroundColor: "#fcf3ed",
     },
     blockquote: {
       borderLeftColor: "#005E61",

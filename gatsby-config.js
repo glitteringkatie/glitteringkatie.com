@@ -64,7 +64,7 @@ module.exports = {
         name: `glittering katie`,
         short_name: `Katie`,
         start_url: `/`,
-        background_color: `#F2F8F8`,
+        background_color: `#fcf3ed`,
         theme_color: `#005E61`,
         display: `minimal-ui`,
         icon: `static/android-chrome-512x512.png`,
