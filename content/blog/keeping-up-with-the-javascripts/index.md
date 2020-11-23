@@ -33,7 +33,7 @@ Before really diving in deep, I tried to give myself about a week off from stres
 
 I wanted to build a tarot deck companion web app: you pull a card, the computer tells you what it means. The trick with future telling type stuff is to keep things as vague as possible so that was the route I took.
 
-I got to play with some natural language processing libraries ([Sentencer](http://kylestetz.github.io/Sentencer/) and [Natural](https://github.com/NaturalNode/natural)) as well as some sentence templating libraries. I'll keep the longer description for another blog post but all in all: having something I was excited to work on, and doing that in JavaScript, really helped me get my JavaScript muscle memory back.
+I got to play with a natural language processing library, [Natural](https://github.com/NaturalNode/natural), and a sentence templating library, [Sentencer](http://kylestetz.github.io/Sentencer/). I'll keep the longer description for another blog post but all in all: having something I was excited to work on, and doing that in JavaScript, really helped me get my JavaScript muscle memory back.
 
 ### InterviewCake
 
