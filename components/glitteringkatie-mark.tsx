@@ -1,5 +1,5 @@
 const GlitteringKatieMark = () => {
-    return <svg width="1000" viewBox="0 0 2955 456" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return <svg className="logo" viewBox="0 0 2955 456" fill="none" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="1862.92" cy="228" rx="174.41" ry="228" fill="#637D59" />
         <path d="M1772.31 234.82C1866.94 209.487 1866.94 209.487 1886.31 85.7436C1905.68 209.487 1905.68 209.487 2000.31 234.82C1905.68 260.154 1905.68 260.154 1886.31 383.897C1866.94 260.154 1866.94 260.154 1772.31 234.82Z" fill="#FDF5E6" stroke="#FDF5E6" strokeWidth="9.74359" strokeLinejoin="round" />
         <path d="M1748.92 134.462C1782.08 125.189 1782.08 125.189 1788.87 79.8975C1795.66 125.189 1795.66 125.189 1828.82 134.462C1795.66 143.734 1795.66 143.734 1788.87 189.026C1782.08 143.734 1782.08 143.734 1748.92 134.462Z" fill="#FDF5E6" stroke="#FDF5E6" strokeWidth="3.89744" strokeLinejoin="round" />

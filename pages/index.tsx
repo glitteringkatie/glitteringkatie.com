@@ -154,12 +154,14 @@ const IndexComponent = ({ allPosts }: Props) => {
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
       <Container>
-        <div>
-          <div>
-            <h2 className="text-fern">About me</h2>
+        <div className="flex max-w-4xl mx-auto items-center">
+          <div className="flex-1">
+            <h2 className="text-center uppercase font-light text-3xl tracking-widest pb-4">About me</h2>
             {blog.bio}
           </div>
-          {blog.profilePic ? <Image src={blog.profilePic} /> : null}
+          <div className="flex-1">
+            {blog.profilePic ? <Image src={blog.profilePic} /> : null}
+          </div>
         </div>
         <ul>
           {displaySocials.map(socialUI)}
