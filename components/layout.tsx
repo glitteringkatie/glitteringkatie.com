@@ -39,7 +39,6 @@ const Layout = ({ preview, children }: Props) => {
         </div>
         <main>{children}</main>
       </div>
-      <Footer />
     </BalanceContext.Provider>
   )
 }

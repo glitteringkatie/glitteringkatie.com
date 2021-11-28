@@ -80,13 +80,13 @@ const IndexComponent = ({ allPosts }: Props) => {
 
   const socialUI = (social: Social) => {
     return (
-      <li>
+      <li className='pt-2'>
         <Link href={social.url}><a>{icons[social.icon]} {social.display}</a></Link>
       </li>
     )
   }
 
-  const metadata: { [key in BalanceCategory]: { bio: ReactNode, profilePic: StaticImageData, blog: Social } } = {
+  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: StaticImageData, blog: Social } } = {
     [BALANCE]: {
       bio: (<><p>Hi, I'm Katie! I'm a software engineer living in Portland, OR, who
         loves interior design, making craft cocktails, and flying through the air
@@ -101,6 +101,7 @@ const IndexComponent = ({ allPosts }: Props) => {
 
         <p>P.S. If you haven’t yet, try the work/life balance slider above!</p></>),
       profilePic: balancePic,
+      findMe: 'say hi!',
       blog: {
         category: BALANCE,
         icon: 'blog',
@@ -119,6 +120,7 @@ const IndexComponent = ({ allPosts }: Props) => {
           with other engineers and working with designers or docs writers to see and
           understand that bigger picture.</p></>),
       profilePic: workPic,
+      findMe: 'contact me!',
       blog: {
         category: WORK,
         icon: 'blog',
@@ -138,6 +140,7 @@ const IndexComponent = ({ allPosts }: Props) => {
           it isn't comfy enough to take a nap? How do you look graceful while
           tangled up in silks? That intersection is where I love to play.</p></>),
       profilePic: lifePic,
+      findMe: 'swing by!',
       blog: {
         category: LIFE,
         icon: 'blog',
@@ -148,25 +151,34 @@ const IndexComponent = ({ allPosts }: Props) => {
   }
   const blog = metadata[balanceValue]
 
+  const headerStyles = classNames(['text-center', 'uppercase', 'font-light', 'text-3xl', 'tracking-widest', 'pb-4'])
+
   return (
     <>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
       <Container>
-        <div className="flex max-w-4xl mx-auto items-center">
+        <div className="flex flex-col md:flex-row max-w-4xl mx-auto items-center pb-20">
           <div className="flex-1">
-            <h2 className="text-center uppercase font-light text-3xl tracking-widest pb-4">About me</h2>
+            <h2 className={headerStyles}>About me</h2>
             {blog.bio}
           </div>
           <div className="flex-1">
             {blog.profilePic ? <Image src={blog.profilePic} /> : null}
           </div>
         </div>
-        <ul>
-          {displaySocials.map(socialUI)}
-          {socialUI(blog.blog)}
-        </ul>
+        <div className="flex flex-col justify-center items-center pb-20">
+          <h2 className={headerStyles}>My Latest Posts</h2>
+          <button className='bg-pine text-cream pt-4 px-6 pb-3 rounded-full text-xl font-serif font-semibold lowercase'>browse all posts</button>
+
+        </div>
+        <div className='mx-auto items-center p-16 bg-blob bg-stretch max-w-4xl bg-center bg-no-repeat text-cream text-center'>
+          <h2 className='lowercase font-serif font-semibold text-6xl pb-4'> {blog.findMe} </h2>
+          <ul className='text-xl pb-4'>
+            {displaySocials.map(socialUI)}
+          </ul>
+        </div>
       </Container>
     </>
   )
