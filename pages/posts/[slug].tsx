@@ -36,7 +36,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
                 </title>
-                <meta property="og:image" content={post.ogImage.url} />
+                {/* <meta property="og:image" content={post.ogImage.url} /> */}
               </Head>
               <PostHeader
                 title={post.title}
@@ -62,7 +62,7 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
+  const post = await getPostBySlug(params.slug, [
     'title',
     'date',
     'slug',
@@ -84,7 +84,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+  const posts = await getAllPosts(['slug'])
 
   return {
     paths: posts.map((post) => {

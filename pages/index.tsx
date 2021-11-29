@@ -14,6 +14,9 @@ import lifePic from '../public/assets/home/life-profile.png'
 import balancePic from '../public/assets/home/balance-profile.png'
 import classNames from 'classnames'
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
+import Post from './posts/[slug]'
+import markdownToHtml from '../lib/markdownToHtml'
+import markdownStyles from '../components/markdown-styles.module.css'
 
 type Props = {
   allPosts: Post[]
@@ -83,6 +86,36 @@ const IndexComponent = ({ allPosts }: Props) => {
       <li className='pt-2'>
         <Link href={social.url}><a>{icons[social.icon]} {social.display}</a></Link>
       </li>
+    )
+  }
+
+  const postUI = (post) => {
+    console.log(post);
+
+    const coverImages = [
+      'https://images.unsplash.com/photo-1583311578285-9d6e88b29358?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+      'https://images.unsplash.com/photo-1571845413709-ba4ddc85eb12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1166&q=80',
+      'https://images.unsplash.com/photo-1625061661591-14d9e67e1ee7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
+      'https://images.unsplash.com/photo-1554921027-b91f0beeb07d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      'https://images.unsplash.com/photo-1576669803361-2f85b619711b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
+      'https://images.unsplash.com/photo-1574027542183-77efe00ca49f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80',
+    ]
+
+    const coverImage = coverImages[Math.floor(Math.random() * coverImages.length)];
+
+    return (
+      <div className='flex-1 p-4'>
+        <Link href={post.slug}>
+          <a className='post-preview'>
+            <img className='object-cover object-center w-full h-96' src={coverImage} />
+            <h3 className='font-serif font-semibold text-center text-md'>{post.title}</h3>
+            <div
+              className='text-sm'
+              dangerouslySetInnerHTML={{ __html: post.excerpt }}
+            />
+          </a>
+        </Link>
+      </div>
     )
   }
 
@@ -170,6 +203,9 @@ const IndexComponent = ({ allPosts }: Props) => {
         </div>
         <div className="flex flex-col justify-center items-center pb-20">
           <h2 className={headerStyles}>My Latest Posts</h2>
+          <div className='flex flex-col md:flex-row max-w-4xl items-top mx-auto' >
+            {allPosts.slice(0, 3).map(postUI)}
+          </div>
           <button className='bg-pine text-cream pt-4 px-6 pb-3 rounded-full text-xl font-serif font-semibold lowercase'>browse all posts</button>
 
         </div>
@@ -193,7 +229,7 @@ const Index = ({ allPosts }: Props) => (
 export default Index
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
+  const allPosts = await getAllPosts([
     'title',
     'date',
     'slug',
@@ -201,6 +237,8 @@ export const getStaticProps = async () => {
     'coverImage',
     'excerpt',
   ])
+
+  console.log(allPosts);
 
   return {
     props: { allPosts },

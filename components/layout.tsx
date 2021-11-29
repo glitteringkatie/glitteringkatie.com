@@ -14,6 +14,12 @@ type Props = {
 const Layout = ({ preview, children }: Props) => {
   const [balanceValue, setBalanceValue] = useState<BalanceCategory>(BALANCE);
   const workLifeLabelClasses = classNames(['text-warmBlack', 'text-4xl', 'font-serif', 'italic']);
+
+  const backgroundSize: { [key in BalanceCategory]: string } = {
+    [WORK]: "0% 100%",
+    [BALANCE]: "50% 100%",
+    [LIFE]: "100% 100%",
+  }
   return (
     <BalanceContext.Provider value={balanceValue}>
       <Meta />
@@ -29,6 +35,9 @@ const Layout = ({ preview, children }: Props) => {
               max={LIFE}
               defaultValue={BALANCE}
               value={balanceValue}
+              style={{
+                backgroundSize: backgroundSize[balanceValue]
+              }}
               onChange={(event) => {
                 console.log(event.target.value);
                 return setBalanceValue(event.target.value as BalanceCategory);

@@ -9,6 +9,16 @@
     }
 }
 
+.post-preview img {
+    box-shadow: 0 0 #637D59;
+    transition: box-shadow 0.3s ease;
+}
+
+.post-preview:hover img {
+    box-shadow: -0.75em -0.75em #637D59;
+    transition: box-shadow 0.3s ease;
+}
+
 .logo {
     width: 600px;
     padding: 0 0 10px;
