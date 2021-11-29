@@ -17,12 +17,14 @@ import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context
 import Post from './posts/[slug]'
 import markdownToHtml from '../lib/markdownToHtml'
 import markdownStyles from '../components/markdown-styles.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 type Props = {
   allPosts: Post[]
 }
 
-type SocialName = "twitter" | "insta" | "github" | "linkedin" | "blog"
+type SocialName = "twitter" | "insta" | "github" | "linkedin"
 
 type Social = {
   category: BalanceCategory;
@@ -50,7 +52,7 @@ const IndexComponent = ({ allPosts }: Props) => {
       category: LIFE,
       icon: "insta",
       url: "https://www.instagram.com/craftsandkate/",
-      display: "instagram.com/craftsandkate (art insta)"
+      display: "instagram.com/craftsandkate"
     }, {
       category: WORK,
       icon: "github",
@@ -73,19 +75,21 @@ const IndexComponent = ({ allPosts }: Props) => {
 
   });
 
-  const icons: { [key in SocialName]: string } = {
-    github: "👾",
-    twitter: "🐦",
-    insta: "📸",
-    linkedin: "👥",
-    blog: "📓"
+  const icons: { [key in SocialName]: ReactNode } = {
+    github: <FontAwesomeIcon icon={faGithub} className='h-8 mr-3' />,
+    twitter: <FontAwesomeIcon icon={faTwitter} className='h-8 mr-3' />,
+    insta: <FontAwesomeIcon icon={faInstagram} className='h-8 mr-3' />,
+    linkedin: <FontAwesomeIcon icon={faLinkedin} className='h-8 mr-3' />
   }
 
   const socialUI = (social: Social) => {
     return (
       <li className='pt-2'>
-        <Link href={social.url}><a>{icons[social.icon]} {social.display}</a></Link>
-      </li>
+        <Link href={social.url}><a className='flex items-center'>
+          {icons[social.icon]}
+          <div>{social.display}</div>
+        </a></Link>
+      </li >
     )
   }
 
@@ -104,11 +108,11 @@ const IndexComponent = ({ allPosts }: Props) => {
     const coverImage = coverImages[Math.floor(Math.random() * coverImages.length)];
 
     return (
-      <div className='flex-1 p-4'>
-        <Link href={post.slug}>
+      <div className='flex-1 pr-8 last:pr-0 pt-4 pb-4'>
+        <Link href={`posts/${post.slug}`}>
           <a className='post-preview'>
-            <img className='object-cover object-center w-full h-96' src={coverImage} />
-            <h3 className='font-serif font-semibold text-center text-md'>{post.title}</h3>
+            <img className='object-cover object-center w-full h-64 md:h-96' src={coverImage} />
+            <h3 className='font-serif font-semibold text-center text-lg pb-2 pt-2'>{post.title}</h3>
             <div
               className='text-sm'
               dangerouslySetInnerHTML={{ __html: post.excerpt }}
@@ -119,7 +123,7 @@ const IndexComponent = ({ allPosts }: Props) => {
     )
   }
 
-  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: StaticImageData, blog: Social } } = {
+  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: StaticImageData, blog: { url: string, cta: string } } } = {
     [BALANCE]: {
       bio: (<><p>Hi, I'm Katie! I'm a software engineer living in Portland, OR, who
         loves interior design, making craft cocktails, and flying through the air
@@ -136,10 +140,8 @@ const IndexComponent = ({ allPosts }: Props) => {
       profilePic: balancePic,
       findMe: 'say hi!',
       blog: {
-        category: BALANCE,
-        icon: 'blog',
-        url: 'blog',
-        display: 'all writing'
+        url: 'blog?type=glittering-brand',
+        cta: 'glittering writing'
       }
     },
     [WORK]: {
@@ -155,10 +157,8 @@ const IndexComponent = ({ allPosts }: Props) => {
       profilePic: workPic,
       findMe: 'contact me!',
       blog: {
-        category: WORK,
-        icon: 'blog',
-        url: 'blog?type=tech-brand',
-        display: 'tech writing'
+        url: 'blog?type=glittering-brand',
+        cta: 'glittering writing'
       }
     },
     [LIFE]: {
@@ -175,10 +175,8 @@ const IndexComponent = ({ allPosts }: Props) => {
       profilePic: lifePic,
       findMe: 'swing by!',
       blog: {
-        category: LIFE,
-        icon: 'blog',
         url: 'blog?type=glittering-brand',
-        display: 'glittering writing'
+        cta: 'glittering writing'
       }
     }
   }
@@ -192,7 +190,7 @@ const IndexComponent = ({ allPosts }: Props) => {
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
       <Container>
-        <div className="flex flex-col md:flex-row max-w-4xl mx-auto items-center pb-20">
+        <div className="flex flex-col md:flex-row mx-auto items-center pb-20">
           <div className="flex-1">
             <h2 className={headerStyles}>About me</h2>
             {blog.bio}
@@ -203,15 +201,17 @@ const IndexComponent = ({ allPosts }: Props) => {
         </div>
         <div className="flex flex-col justify-center items-center pb-20">
           <h2 className={headerStyles}>My Latest Posts</h2>
-          <div className='flex flex-col md:flex-row max-w-4xl items-top mx-auto' >
+          <div className='flex flex-col md:flex-row items-top mx-auto pb-6' >
             {allPosts.slice(0, 3).map(postUI)}
           </div>
-          <button className='bg-pine text-cream pt-4 px-6 pb-3 rounded-full text-xl font-serif font-semibold lowercase'>browse all posts</button>
+          <Link href='/posts'>
+            <a className='bg-pine text-cream pt-4 px-6 pb-3 rounded-full text-xl font-serif font-semibold lowercase'>browse all posts</a>
+          </Link>
 
         </div>
-        <div className='mx-auto items-center p-16 bg-blob bg-stretch max-w-4xl bg-center bg-no-repeat text-cream text-center'>
+        <div className='mx-auto items-center p-16 bg-blob bg-stretch bg-center bg-no-repeat text-cream text-center'>
           <h2 className='lowercase font-serif font-semibold text-6xl pb-4'> {blog.findMe} </h2>
-          <ul className='text-xl pb-4'>
+          <ul className='text-xl table mx-auto pb-8'>
             {displaySocials.map(socialUI)}
           </ul>
         </div>
