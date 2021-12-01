@@ -1,6 +1,8 @@
 ---
 title: "🧽 In Memes We Rust"
 date: "2018-07-25"
+tags: ['work']
+coverImage: 'assets/blog/in-memes-we-rust/theydontstop.jpg'
 ---
 
 ![Screenshot of the lyrics of Smash Mouth's All Star ran through spongemock](./theydontstop.jpg)

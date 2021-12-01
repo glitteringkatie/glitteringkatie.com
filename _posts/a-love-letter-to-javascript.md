@@ -1,6 +1,7 @@
 ---
 title: "💌 A Love Letter to JavaScript"
 date: "2020-02-14"
+tags: ['work']
 ---
 
 Dear JavaScript,

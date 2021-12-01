@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import classNames from 'classnames'
+import Link from 'next/link'
 import Alert from './alert'
 import Footer from './footer'
 import Meta from './meta'
@@ -7,11 +8,11 @@ import GlitteringKatieMark from './glitteringkatie-mark'
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
 
 type Props = {
-  preview?: boolean
+  page?: string
   children: React.ReactNode
 }
 
-const Layout = ({ preview, children }: Props) => {
+const Layout = ({ page = 'home', children }: Props) => {
   const [balanceValue, setBalanceValue] = useState<BalanceCategory>(BALANCE);
   const workLifeLabelClasses = classNames(['text-warmBlack', 'text-4xl', 'font-serif', 'italic']);
 
@@ -20,13 +21,21 @@ const Layout = ({ preview, children }: Props) => {
     [BALANCE]: "50% 100%",
     [LIFE]: "100% 100%",
   }
+
+  const padding = page === 'home'
+    ? "py-28"
+    : "py-16"
   return (
     <BalanceContext.Provider value={balanceValue}>
       <Meta />
       <div className="min-h-screen bg-cream">
 
-        <div className="py-28">
-          <GlitteringKatieMark />
+        <div className={classNames([padding])}>
+          <Link href='/' >
+            <a>
+              <GlitteringKatieMark />
+            </a>
+          </Link>
           <div className="flex items-center justify-center">
             <span className={workLifeLabelClasses}>work</span>
             <input

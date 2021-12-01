@@ -14,7 +14,7 @@
     transition: box-shadow 0.3s ease;
 }
 
-.post-preview:hover img {
+.post-preview:hover>img {
     box-shadow: -0.75em -0.75em #637D59;
     transition: box-shadow 0.3s ease;
 }

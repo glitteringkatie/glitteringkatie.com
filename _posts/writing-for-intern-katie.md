@@ -2,6 +2,7 @@
 title: "📓 Writing for Intern Katie"
 date: "2018-10-11"
 canonical: "https://medium.com/xandr-tech/writing-for-intern-katie-a26b705f74cc"
+tags: ['work']
 ---
 
 > This was written for my former employer's tech blog, formally known as AppNexus, currently known as Xandr. You can find the orignal post on their Medium blog [here](https://medium.com/xandr-tech/writing-for-intern-katie-a26b705f74cc).
