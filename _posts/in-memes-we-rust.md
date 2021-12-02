@@ -5,8 +5,6 @@ tags: ['work']
 coverImage: 'assets/blog/in-memes-we-rust/theydontstop.jpg'
 ---
 
-![Screenshot of the lyrics of Smash Mouth's All Star ran through spongemock](./theydontstop.jpg)
-
 This may seem like a familiar scenario:
 
 - My friend says a comedically judgmental thing on Slack.

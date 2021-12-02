@@ -2,10 +2,9 @@
 title: "🌰 Squirrels Who Code"
 date: "2018-04-27"
 tags: ['work']
-coverImage: 'assets/blog/squirrels-who-code/computer-science.jpg'
 ---
 
-![Comic of Tippy Toe, the squirrel, asking Squirrel Girl what she will study at university. Squirrel Girl reveals she'll be studying computer science!](./computer-science.jpg)_source: [Spin’s interview with Ryan North](https://www.spin.com/2016/02/dinosaur-comics-ryan-north-squirrel-girl-interview/)_
+![Comic of Tippy Toe, the squirrel, asking Squirrel Girl what she will study at university. Squirrel Girl reveals she'll be studying computer science!](../assets/blog/squirrels-who-code/computer-science.jpg)_source: [Spin’s interview with Ryan North](https://www.spin.com/2016/02/dinosaur-comics-ryan-north-squirrel-girl-interview/)_
 
 For the uninitiated, [Squirrel Girl](<http://marvel.wikia.com/wiki/Doreen_Green_(Earth-616)>) (or Doreen Green) is part squirrel, part girl, and entirely charming. She has the proportional speed and strength of a squirrel, rarely used knuckle spikes, and a deep sense of empathy. The comic’s creative team is [Ryan North](https://twitter.com/ryanqnorth) and [Erica Henderson](https://twitter.com/EricaFails) (soon to be [Derek Charm](https://twitter.com/derek_charm) — it is sad to see Erica go but I’m excited to see what comes next for both her and Doreen!).
 
@@ -19,7 +18,7 @@ Doreen Green is a computer science student at Empire State University. When I fi
 
 I love seeing myself represented but I’m only one demographic — Squirrel Girl also represents my friends. A tight group of computer science pals are featured in Squirrel Girl and together they analyze algorithms and combat crime. These friends are _not_ sidekicks — they are just as important as Doreen in their adventures and they are all underrepresented minorities in tech.
 
-![Comic of Koi Boi and Chipmonk Hunk introducing themselves to their friend, Nancy. Nancy is confused why they think a mask would shield their identity.](./the-gang.jpg)_source: [Retcon Punch](https://retcon-punch.com/2015/06/05/the-unbeatable-squirrel-girl-6/)_
+![Comic of Koi Boi and Chipmonk Hunk introducing themselves to their friend, Nancy. Nancy is confused why they think a mask would shield their identity.](../assets/blog/squirrels-who-code/the-gang.jpg)_source: [Retcon Punch](https://retcon-punch.com/2015/06/05/the-unbeatable-squirrel-girl-6/)_
 
 [Nancy Whitehead](<http://marvel.wikia.com/wiki/Nancy_Whitehead_(Earth-616)>), an African-American woman, is Doreen’s roommate and best friend. She doesn’t have super powers in the traditional sense but she is definitely the voice of reason within the bunch. Nancy also knits, sews, loves her cat ([Mewnir](<http://marvel.wikia.com/wiki/Mewnir_(Earth-616)>)), and writes fanfic (about her cat).
 
