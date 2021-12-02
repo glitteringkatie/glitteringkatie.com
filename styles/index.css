@@ -19,12 +19,6 @@
     transition: box-shadow 0.3s ease;
 }
 
-.logo {
-    width: 600px;
-    padding: 0 0 10px;
-    margin: auto;
-}
-
 output {
     background: #637D59;
     padding: 5px 16px;

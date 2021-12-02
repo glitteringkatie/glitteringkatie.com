@@ -1,7 +1,6 @@
 import Container from '../components/container'
 import Intro from '../components/intro'
 import LayoutWithContextProvider from '../components/layout'
-import GlitteringKatieMark from '../components/glitteringkatie-mark'
 import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -14,7 +13,6 @@ import lifePic from '../public/assets/home/life-profile.png'
 import balancePic from '../public/assets/home/balance-profile.png'
 import classNames from 'classnames'
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
-import Post from './posts/[slug]'
 import markdownToHtml from '../lib/markdownToHtml'
 import markdownStyles from '../components/markdown-styles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -35,7 +33,6 @@ type Social = {
 
 const IndexComponent = ({ allPosts }: Props) => {
   const balanceValue = useContext(BalanceContext)
-  console.log(balanceValue)
 
   const socials: Social[] = [
     {
@@ -94,7 +91,6 @@ const IndexComponent = ({ allPosts }: Props) => {
   }
 
   const postUI = (post) => {
-    console.log(post);
 
     const coverImages = [
       'https://images.unsplash.com/photo-1583311578285-9d6e88b29358?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
@@ -187,7 +183,7 @@ const IndexComponent = ({ allPosts }: Props) => {
   return (
     <>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>glittering katie</title>
       </Head>
       <Container>
         <div className="flex flex-col md:flex-row mx-auto items-center pb-20">
@@ -196,7 +192,7 @@ const IndexComponent = ({ allPosts }: Props) => {
             {blog.bio}
           </div>
           <div className="flex-1">
-            {blog.profilePic ? <Image src={blog.profilePic} /> : null}
+            {blog.profilePic ? <img src={blog.profilePic} layout="fill" /> : null}
           </div>
         </div>
         <div className="flex flex-col justify-center items-center pb-20">
@@ -237,8 +233,6 @@ export const getStaticProps = async () => {
     'coverImage',
     'excerpt',
   ])
-
-  console.log(allPosts);
 
   return {
     props: { allPosts },
