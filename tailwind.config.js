@@ -7,11 +7,13 @@ module.exports = {
         'pine': '#004225',
         'salmon': '#FFCBA4',
         'cream': '#FEF9F1',
+        'dimGray': '#575552',
         'warmBlack': '#100E0E'
       },
       fontFamily: {
         'serif': ['Source Serif Pro', 'serif'],
         'sans': ['Work Sans', 'sans-serif'],
+        'code': ['Fira Mono', 'monospace']
       },
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',

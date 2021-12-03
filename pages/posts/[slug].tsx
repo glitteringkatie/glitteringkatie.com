@@ -21,6 +21,7 @@ const Post = ({ post, morePosts }: Props) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+  console.log(post.content);
   return (
     <Layout page='post' post={post}>
       <Container>
@@ -69,6 +70,7 @@ export async function getStaticProps({ params }: Params) {
     'coverImage',
   ])
   const content = await markdownToHtml(post.content || '')
+  console.log(content);
 
   return {
     props: {

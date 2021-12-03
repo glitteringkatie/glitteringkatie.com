@@ -9,10 +9,25 @@
   @apply my-6;
 }
 
+.markdown p {
+  @apply pb-0;
+}
+
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply font-serif font-semibold text-3xl mt-12 mb-4 leading-snug;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply font-serif font-semibold text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown a {
+  @apply text-fern hover:text-pine font-bold;
+}
+
+.markdown code {
+  @apply py-1 px-1.5 m-0 rounded font-code;
+      margin: 0;
+      font-size: 85%;
+      background-color: rgba(193, 185, 175, 0.3);
 }
