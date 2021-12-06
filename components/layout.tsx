@@ -47,9 +47,9 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     return (
       <>
         <Meta />
-        <div className="min-h-screen bg-cream">
+        <div className="min-h-screen bg-cream flex flex-col">
 
-          <div className={classNames(['py-4', 'sm:py-8', 'flex', 'max-w-5xl', 'mx-auto', 'px-4', 'items-center'])}>
+          <div className={classNames(['py-4', 'sm:py-8', 'flex', 'w-full', 'md:w-5xl', 'max-w-5xl', 'mx-auto', 'px-4', 'items-center'])}>
             <Link href='/' >
               <a className='flex-1'>
                 <GKLogo className='w-2/3 sm:w-96' />
@@ -65,7 +65,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
             <div className="mb-8 md:mb-16 sm:mx-0">
               <CoverImage title={post.title} src={post.coverImage} />
             </div>) : undefined}
-          <main>{children}</main>
+          <main className='flex-1'>{children}</main>
           {footer}
         </div>
       </>
@@ -74,7 +74,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
   return (
     <BalanceContext.Provider value={balanceValue}>
       <Meta />
-      <div className="min-h-screen bg-cream">
+      <div className="min-h-screen bg-cream flex flex-col">
 
         <div className={classNames([padding])}>
           <Link href='/' >
@@ -98,7 +98,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
             <span className={workLifeLabelClasses}>life</span>
           </div>
         </div>
-        <main>{children}</main>
+        <main className='flex-1'>{children}</main>
         {footer}
       </div>
     </BalanceContext.Provider>

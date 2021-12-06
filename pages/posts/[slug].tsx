@@ -52,7 +52,7 @@ const Post = ({ post, newer, older }: Props) => {
               {newer ? <Link href={newer.slug}>
                 <a className='flex text-fern hover:text-pine'>
                 <FontAwesomeIcon icon={faArrowLeft} className='h-8 mr-3' />
-                  <div className='font-serif font-semibold'><div className='text-3xl'>Newer</div>
+                  <div className='font-serif font-semibold'><div className='text-3xl'>newer</div>
                   <div>{newer.title}</div>
                   </div>
                 </a>
@@ -61,7 +61,7 @@ const Post = ({ post, newer, older }: Props) => {
               <div className='flex-1 flex justify-end' >
               {older ? <Link href={older.slug}>
                 <a className='flex text-fern hover:text-pine'>
-                  <div className='font-serif font-semibold text-right'><div className='text-3xl'>Older</div>
+                  <div className='font-serif font-semibold text-right'><div className='text-3xl'>older</div>
                   <div>{older.title}</div>
                   </div>
                   <FontAwesomeIcon icon={faArrowRight} className='h-8 ml-3' />
@@ -95,7 +95,7 @@ export async function getStaticProps({ params }: Params) {
     'coverImage',
   ])
   const content = await markdownToHtml(post.content || '')
-  const posts = await getAllPosts(['slug', 'title'])
+  const posts = await getAllPosts(['slug', 'title', 'date'])
   const currentIndex = posts.findIndex(post => post.slug === params.slug)
   const older = posts[currentIndex + 1] ?? null;
   const newer = posts[currentIndex - 1] ?? null;
@@ -113,7 +113,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts(['slug'])
+  const posts = await getAllPosts(['slug', 'date'])
 
   return {
     paths: posts.map((post) => {
