@@ -24,6 +24,12 @@ module.exports = {
       },
       backgroundSize: {
         stretch: "100% 100%"
+      },
+      height: {
+        'unset': 'unset !important',
+      },
+      position: {
+        'unset': 'unset !important',
       }
     },
   },

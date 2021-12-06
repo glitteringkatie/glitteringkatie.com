@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import ErrorPage from 'next/error'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
@@ -10,18 +11,21 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
+import {faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
   post: PostType
-  morePosts: PostType[]
+  newer: PostType
+  older: PostType
 }
 
-const Post = ({ post, morePosts }: Props) => {
+const Post = ({ post, newer, older }: Props) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
-  console.log(post.content);
+
   return (
     <Layout page='post' post={post}>
       <Container>
@@ -44,6 +48,28 @@ const Post = ({ post, morePosts }: Props) => {
               />
               <PostBody content={post.content} />
             </article>
+            <div className='flex max-w-3xl mx-auto'>
+              <div className='flex-1 flex justify-start' >
+              {newer ? <Link href={newer.slug}>
+                <a className='flex text-fern hover:text-pine'>
+                <FontAwesomeIcon icon={faArrowLeft} className='h-8 mr-3' />
+                  <div className='font-serif font-semibold'><div className='text-3xl'>Newer</div>
+                  <div>{newer.title}</div>
+                  </div>
+                </a>
+              </Link> : null}
+              </div>
+              <div className='flex-1 flex justify-end' >
+              {older ? <Link href={older.slug}>
+                <a className='flex text-fern hover:text-pine'>
+                  <div className='font-serif font-semibold text-right'><div className='text-3xl'>Older</div>
+                  <div>{older.title}</div>
+                  </div>
+                  <FontAwesomeIcon icon={faArrowRight} className='h-8 ml-3' />
+                </a>
+              </Link> : null}
+              </div>
+            </div>
           </>
         )}
       </Container>
@@ -70,7 +96,10 @@ export async function getStaticProps({ params }: Params) {
     'coverImage',
   ])
   const content = await markdownToHtml(post.content || '')
-  console.log(content);
+  const posts = await getAllPosts(['slug', 'title'])
+  const currentIndex = posts.findIndex(post => post.slug === params.slug)
+  const older = posts[currentIndex + 1] ?? null;
+  const newer = posts[currentIndex - 1] ?? null;
 
   return {
     props: {
@@ -78,6 +107,8 @@ export async function getStaticProps({ params }: Params) {
         ...post,
         content,
       },
+      newer,
+      older,
     },
   }
 }

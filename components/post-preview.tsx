@@ -1,14 +1,14 @@
-import { useRef } from 'react'
+import {useRef} from 'react'
 import Link from 'next/link'
 import Post from '../types/post'
-import { useDefaultImage } from './cover-image'
+import { getDefaultImage } from './cover-image'
 
 type Props = {
   post: Post
 }
 
 const PostPreview = ({ post }: Props) => {
-  const { current: randomImage } = useDefaultImage();
+  const { current: randomImage } = useRef(getDefaultImage());
   const coverImage = post.coverImage || randomImage
   return (
     <div className='flex-1 pr-8 last:pr-0 pb-4'>
