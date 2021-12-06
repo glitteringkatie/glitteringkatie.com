@@ -21,6 +21,10 @@
   @apply font-serif font-semibold text-2xl mt-8 mb-4 leading-snug;
 }
 
+.markdown h4 {
+  @apply font-sans font-light tracking-widest uppercase text-xl mt-8 mb-4 leading-snug;
+}
+
 .markdown a {
   @apply text-fern hover:text-pine font-bold;
 }

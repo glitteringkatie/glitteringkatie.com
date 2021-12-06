@@ -9,7 +9,7 @@ import workPic from '../public/assets/home/work-profile.png'
 import lifePic from '../public/assets/home/life-profile.png'
 import balancePic from '../public/assets/home/balance-profile.png'
 import classNames from 'classnames'
-import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext
+import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import PostPreview from '../components/post-preview'
@@ -164,7 +164,7 @@ const IndexComponent = ({ allPosts }: Props) => {
         </div>
         <div className="flex flex-col justify-center items-center pb-20">
           <h2 className={headerStyles}>My Latest Posts</h2>
-          <div className='md:grid grid-cols-3 gap-x-8 items-top mx-auto pb-6' >
+          <div className='md:grid grid-cols-3 gap-x-8 items-top mx-auto py-4' >
             {allPosts.slice(0, 3).map((post) => <PostPreview post={post} />)}
           </div>
           <Link href='/posts'>
