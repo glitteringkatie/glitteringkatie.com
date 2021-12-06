@@ -6,6 +6,8 @@ import Footer from './footer'
 import CoverImage from './cover-image'
 import Meta from './meta'
 import GKLogo from '../public/glitteringkatie.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
 
@@ -26,8 +28,22 @@ const Layout = ({ page = 'home', children, post }: Props) => {
   }
 
   const padding = page === 'home'
-    ? "py-16 md:py-28"
-    : "py-16"
+    ? "py-8 md:py-16"
+    : "py-8"
+
+  const footer = page !== 'home' ?
+    <div className='flex justify-center py-12 bg-fern'>
+      <Link href='https://twitter.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
+        <FontAwesomeIcon icon={faTwitter} className='h-8' />
+      </a></Link>
+      <Link href='https://instagram.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
+        <FontAwesomeIcon icon={faInstagram} className='h-8' />
+      </a></Link>
+      <Link href='https://github.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
+        <FontAwesomeIcon icon={faGithub} className='h-8 mr' />
+      </a></Link>
+    </div>
+    : null;
 
   if (page === 'post') {
     return (
@@ -52,6 +68,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
               <CoverImage title={post.title} src={post.coverImage} />
             </div>) : undefined}
           <main>{children}</main>
+          {footer}
         </div>
       </>
     )
@@ -64,7 +81,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
         <div className={classNames([padding])}>
           <Link href='/' >
             <a>
-              <GKLogo className='max-w-4xl mx-auto pb-4 px-8' />
+              <GKLogo className='max-w-2xl mx-auto pb-4 px-8' />
             </a>
           </Link>
           <div className="flex items-center justify-center">
@@ -84,6 +101,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
           </div>
         </div>
         <main>{children}</main>
+        {footer}
       </div>
     </BalanceContext.Provider>
   )
