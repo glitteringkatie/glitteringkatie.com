@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
-import Alert from './alert'
-import Footer from './footer'
 import CoverImage from './cover-image'
 import Meta from './meta'
 import GKLogo from '../public/glitteringkatie.svg'

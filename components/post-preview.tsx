@@ -11,7 +11,7 @@ const PostPreview = ({ post }: Props) => {
   const { current: randomImage } = useRef(getDefaultImage());
   const coverImage = post.coverImage || randomImage
   return (
-    <div className='flex-1 pr-8 last:pr-0 pb-4'>
+    <div className='flex-1 pb-4'>
       <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
         <a className='post-preview'>
           <img className='object-cover object-center w-full h-64 md:h-96' src={coverImage} />

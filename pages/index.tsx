@@ -1,22 +1,18 @@
 import Container from '../components/container'
-import Intro from '../components/intro'
 import LayoutWithContextProvider from '../components/layout'
 import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
-import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
 import { ReactNode, useContext, useState } from 'react'
 import workPic from '../public/assets/home/work-profile.png'
 import lifePic from '../public/assets/home/life-profile.png'
 import balancePic from '../public/assets/home/balance-profile.png'
 import classNames from 'classnames'
-import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
-import markdownToHtml from '../lib/markdownToHtml'
-import markdownStyles from '../components/markdown-styles.module.css'
+import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import PostPreview from '../components/post-preview'
 
 type Props = {
   allPosts: Post[]
@@ -82,40 +78,11 @@ const IndexComponent = ({ allPosts }: Props) => {
   const socialUI = (social: Social) => {
     return (
       <li className='pt-2'>
-        <Link href={social.url}><a className='flex items-center'>
+        <Link href={social.url}><a className='flex items-center text-cream hover:text-salmon transition-colors'>
           {icons[social.icon]}
           <div>{social.display}</div>
         </a></Link>
       </li >
-    )
-  }
-
-  const postUI = (post) => {
-
-    const coverImages = [
-      'https://images.unsplash.com/photo-1583311578285-9d6e88b29358?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-      'https://images.unsplash.com/photo-1571845413709-ba4ddc85eb12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1166&q=80',
-      'https://images.unsplash.com/photo-1625061661591-14d9e67e1ee7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
-      'https://images.unsplash.com/photo-1554921027-b91f0beeb07d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-      'https://images.unsplash.com/photo-1576669803361-2f85b619711b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-      'https://images.unsplash.com/photo-1574027542183-77efe00ca49f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80',
-    ]
-
-    const coverImage = coverImages[Math.floor(Math.random() * coverImages.length)];
-
-    return (
-      <div className='flex-1 pr-8 last:pr-0 pt-4 pb-4'>
-        <Link href={`posts/${post.slug}`}>
-          <a className='post-preview'>
-            <img className='object-cover object-center w-full h-64 md:h-96' src={coverImage} />
-            <h3 className='font-serif font-semibold text-center text-lg pb-2 pt-2'>{post.title}</h3>
-            <div
-              className='text-sm'
-              dangerouslySetInnerHTML={{ __html: post.excerpt }}
-            />
-          </a>
-        </Link>
-      </div>
     )
   }
 
@@ -192,13 +159,13 @@ const IndexComponent = ({ allPosts }: Props) => {
             {blog.bio}
           </div>
           <div className="flex-1">
-            {blog.profilePic ? <img src={blog.profilePic} layout="fill" /> : null}
+            {blog.profilePic ? <img src={blog.profilePic} /> : null}
           </div>
         </div>
         <div className="flex flex-col justify-center items-center pb-20">
           <h2 className={headerStyles}>My Latest Posts</h2>
-          <div className='flex flex-col md:flex-row items-top mx-auto pb-6' >
-            {allPosts.slice(0, 3).map(postUI)}
+          <div className='md:grid grid-cols-3 gap-x-8 items-top mx-auto pb-6' >
+            {allPosts.slice(0, 3).map((post) => <PostPreview post={post} />)}
           </div>
           <Link href='/posts'>
             <a className='bg-pine text-cream pt-4 px-6 pb-3 rounded-full text-xl font-serif font-semibold lowercase'>browse all posts</a>

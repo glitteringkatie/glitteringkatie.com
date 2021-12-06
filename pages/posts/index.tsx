@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Container from '../../components/container'
 import { getAllPosts } from '../../lib/api'
 import Post from '../../types/post'
@@ -23,7 +22,7 @@ const PostsComponent = ({ allPosts }: Props) => {
         <title>glittering katie | all posts </title>
       </Head>
       <Container>{filteredPosts.length > 0 ?
-        <div className='md:grid grid-cols-3 items-top mx-auto pb-6'>
+        <div className='md:grid grid-cols-3 gap-x-8 items-top mx-auto pb-6'>
           {filteredPosts.map((post) => {
             return (<PostPreview post={post} />);
           })
