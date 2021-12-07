@@ -26,7 +26,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
   }
 
   const padding = page === 'home'
-    ? "py-8 md:py-16"
+    ? "py-8 md:pt-16"
     : "py-8"
 
   const footer = page !== 'home' ?
