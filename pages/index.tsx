@@ -86,7 +86,7 @@ const IndexComponent = ({ allPosts }: Props) => {
     )
   }
 
-  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: StaticImageData, blog: { url: string, cta: string } } } = {
+  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: string, blog: { url: string, cta: string } } } = {
     [BALANCE]: {
       bio: (<><p>Hi, I'm Katie! I'm a software engineer living in Portland, OR, who
         loves interior design, making craft cocktails, and flying through the air
@@ -196,7 +196,6 @@ export const getStaticProps = async () => {
     'title',
     'date',
     'slug',
-    'author',
     'coverImage',
     'excerpt',
   ])
