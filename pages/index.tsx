@@ -5,9 +5,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Post from '../types/post'
 import { ReactNode, useContext, useState } from 'react'
-import workPic from '../public/assets/home/work-profile.png'
-import lifePic from '../public/assets/home/life-profile.png'
-import balancePic from '../public/assets/home/balance-profile.png'
+import workPic from '../public/assets/home/work.png'
+import lifePic from '../public/assets/home/life.png'
+import balancePic from '../public/assets/home/balance.png'
 import classNames from 'classnames'
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -154,7 +154,7 @@ const IndexComponent = ({ allPosts }: Props) => {
       </Head>
       <Container>
         <div className="flex flex-col md:flex-row mx-auto items-center pb-20">
-          <div className="flex-1">
+          <div className="flex-1 pr-6">
             <h2 className={headerStyles}>About me</h2>
             {blog.bio}
           </div>
