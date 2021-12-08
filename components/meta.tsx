@@ -39,9 +39,10 @@ const Meta = ({canonical}: Props) => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
         name="description"
-        content={`glittering katie | a tech and lifestyle blog by Katie Hughes`}
+        content="A tech and lifestyle blog by Katie Hughes"
       />
-      <meta property="og:image" content='../assets/unfurl.png' />
+      <meta property="og:image" content='/assets/unfurl.png' />
+      <meta name="twitter:image" content='/aseets/unfurl.png' />
       {canonicalTag}
     </Head>
   )
