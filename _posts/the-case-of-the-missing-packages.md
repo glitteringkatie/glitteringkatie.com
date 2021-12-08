@@ -1,7 +1,8 @@
 ---
 title: "🕵🏼‍♀️ The Case of the Missing Packages"
 date: "2019-03-08"
-tags: ['work']
+tags: ["work"]
+coverImage: "https://images.unsplash.com/photo-1549609096-f4629a5bbd88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
 ---
 
 Onboarding: follow the instructions and most developers will get set up. But me? I’m not most developers. I’m Katie Hughes and I’m the private eye whose setup always goes awry. That is, until my bad luck met its match: a package manager by the name of [Nix](https://nixos.org/nix/).

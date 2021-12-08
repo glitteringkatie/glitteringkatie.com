@@ -91,6 +91,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'ogImage',
     'coverImage',
+    'coverPosition'
   ])
   const content = await markdownToHtml(post.content || '')
   const posts = await getAllPosts(['slug', 'title', 'date'])

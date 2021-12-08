@@ -78,7 +78,7 @@ const IndexComponent = ({ allPosts }: Props) => {
   const socialUI = (social: Social) => {
     return (
       <li className='pt-2'>
-        <Link href={social.url}><a className='flex items-center text-cream hover:text-salmon transition-colors'>
+        <Link href={social.url}><a className='flex items-center text-cream hover:text-pine transition-colors'>
           {icons[social.icon]}
           <div>{social.display}</div>
         </a></Link>
@@ -173,8 +173,8 @@ const IndexComponent = ({ allPosts }: Props) => {
 
         </div>
         <div className='mx-auto items-center p-16 bg-blob bg-stretch bg-center bg-no-repeat text-cream text-center'>
-          <h2 className='lowercase font-serif font-semibold text-5xl md:text-6xl pb-4'> {blog.findMe} </h2>
-          <ul className='text-md md:text-xl table mx-auto pb-8'>
+          <h2 className='lowercase font-serif font-semibold text-4xl md:text-6xl pb-4'> {blog.findMe} </h2>
+          <ul className='text-sm md:text-xl table mx-auto pb-8'>
             {displaySocials.map(socialUI)}
           </ul>
         </div>

@@ -1,7 +1,8 @@
 ---
 title: "📝 A Tale of Two Strategies"
 date: "2019-06-04"
-tags: ['work']
+tags: ["work"]
+coverImage: "https://images.unsplash.com/photo-1574027542183-77efe00ca49f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80"
 ---
 
 In April 2019 I gave [my first conference talk](/posts/where-the-elm-am-i) at [Elm in the Spring](https://www.elminthespring.org/). I spoke about being in a brand new code base at the same time as a brand new city and showed that exploring one is similar to exploring the other.

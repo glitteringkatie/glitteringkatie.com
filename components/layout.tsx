@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import CoverImage from './cover-image'
@@ -12,7 +12,7 @@ import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context
 type Props = {
   page?: string
   children: React.ReactNode
-  post?: { coverImage: string, title: string }
+  post?: { coverImage: string, title: string, coverPosition?: string }
 }
 
 const Layout = ({ page = 'home', children, post }: Props) => {
@@ -29,8 +29,19 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     ? "py-8 md:pt-16"
     : "py-8"
 
-  const footer = page !== 'home' ?
-    <div className='flex justify-center py-12 bg-fern'>
+  const today = new Date()
+  let emojis = FUN
+  if (today.getMonth() >= 10) {
+    // zero indexed months, 10 == 11 == NOV
+    emojis = emojis.concat(CHRISTMAS)
+  } else if (today.getMonth() >= 8) {
+    // 8 == 9 == SEP
+    emojis = emojis.concat(HALLOWEEN)
+  }
+  const emojiIndex = useRef(Math.floor(Math.random() * emojis.length))
+
+  const socialFooter = page !== 'home' ?
+    <div className='flex justify-center pb-3'>
       <Link href='https://twitter.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
         <FontAwesomeIcon icon={faTwitter} className='h-8' />
       </a></Link>
@@ -42,6 +53,11 @@ const Layout = ({ page = 'home', children, post }: Props) => {
       </a></Link>
     </div>
     : null;
+
+  const footer = <footer className='pt-12 pb-8 bg-fern'>
+    {socialFooter}
+    <p className='text-lg text-center'>© {today.getFullYear()}, Built with {emojis[emojiIndex.current]} and <a href="https://nextjs.org/" className='text-pine hover:text-cream'>Next.js</a></p>
+  </footer>
 
   if (page === 'post') {
     return (
@@ -63,7 +79,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
           </div>
           {post ? (
             <div className="mb-8 md:mb-16 sm:mx-0">
-              <CoverImage title={post.title} src={post.coverImage} />
+              <CoverImage title={post.title} src={post.coverImage} position={post.coverPosition} />
             </div>) : undefined}
           <main className='flex-1'>{children}</main>
           {footer}
@@ -104,5 +120,28 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     </BalanceContext.Provider>
   )
 }
+
+const FUN = [
+  "✨",
+  "💖",
+  "🤷🏼‍♀️",
+  "😂",
+  "🍾",
+  "🔮",
+  "🥳",
+  "🙃",
+  "🤦🏼‍♀️",
+  "🍑",
+  "🤸🏼‍♀️",
+  "🎨",
+  "🎉",
+  "🎶",
+  "😻",
+  "🥑",
+  "🎪",
+]
+
+const HALLOWEEN = ["🎃", "🎂", "🥳", "🦇", "🍂", "🍁", "🎁"]
+const CHRISTMAS = ["🎄", "🎅🏼", "⛄️", "❄️", "🤶🏼", "🌲"]
 
 export default Layout

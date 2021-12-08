@@ -1,7 +1,8 @@
 ---
 title: "🍿 Keeping Up With the JavaScripts"
 date: "2020-11-23"
-tags: ['work']
+tags: ["work"]
+coverImage: "https://images.unsplash.com/photo-1571846052945-f70f6b2542d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
 ---
 
 In July 2020 I found myself as part of the many people affected by COVID-19 related layoffs. Before that, I was writing anything from Elm to Ruby to Elixir at NoRedInk. And before _that_ I was working with JavaScript and React for three years at AppNexus.
