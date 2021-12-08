@@ -44,6 +44,7 @@ const Meta = ({canonical}: Props) => {
       <meta property="og:type" content="website" />
       <meta property="og:image" content='/assets/unfurl.png' />
       <meta name="twitter:creator" content='@glitteringkatie' />
+      <meta name="title" property="og:title" content="glittering katie" />
       {canonicalTag}
     </Head>
   )
