@@ -41,8 +41,9 @@ const Meta = ({canonical}: Props) => {
         name="description"
         content="A tech and lifestyle blog by Katie Hughes"
       />
+      <meta property="og:type" content="website" />
       <meta property="og:image" content='/assets/unfurl.png' />
-      <meta name="twitter:image" content='/aseets/unfurl.png' />
+      <meta name="twitter:creator" content='@glitteringkatie' />
       {canonicalTag}
     </Head>
   )
