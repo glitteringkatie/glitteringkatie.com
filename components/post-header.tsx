@@ -1,4 +1,3 @@
-import Avatar from './avatar'
 import DateFormatter from './date-formatter'
 import PostTitle from './post-title'
 
