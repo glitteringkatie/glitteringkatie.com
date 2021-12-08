@@ -86,61 +86,31 @@ const IndexComponent = ({ allPosts }: Props) => {
     )
   }
 
-  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: string, blog: { url: string, cta: string } } } = {
+  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: string } } = {
     [BALANCE]: {
-      bio: (<><p>Hi, I'm Katie! I'm a software engineer living in Portland, OR, who
-        loves interior design, making craft cocktails, and flying through the air
-        at my local circus school. Finding a balance between a professional and
-        personal website is just as hard (and rewarding) as finding that perfect
-        work/life balance.</p>
-
-        <p>On this site and in this blog you'll find me—the whole me. That means
-          posts about Next.js or parsers side by side with posts about IKEA flips
-          and vintage finds. I hope you'll have fun here and find something new.
-          Happy reading!</p>
-
-        <p>P.S. If you haven’t yet, try the work/life balance slider above!</p></>),
+      bio: (<>
+        <p>Hi, I'm Katie! I'm a software engineer living in Portland, OR, who loves interior design, making craft cocktails, and flying through the air at my local circus school. Finding a balance between a professional and personal website is just as hard (and rewarding) as finding that perfect work/life balance.</p>
+        <p>On this site and in this blog you'll find me—the whole me. That means posts about Next.js or parsers side by side with posts about IKEA flips and vintage finds. I hope you'll have fun here and find something new. Happy reading!</p>
+        <p>P.S. If you haven’t yet, try the work/life balance slider above!</p>
+      </>),
       profilePic: balancePic,
       findMe: 'say hi!',
-      blog: {
-        url: 'blog?type=glittering-brand',
-        cta: 'glittering writing'
-      }
     },
     [WORK]: {
-      bio: (<><p>Hi, I'm Katie! I'm a senior software engineer at Elastic, working
-        remotely in Oregon.I've been working in software engineering for five
-        years now, majored in computer science at Oregon State(go Beavs!), and
-        started programming junior year of high school with Pascal.</p >
-
-        <p>I love thinking through frontend architecture; I find it fun to work
-          through the data flow puzzle.I also value collaboration.I love pairing
-          with other engineers and working with designers or docs writers to see and
-          understand that bigger picture.</p></>),
+      bio: (<>
+        <p>Hi, I'm Katie! I'm a senior software engineer at Elastic, working remotely in Oregon. I've been working in software engineering for five years now, majored in computer science at Oregon State (go beavs!), and started programming junior year of high school with Pascal.</p >
+        <p>I love thinking through frontend architecture; I find it fun to work through the data flow puzzle. I also value collaboration. I love pairing with other engineers and working with designers or docs writers to see and understand that bigger picture.</p>
+      </>),
       profilePic: workPic,
       findMe: 'contact me!',
-      blog: {
-        url: 'blog?type=glittering-brand',
-        cta: 'glittering writing'
-      }
     },
     [LIFE]: {
-      bio: (<><p>Hi, I'm Katie! I'm an Oregonian with a crafty streak who grew up on
-        (too much?) HGTV and loves a good gin & tonic. I live in an apartment in
-        Portland with my cat, Erwin Schrödinger, who might be a panther. We have
-        fun here!</p>
-
-        <p>I've found a lot of my hobbies (interior design, cocktail making, aerial)
-          are all puzzles to find the intersection of functionality and beauty. Who
-          wants a tasty but ugly cocktail? What's the point of a beautiful couch if
-          it isn't comfy enough to take a nap? How do you look graceful while
-          tangled up in silks? That intersection is where I love to play.</p></>),
+      bio: (<>
+        <p>Hi, I'm Katie! I'm an Oregonian with a crafty streak who grew up on (too much?) HGTV and loves a good gin & tonic. I live in an apartment in Portland with my cat, Erwin Schrödinger, who might be a panther. We have fun here!</p>
+        <p>I've found a lot of my hobbies (interior design, cocktail making, aerial) are all puzzles to find the intersection of functionality and beauty. Who wants a tasty but ugly cocktail? What's the point of a beautiful couch if it isn't comfy enough to take a nap? How do you look graceful while tangled up in silks? That intersection is where I love to play.</p>
+      </>),
       profilePic: lifePic,
       findMe: 'swing by!',
-      blog: {
-        url: 'blog?type=glittering-brand',
-        cta: 'glittering writing'
-      }
     }
   }
   const blog = metadata[balanceValue]
