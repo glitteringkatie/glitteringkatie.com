@@ -12,7 +12,7 @@ import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context
 type Props = {
   page?: string
   children: React.ReactNode
-  post?: { coverImage: string, title: string, coverPosition?: string }
+  post?: { coverImage: string, title: string, coverPosition?: string, canonical?: string }
 }
 
 const Layout = ({ page = 'home', children, post }: Props) => {
@@ -59,10 +59,10 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     <p className='text-lg text-center'>© {today.getFullYear()}, Built with {emojis[emojiIndex.current]} and <a href="https://nextjs.org/" className='text-pine hover:text-cream'>Next.js</a></p>
   </footer>
 
-  if (page === 'post') {
+  if (page === 'post' && post) {
     return (
       <>
-        <Meta />
+        <Meta canonical={post.canonical} />
         <div className="min-h-screen bg-cream flex flex-col">
 
           <div className={classNames(['py-4', 'sm:py-8', 'flex', 'w-full', 'md:w-5xl', 'max-w-5xl', 'mx-auto', 'px-4', 'items-center'])}>
@@ -77,10 +77,9 @@ const Layout = ({ page = 'home', children, post }: Props) => {
               </a>
             </Link>
           </div>
-          {post ? (
-            <div className="mb-8 md:mb-16 sm:mx-0">
-              <CoverImage title={post.title} src={post.coverImage} position={post.coverPosition} />
-            </div>) : undefined}
+          <div className="mb-8 md:mb-16 sm:mx-0">
+            <CoverImage title={post.title} src={post.coverImage} position={post.coverPosition} />
+          </div>
           <main className='flex-1'>{children}</main>
           {footer}
         </div>

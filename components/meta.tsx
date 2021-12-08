@@ -1,7 +1,12 @@
 import Head from 'next/head'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 
-const Meta = () => {
+type Props = {
+  canonical?: string
+}
+
+const Meta = ({canonical}: Props) => {
+  const canonicalTag = canonical ? <link rel="canonical" href={canonical} /> : null;
   return (
     <Head>
       <link
@@ -37,6 +42,7 @@ const Meta = () => {
         content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
       />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      {canonicalTag}
     </Head>
   )
 }
