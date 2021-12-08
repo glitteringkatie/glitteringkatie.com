@@ -69,10 +69,10 @@ const IndexComponent = ({ allPosts }: Props) => {
   });
 
   const icons: { [key in SocialName]: ReactNode } = {
-    github: <FontAwesomeIcon icon={faGithub} className='h-8 mr-3' />,
-    twitter: <FontAwesomeIcon icon={faTwitter} className='h-8 mr-3' />,
-    insta: <FontAwesomeIcon icon={faInstagram} className='h-8 mr-3' />,
-    linkedin: <FontAwesomeIcon icon={faLinkedin} className='h-8 mr-3' />
+    github: <FontAwesomeIcon icon={faGithub} className='h-6 md:h-8 mr-3' />,
+    twitter: <FontAwesomeIcon icon={faTwitter} className='h-6 md:h-8 mr-3' />,
+    insta: <FontAwesomeIcon icon={faInstagram} className='h-6 md:h-8 mr-3' />,
+    linkedin: <FontAwesomeIcon icon={faLinkedin} className='h-6 md:h-8 mr-3' />
   }
 
   const socialUI = (social: Social) => {
@@ -173,8 +173,8 @@ const IndexComponent = ({ allPosts }: Props) => {
 
         </div>
         <div className='mx-auto items-center p-16 bg-blob bg-stretch bg-center bg-no-repeat text-cream text-center'>
-          <h2 className='lowercase font-serif font-semibold text-6xl pb-4'> {blog.findMe} </h2>
-          <ul className='text-xl table mx-auto pb-8'>
+          <h2 className='lowercase font-serif font-semibold text-5xl md:text-6xl pb-4'> {blog.findMe} </h2>
+          <ul className='text-md md:text-xl table mx-auto pb-8'>
             {displaySocials.map(socialUI)}
           </ul>
         </div>

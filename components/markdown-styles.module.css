@@ -31,7 +31,21 @@
 
 .markdown code {
   @apply py-1 px-1.5 m-0 rounded font-code;
-      margin: 0;
-      font-size: 85%;
-      background-color: rgba(193, 185, 175, 0.3);
+  font-size: 85%;
+  background-color: rgba(193, 185, 175, 0.3);
+}
+
+.markdown pre {
+  @apply p-6 rounded font-code overflow-auto;
+  line-height: 1.45;
+  background-color: rgba(193, 185, 175, 0.3);
+}
+
+.markdown pre code {
+  @apply inline p-0 m-0;
+  max-width: auto;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
 }

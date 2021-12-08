@@ -79,7 +79,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
         <div className={classNames([padding])}>
           <Link href='/' >
             <a>
-              <GKLogo className='max-w-2xl mx-auto pb-4 px-8' />
+              <GKLogo className='max-w-2xl w-full mx-auto pb-4 px-8' />
             </a>
           </Link>
           <div className="flex items-center justify-center">
