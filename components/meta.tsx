@@ -42,7 +42,7 @@ const Meta = ({canonical}: Props) => {
       />
       <meta property="og:type" content="website" />
       <meta property="og:image" content='/assets/unfurl.png' />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content='@glitteringkatie' />
       <meta property="og:title" content="glittering katie" />
     </Head>
