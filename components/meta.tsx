@@ -2,10 +2,11 @@ import Head from 'next/head'
 import { HOME_OG_IMAGE_URL } from '../lib/constants'
 
 type Props = {
-  canonical?: string
+  ownImage?: boolean
+  ownTitle?: boolean
 }
 
-const Meta = ({canonical}: Props) => {
+const Meta = ({ownImage, ownTitle}: Props) => {
   return (
     <Head>
       <link
@@ -41,10 +42,10 @@ const Meta = ({canonical}: Props) => {
         content="A tech and lifestyle blog by Katie Hughes"
       />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content='/assets/unfurl.png' />
+      {ownImage ? null : <meta property="og:image" content='/assets/unfurl.png' />}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content='@glitteringkatie' />
-      <meta property="og:title" content="glittering katie" />
+      {ownTitle ? null : <meta property="og:title" content="glittering katie" />}
     </Head>
   )
 }

@@ -62,7 +62,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
   if (page === 'post' && post) {
     return (
       <>
-        <Meta canonical={post.canonical} />
+        <Meta ownImage={!!post.coverImage} ownTitle />
         <div className="min-h-screen bg-cream flex flex-col">
 
           <div className={classNames(['py-4', 'sm:py-8', 'flex', 'w-full', 'md:w-5xl', 'max-w-5xl', 'mx-auto', 'px-4', 'items-center'])}>
