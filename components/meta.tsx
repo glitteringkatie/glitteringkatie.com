@@ -6,7 +6,6 @@ type Props = {
 }
 
 const Meta = ({canonical}: Props) => {
-  const canonicalTag = canonical ? <link rel="canonical" href={canonical} /> : null;
   return (
     <Head>
       <link
@@ -38,14 +37,14 @@ const Meta = ({canonical}: Props) => {
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta
-        name="description"
+        property="og:description"
         content="A tech and lifestyle blog by Katie Hughes"
       />
       <meta property="og:type" content="website" />
       <meta property="og:image" content='/assets/unfurl.png' />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content='@glitteringkatie' />
-      <meta name="title" property="og:title" content="glittering katie" />
-      {canonicalTag}
+      <meta property="og:title" content="glittering katie" />
     </Head>
   )
 }

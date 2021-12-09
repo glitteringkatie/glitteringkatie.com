@@ -9,6 +9,7 @@ type PostType = {
     url: string
   }
   content: string
+  canonical?: string
 }
 
 export default PostType

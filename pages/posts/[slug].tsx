@@ -25,6 +25,9 @@ const Post = ({ post, newer, older }: Props) => {
     return <ErrorPage statusCode={404} />
   }
 
+  const canonicalTag = post.canonical ? <link rel="canonical" href={post.canonical} /> : null;
+  const title = `${post.title} | glittering katie`
+
   return (
     <Layout page='post' post={post}>
       <Container>
@@ -35,9 +38,11 @@ const Post = ({ post, newer, older }: Props) => {
             <article className="mb-32">
               <Head>
                 <title>
-                  {post.title} | glittering katie
+                  {title}
                 </title>
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+                <meta property="og:title" content={title} />
+                <meta property="og:image" content={post.ogImage?.url || post.coverImage} />
+                {canonicalTag}
               </Head>
               <PostHeader
                 title={post.title}
@@ -92,7 +97,8 @@ export async function getStaticProps({ params }: Params) {
     'ogImage',
     'coverImage',
     'coverPosition',
-    'canonical'
+    'canonical',
+    'excerpt'
   ])
   const content = await markdownToHtml(post.content || '')
   const posts = await getAllPosts(['slug', 'title', 'date'])
