@@ -5,7 +5,7 @@ import { getDefaultImage } from './cover-image'
 
 type Props = {
   post: Post
-  headerLevel: string
+  headerLevel?: string
 }
 
 const getHeader = (headerLevel: string, title: string) => {
