@@ -17,7 +17,7 @@ type Props = {
 
 const Layout = ({ page = 'home', children, post }: Props) => {
   const [balanceValue, setBalanceValue] = useState<BalanceCategory>(BALANCE);
-  const workLifeLabelClasses = classNames(['text-warmBlack', 'text-4xl', 'font-serif', 'italic']);
+  const workLifeLabelClasses = classNames(['text-warmBlack', 'text-2xl', 'sm:text-4xl', 'font-serif', 'italic']);
 
   const backgroundSize: { [key in BalanceCategory]: string } = {
     [WORK]: "0% 100%",
@@ -44,15 +44,15 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     <div className='flex justify-center pb-3'>
       <Link href='https://twitter.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on twitter">
-        <FontAwesomeIcon icon={faTwitter} size='2x' className='h-8' />
+        <FontAwesomeIcon icon={faTwitter} className='text-lg w-6 md:w-8' />
       </a></Link>
       <Link href='https://instagram.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on instagram">
-        <FontAwesomeIcon icon={faInstagram} size='2x' className='h-8' />
+        <FontAwesomeIcon icon={faInstagram} className='text-lg w-6 md:w-8' />
       </a></Link>
       <Link href='https://github.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on github">
-        <FontAwesomeIcon icon={faGithub} size='1x' className='h-8 mr' />
+        <FontAwesomeIcon icon={faGithub} className='text-lg w-6 md:w-8 mr' />
       </a></Link>
     </div>
     : null;
