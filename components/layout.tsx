@@ -4,7 +4,7 @@ import Link from 'next/link'
 import CoverImage from './cover-image'
 import Meta from './meta'
 import GKLogo from '../public/glitteringkatie.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
@@ -44,15 +44,15 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     <div className='flex justify-center pb-3'>
       <Link href='https://twitter.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on twitter">
-        <FontAwesomeIcon icon={faTwitter} className='w-6 md:w-8' />
+        <FaTwitter className='text-3xl' />
       </a></Link>
       <Link href='https://instagram.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on instagram">
-        <FontAwesomeIcon icon={faInstagram} className='w-6 md:w-8' />
+        <FaInstagram className='text-3xl' />
       </a></Link>
       <Link href='https://github.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on github">
-        <FontAwesomeIcon icon={faGithub} className='w-6 md:w-8 mr' />
+        <FaGithub className='text-3xl mr' />
       </a></Link>
     </div>
     : null;
