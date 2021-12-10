@@ -44,15 +44,15 @@ const Layout = ({ page = 'home', children, post }: Props) => {
     <div className='flex justify-center pb-3'>
       <Link href='https://twitter.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on twitter">
-        <FontAwesomeIcon icon={faTwitter} className='text-lg w-6 md:w-8' />
+        <FontAwesomeIcon icon={faTwitter} className='w-6 md:w-8' />
       </a></Link>
       <Link href='https://instagram.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on instagram">
-        <FontAwesomeIcon icon={faInstagram} className='text-lg w-6 md:w-8' />
+        <FontAwesomeIcon icon={faInstagram} className='w-6 md:w-8' />
       </a></Link>
       <Link href='https://github.com/glitteringkatie'>
         <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on github">
-        <FontAwesomeIcon icon={faGithub} className='text-lg w-6 md:w-8 mr' />
+        <FontAwesomeIcon icon={faGithub} className='w-6 md:w-8 mr' />
       </a></Link>
     </div>
     : null;

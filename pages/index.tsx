@@ -69,10 +69,10 @@ const IndexComponent = ({ allPosts }: Props) => {
   });
 
   const icons: { [key in SocialName]: ReactNode } = {
-    github: <FontAwesomeIcon icon={faGithub} className='h-6 md:h-8 mr-3' />,
-    twitter: <FontAwesomeIcon icon={faTwitter} className='h-6 md:h-8 mr-3' />,
-    insta: <FontAwesomeIcon icon={faInstagram} className='h-6 md:h-8 mr-3' />,
-    linkedin: <FontAwesomeIcon icon={faLinkedin} className='h-6 md:h-8 mr-3' />
+    github: <FontAwesomeIcon icon={faGithub} className='w-6 md:w-8 mr-3' />,
+    twitter: <FontAwesomeIcon icon={faTwitter} className='w-6 md:w-8 mr-3' />,
+    insta: <FontAwesomeIcon icon={faInstagram} className='w-6 md:w-8 mr-3' />,
+    linkedin: <FontAwesomeIcon icon={faLinkedin} className='w-6 md:w-8 mr-3' />
   }
 
   const socialUI = (social: Social) => {
