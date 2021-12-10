@@ -26,7 +26,7 @@
 }
 
 .markdown a {
-  @apply text-fern hover:text-pine font-bold;
+  @apply text-deciduous hover:text-fern font-bold;
 }
 
 .markdown code {

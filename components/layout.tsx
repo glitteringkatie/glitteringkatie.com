@@ -12,7 +12,7 @@ import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context
 type Props = {
   page?: string
   children: React.ReactNode
-  post?: { coverImage: string, title: string, coverPosition?: string, canonical?: string }
+  post?: { coverImage: string, altText?: string, title: string, coverPosition?: string, canonical?: string }
 }
 
 const Layout = ({ page = 'home', children, post }: Props) => {
@@ -42,19 +42,22 @@ const Layout = ({ page = 'home', children, post }: Props) => {
 
   const socialFooter = page !== 'home' ?
     <div className='flex justify-center pb-3'>
-      <Link href='https://twitter.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
-        <FontAwesomeIcon icon={faTwitter} className='h-8' />
+      <Link href='https://twitter.com/glitteringkatie'>
+        <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on twitter">
+        <FontAwesomeIcon icon={faTwitter} size='2x' className='h-8' />
       </a></Link>
-      <Link href='https://instagram.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
-        <FontAwesomeIcon icon={faInstagram} className='h-8' />
+      <Link href='https://instagram.com/glitteringkatie'>
+        <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on instagram">
+        <FontAwesomeIcon icon={faInstagram} size='2x' className='h-8' />
       </a></Link>
-      <Link href='https://github.com/glitteringkatie'><a className='flex items-center mx-4 text-pine hover:text-cream transition-colors'>
-        <FontAwesomeIcon icon={faGithub} className='h-8 mr' />
+      <Link href='https://github.com/glitteringkatie'>
+        <a className='flex items-center mx-4 text-pine hover:text-cream transition-colors' aria-label="@glitteringkatie on github">
+        <FontAwesomeIcon icon={faGithub} size='1x' className='h-8 mr' />
       </a></Link>
     </div>
     : null;
 
-  const footer = <footer className='pt-12 pb-8 bg-fern'>
+  const footer = <footer className='pt-12 pb-8 bg-mint'>
     {socialFooter}
     <p className='text-lg text-center'>© {today.getFullYear()}, Built with {emojis[emojiIndex.current]} and <a href="https://nextjs.org/" className='text-pine hover:text-cream'>Next.js</a></p>
   </footer>
@@ -65,7 +68,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
         <Meta ownImage={!!post.coverImage} ownTitle />
         <div className="min-h-screen bg-cream flex flex-col">
 
-          <div className={classNames(['py-4', 'sm:py-8', 'flex', 'w-full', 'md:w-5xl', 'max-w-5xl', 'mx-auto', 'px-4', 'items-center'])}>
+          <nav className={classNames(['py-4', 'sm:py-8', 'flex', 'w-full', 'md:w-5xl', 'max-w-5xl', 'mx-auto', 'px-4', 'items-center'])}>
             <Link href='/' >
               <a className='flex-1'>
                 <GKLogo className='w-2/3 sm:w-96' />
@@ -76,9 +79,9 @@ const Layout = ({ page = 'home', children, post }: Props) => {
                 blog
               </a>
             </Link>
-          </div>
+          </nav>
           <div className="mb-8 md:mb-16 sm:mx-0">
-            <CoverImage title={post.title} src={post.coverImage} position={post.coverPosition} />
+            <CoverImage title={post.title} src={post.coverImage} altText={post.altText} position={post.coverPosition} />
           </div>
           <main className='flex-1'>{children}</main>
           {footer}
@@ -91,15 +94,17 @@ const Layout = ({ page = 'home', children, post }: Props) => {
       <Meta />
       <div className="min-h-screen bg-cream flex flex-col">
 
-        <div className={classNames([padding])}>
+        <header className={classNames([padding])}>
+          <h1 aria-label={page}></h1>
           <Link href='/' >
-            <a>
+            <a aria-label="glittering katie home page">
               <GKLogo className='max-w-2xl w-full mx-auto pb-4 px-8' />
             </a>
           </Link>
           <div className="flex items-center justify-center">
             <span className={workLifeLabelClasses}>work</span>
             <input
+              aria-label="Work/life balance slider"
               type="range"
               min={WORK}
               max={LIFE}
@@ -112,7 +117,7 @@ const Layout = ({ page = 'home', children, post }: Props) => {
             />
             <span className={workLifeLabelClasses}>life</span>
           </div>
-        </div>
+        </header>
         <main className='flex-1'>{children}</main>
         {footer}
       </div>

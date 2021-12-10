@@ -46,7 +46,6 @@ const Post = ({ post, newer, older }: Props) => {
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
                 date={post.date}
               />
               <PostBody content={post.content} />

@@ -3,6 +3,7 @@ type PostType = {
   title: string
   date: string
   coverImage: string
+  altText: string
   excerpt: string
   tags: string[]
   ogImage: {

@@ -6,6 +6,7 @@ type Props = {
   src: string
   slug?: string
   position?: string
+  altText?: string
 }
 
 const defaultCoverImages: string[] = [
@@ -29,13 +30,13 @@ export const getDefaultImage = () => {
   return defaultCoverImages[Math.floor(Math.random() * defaultCoverImages.length)];
 }
 
-const CoverImage = ({ title, src, slug, position }: Props) => {
+const CoverImage = ({ title, src, slug, position, altText }: Props) => {
   const randomImage = getDefaultImage();
   const objPosition = position === 'top' ? 'object-top' : 'object-center'
   const image = (
     <img
       src={src ?? randomImage}
-      alt={`Cover Image for ${title}`}
+      alt={altText || `Cover Image for ${title}`}
       className={cn('object-cover object-center w-full h-64 md:h-96', objPosition, {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}

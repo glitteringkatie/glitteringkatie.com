@@ -3,7 +3,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'mint': '#89AA88',
         'fern': '#637D59',
+        'deciduous': '#2D5E2C',
         'pine': '#004225',
         'salmon': '#FFCBA4',
         'cream': '#FEF9F1',

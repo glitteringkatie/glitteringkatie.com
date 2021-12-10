@@ -24,7 +24,7 @@ const PostsComponent = ({ allPosts }: Props) => {
       <Container>{filteredPosts.length > 0 ?
         <div className='md:grid grid-cols-3 gap-x-8 items-top mx-auto pb-6'>
           {filteredPosts.map((post) => {
-            return (<PostPreview post={post} />);
+            return (<PostPreview post={post} headerLevel='h2' />);
           })
           }
         </div> : <p className={classNames(['text-center', 'text-3xl', 'pb-4', 'text-softBlack'])}>No posts... yet! 😉</p>}
@@ -35,7 +35,7 @@ const PostsComponent = ({ allPosts }: Props) => {
 }
 
 const Posts = ({ allPosts }: Props) => (
-  <LayoutWithContextProvider page='all-posts'>
+  <LayoutWithContextProvider page='blog'>
     <PostsComponent allPosts={allPosts} />
   </LayoutWithContextProvider>
 )
@@ -46,6 +46,7 @@ export const getStaticProps = async () => {
     'date',
     'slug',
     'coverImage',
+    'altText',
     'excerpt',
     'tags',
   ])

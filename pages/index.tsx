@@ -86,7 +86,7 @@ const IndexComponent = ({ allPosts }: Props) => {
     )
   }
 
-  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: string } } = {
+  const metadata: { [key in BalanceCategory]: { bio: ReactNode, findMe: string, profilePic: string, altText: string } } = {
     [BALANCE]: {
       bio: (<>
         <p>Hi, I'm Katie! I'm a software engineer living in Portland, OR, who loves interior design, making craft cocktails, and flying through the air at my local circus school. Finding a balance between a professional and personal website is just as hard (and rewarding) as finding that perfect work/life balance.</p>
@@ -94,6 +94,7 @@ const IndexComponent = ({ allPosts }: Props) => {
         <p>P.S. If you haven’t yet, try the work/life balance slider above!</p>
       </>),
       profilePic: balancePic,
+      altText: 'Profile picture of Katie Hughes',
       findMe: 'say hi!',
     },
     [WORK]: {
@@ -102,6 +103,7 @@ const IndexComponent = ({ allPosts }: Props) => {
         <p>I love thinking through frontend architecture; I find it fun to work through the data flow puzzle. I also value collaboration. I love pairing with other engineers and working with designers or docs writers to see and understand that bigger picture.</p>
       </>),
       profilePic: workPic,
+      altText: 'Profile picture of Katie Hughes',
       findMe: 'contact me!',
     },
     [LIFE]: {
@@ -110,6 +112,7 @@ const IndexComponent = ({ allPosts }: Props) => {
         <p>I've found a lot of my hobbies (interior design, cocktail making, aerial) are all puzzles to find the intersection of functionality and beauty. Who wants a tasty but ugly cocktail? What's the point of a beautiful couch if it isn't comfy enough to take a nap? How do you look graceful while tangled up in silks? That intersection is where I love to play.</p>
       </>),
       profilePic: lifePic,
+      altText: 'Profile picture of Katie Hughes with cat ears holding her cat Erwin',
       findMe: 'swing by!',
     }
   }
@@ -129,7 +132,7 @@ const IndexComponent = ({ allPosts }: Props) => {
             {blog.bio}
           </div>
           <div className="flex-1 pl-6">
-            {blog.profilePic ? <img src={blog.profilePic} /> : null}
+            {blog.profilePic ? <img src={blog.profilePic} alt={blog.altText} /> : null}
           </div>
         </div>
         <div className="flex flex-col justify-center items-center pb-20">
@@ -167,6 +170,7 @@ export const getStaticProps = async () => {
     'date',
     'slug',
     'coverImage',
+    'altText',
     'excerpt',
   ])
 
