@@ -85,11 +85,24 @@ const Layout = ({ page = 'home', children, post }: Props) => {
   const footer = (
     <footer className="pt-12 pb-8 bg-mint">
       {socialFooter}
+      <p className="text-lg text-center pb-0">
+        Katie Hughes © {today.getFullYear()}.
+      </p>
       <p className="text-lg text-center">
-        © {today.getFullYear()}, Built with {emojis[emojiIndex.current]} and{' '}
-        <a href="https://nextjs.org/" className="text-pine hover:text-cream">
+        {' '}
+        Built with {emojis[emojiIndex.current]} and{' '}
+        <a
+          href="https://nextjs.org/"
+          className="text-pine hover:text-cream transition-colors">
           Next.js
         </a>
+        {' and '}
+        <a
+          href="https://unsplash.com/collections/a36sckpBj1U/blog-mood"
+          className="text-pine hover:text-cream transition-colors">
+          Unsplash
+        </a>
+        .
       </p>
     </footer>
   );
