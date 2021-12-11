@@ -1,0 +1,129 @@
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+@layer base {
+    p {
+        @apply font-sans;
+        @apply pb-4;
+    }
+}
+
+.post-preview>img {
+    box-shadow: 0 0 #637D59;
+    transition: box-shadow 0.3s ease;
+}
+
+.post-preview:hover>img {
+    box-shadow: -0.75em -0.75em #637D59;
+    transition: box-shadow 0.3s ease;
+}
+
+output {
+    background: #637D59;
+    padding: 5px 16px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+input[type="number"] {
+    width: 40px;
+    padding: 4px 5px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+}
+
+/* input[type="range"]:focus,
+  input[type="number"]:focus {
+    box-shadow: 0 0 3px 1px #4b81dd;
+    outline: none;
+  } */
+
+input[type="range"] {
+    -webkit-appearance: none;
+    margin: 0 15px;
+    width: 200px;
+    height: 7px;
+    background: #BBB7B1;
+    border-radius: 5px;
+    background-image: linear-gradient(#637D59, #637D59);
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+}
+
+/* Input Thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #637D59;
+    cursor: ew-resize;
+    transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #637D59;
+    cursor: ew-resize;
+    transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #637D59;
+    cursor: ew-resize;
+    transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #637D59;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    background: #637D59;
+}
+
+input[type="range"]::-ms-thumb:hover {
+    background: #637D59;
+}
+
+/* Input Track */
+input[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+input[type=range]::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+input[type="range"]::-ms-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+/* Write you own custom component styles here */
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+/* Your own custom utilities */

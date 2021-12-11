@@ -1,12 +1,16 @@
-# [glittering katie ✨](https://glitteringkatie.com/)
+# ✨ glittering katie
 
-My personal blog. Started from [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog).
+This is the code for my tech & lifestyle blog. It was initialized with [blog-starter-typescript](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript).
+
+## Preview
 
 To run locally:
+
 - `yarn`
-- `yarn start`
-- Open [https://localhost:8000](https://localhost:8000)
+- `yarn dev`
+- Open [https://localhost:3000](https://localhost:3000)
 
 To use your own google analytics:
+
 - `cp .example-env .env`
 - Replace `YOUR_GOOGLE_ANALYTICS_TRACKING_ID` with your tracking ID

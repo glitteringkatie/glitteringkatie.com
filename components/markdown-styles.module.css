@@ -1,0 +1,58 @@
+.markdown {
+  @apply text-lg leading-relaxed;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-6;
+}
+
+.markdown ul {
+  @apply list-disc pl-8;
+}
+
+.markdown ol {
+  @apply list-decimal pl-8;
+}
+
+.markdown p {
+  @apply pb-0;
+}
+
+.markdown h2 {
+  @apply font-serif font-semibold text-3xl mt-12 mb-4 leading-snug;
+}
+
+.markdown h3 {
+  @apply font-serif font-semibold text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown h4 {
+  @apply font-sans font-light tracking-widest uppercase text-xl mt-8 mb-4 leading-snug;
+}
+
+.markdown a {
+  @applyg}
+
+.markdown code {
+  @apply py-1 px-1.5 m-0 rounded font-code;
+  font-size: 85%;
+  background-color: rgba(193, 185, 175, 0.3);
+}
+
+.markdown pre {
+  @apply p-6 rounded font-code overflow-auto;
+  line-height: 1.45;
+  background-color: rgba(193, 185, 175, 0.3);
+}
+
+.markdown pre code {
+  @apply inline p-0 m-0;
+  max-width: auto;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
