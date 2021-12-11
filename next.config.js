@@ -5,4 +5,7 @@ module.exports = withImages({
   images: {
     disableStaticImages: true
   },
+  env: {
+    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID
+  }
 });

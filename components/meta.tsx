@@ -9,6 +9,22 @@ type Props = {
 const Meta = ({ownImage, ownTitle}: Props) => {
   return (
     <Head>
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.GOOGLE_ANALYTICS_TRACKING_ID}', {
+          page_path: window.location.pathname,
+        });
+      `,
+        }}
+      />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
