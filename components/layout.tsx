@@ -5,7 +5,6 @@ import CoverImage from './cover-image'
 import Meta from './meta'
 import GKLogo from '../public/glitteringkatie.svg'
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
-import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
 

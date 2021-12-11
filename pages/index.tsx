@@ -10,8 +10,7 @@ import lifePic from '../public/assets/home/life.png'
 import balancePic from '../public/assets/home/balance.png'
 import classNames from 'classnames'
 import { WORK, LIFE, BALANCE, BalanceCategory, BalanceContext } from '../context/balanceContext'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitter, faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { FaGithub, FaInstagram, FaTwitter, FaLinkedin} from 'react-icons/fa'
 import PostPreview from '../components/post-preview'
 
 type Props = {
@@ -69,10 +68,10 @@ const IndexComponent = ({ allPosts }: Props) => {
   });
 
   const icons: { [key in SocialName]: ReactNode } = {
-    github: <FontAwesomeIcon icon={faGithub} className='w-6 md:w-8 mr-3' />,
-    twitter: <FontAwesomeIcon icon={faTwitter} className='w-6 md:w-8 mr-3' />,
-    insta: <FontAwesomeIcon icon={faInstagram} className='w-6 md:w-8 mr-3' />,
-    linkedin: <FontAwesomeIcon icon={faLinkedin} className='w-6 md:w-8 mr-3' />
+    github: <FaGithub className='text-xl md:text-3xl mr-3' />,
+    twitter: <FaTwitter className='text-xl md:text-3xl mr-3' />,
+    insta: <FaInstagram className='text-xl md:text-3xl mr-3' />,
+    linkedin: <FaLinkedin className='text-xl md:text-3xl mr-3' />
   }
 
   const socialUI = (social: Social) => {

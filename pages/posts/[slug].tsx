@@ -10,8 +10,7 @@ import PostTitle from '../../components/post-title'
 import Head from 'next/head'
 import markdownToHtml from '../../lib/markdownToHtml'
 import PostType from '../../types/post'
-import {faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 type Props = {
   post: PostType
@@ -54,7 +53,7 @@ const Post = ({ post, newer, older }: Props) => {
               <div className='flex-1 flex justify-start' >
               {newer ? <Link href={newer.slug}>
                 <a className='flex text-fern hover:text-pine'>
-                <FontAwesomeIcon icon={faArrowLeft} className='h-8 mr-3' />
+                <FaArrowLeft className='text-3xl mr-3' />
                   <div className='font-serif font-semibold'><div className='text-3xl'>newer</div>
                   <div>{newer.title}</div>
                   </div>
@@ -67,7 +66,7 @@ const Post = ({ post, newer, older }: Props) => {
                   <div className='font-serif font-semibold text-right'><div className='text-3xl'>older</div>
                   <div>{older.title}</div>
                   </div>
-                  <FontAwesomeIcon icon={faArrowRight} className='h-8 ml-3' />
+                  <FaArrowRight className='text-2xl ml-3' />
                 </a>
               </Link> : null}
               </div>
