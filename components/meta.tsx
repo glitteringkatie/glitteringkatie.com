@@ -1,12 +1,11 @@
-import Head from 'next/head'
-import { HOME_OG_IMAGE_URL } from '../lib/constants'
+import Head from 'next/head';
 
 type Props = {
-  ownImage?: boolean
-  ownTitle?: boolean
-}
+  ownImage?: boolean;
+  ownTitle?: boolean;
+};
 
-const Meta = ({ownImage, ownTitle}: Props) => {
+const Meta = ({ ownImage, ownTitle }: Props) => {
   return (
     <Head>
       <script
@@ -58,12 +57,16 @@ const Meta = ({ownImage, ownTitle}: Props) => {
         content="A tech and lifestyle blog by Katie Hughes"
       />
       <meta property="og:type" content="website" />
-      {ownImage ? null : <meta property="og:image" content='/assets/unfurl.png' />}
+      {ownImage ? null : (
+        <meta property="og:image" content="/assets/unfurl.png" />
+      )}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content='@glitteringkatie' />
-      {ownTitle ? null : <meta property="og:title" content="glittering katie" />}
+      <meta name="twitter:creator" content="@glitteringkatie" />
+      {ownTitle ? null : (
+        <meta property="og:title" content="glittering katie" />
+      )}
     </Head>
-  )
-}
+  );
+};
 
-export default Meta
+export default Meta;

@@ -1,46 +1,47 @@
 // type for react-inline-svg
 declare module '*.svg' {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: any;
   export default content;
 }
 
 // copy rest of types from https://github.com/twopluszero/next-images/blob/master/index.d.ts
-declare module "*.jpeg" {
+declare module '*.jpeg' {
   const value: string;
   export = value;
 }
 
-declare module "*.jpg" {
+declare module '*.jpg' {
   const value: string;
   export = value;
 }
 
-declare module "*.png" {
+declare module '*.png' {
   const value: string;
   export = value;
 }
 
-declare module "*.gif" {
+declare module '*.gif' {
   const value: string;
   export = value;
 }
 
-declare module "*.ico" {
+declare module '*.ico' {
   const value: string;
   export = value;
 }
 
-declare module "*.webp" {
+declare module '*.webp' {
   const value: string;
   export = value;
 }
 
-declare module "*.jp2" {
+declare module '*.jp2' {
   const value: string;
   export = value;
 }
 
-declare module "*.avif" {
+declare module '*.avif' {
   const value: string;
   export = value;
 }

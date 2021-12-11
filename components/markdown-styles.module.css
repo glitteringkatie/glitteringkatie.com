@@ -34,8 +34,7 @@
 }
 
 .markdown a {
-  @apply text-deciduous hover:text-fern font-bold;
-}
+  @applyg}
 
 .markdown code {
   @apply py-1 px-1.5 m-0 rounded font-code;

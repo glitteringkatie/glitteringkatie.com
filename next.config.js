@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withImages = require('next-images');
 
 module.exports = withImages({
-  ignoreTypes: ["svg"],
+  ignoreTypes: ['svg'],
   images: {
-    disableStaticImages: true
+    disableStaticImages: true,
   },
   env: {
-    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID
-  }
+    GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+  },
 });

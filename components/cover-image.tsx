@@ -1,13 +1,13 @@
-import cn from 'classnames'
-import Link from 'next/link'
+import cn from 'classnames';
+import Link from 'next/link';
 
 type Props = {
-  title: string
-  src: string
-  slug?: string
-  position?: string
-  altText?: string
-}
+  title: string;
+  src: string;
+  slug?: string;
+  position?: string;
+  altText?: string;
+};
 
 const defaultCoverImages: string[] = [
   'https://images.unsplash.com/photo-1571846052945-f70f6b2542d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
@@ -23,25 +23,31 @@ const defaultCoverImages: string[] = [
   'https://images.unsplash.com/photo-1554921027-b91f0beeb07d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   'https://images.unsplash.com/photo-1558114073-e77f284dfb76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
   'https://images.unsplash.com/photo-1415902051846-2ad925a71020?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80',
-  'https://images.unsplash.com/photo-1625061661591-14d9e67e1ee7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80'
-]
+  'https://images.unsplash.com/photo-1625061661591-14d9e67e1ee7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
+];
 
 export const getDefaultImage = () => {
-  return defaultCoverImages[Math.floor(Math.random() * defaultCoverImages.length)];
-}
+  return defaultCoverImages[
+    Math.floor(Math.random() * defaultCoverImages.length)
+  ];
+};
 
 const CoverImage = ({ title, src, slug, position, altText }: Props) => {
   const randomImage = getDefaultImage();
-  const objPosition = position === 'top' ? 'object-top' : 'object-center'
+  const objPosition = position === 'top' ? 'object-top' : 'object-center';
   const image = (
     <img
       src={src ?? randomImage}
       alt={altText || `Cover Image for ${title}`}
-      className={cn('object-cover object-center w-full h-64 md:h-96', objPosition, {
-        'hover:shadow-medium transition-shadow duration-200': slug,
-      })}
+      className={cn(
+        'object-cover object-center w-full h-64 md:h-96',
+        objPosition,
+        {
+          'hover:shadow-medium transition-shadow duration-200': slug,
+        }
+      )}
     />
-  )
+  );
   return (
     <div className="sm:mx-0">
       {slug ? (
@@ -52,7 +58,7 @@ const CoverImage = ({ title, src, slug, position, altText }: Props) => {
         image
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CoverImage
+export default CoverImage;
