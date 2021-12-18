@@ -4,6 +4,7 @@ date: "2021-12-17"
 tags: ['work']
 coverImage: '../assets/blog/designing-as-a-crafty-dev/layouts.png'
 coverPosition: "top"
+excerpt: "I've always been a crafty person with an eye for design. I designed all previous iterations of this website! But I'm by no means a graphic/web/frontend designer, so it is super easy to get overwhelmed when planning out a new design."
 ---
 
 If you've been here before, you know I'm a frontend developer! If not, welcome to my blog! Like any dev, it's hard to resist that well-known itch to re-do my personal website. So here we are. I've given my website a facelift for two reasons:
