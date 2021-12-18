@@ -6,7 +6,7 @@ coverImage: '../assets/blog/designing-as-a-crafty-dev/layouts.png'
 coverPosition: "top"
 ---
 
-If you've been here before, you know I'm a frontend developer! If not, welcome to my blog! Like any dev, it's hard to resist that well-known itch to re-do my personal website. So here we are. I've given my website a facelift for 2 reasons:
+If you've been here before, you know I'm a frontend developer! If not, welcome to my blog! Like any dev, it's hard to resist that well-known itch to re-do my personal website. So here we are. I've given my website a facelift for two reasons:
 
 1. I want to support more blog post topics than just tech.
 2. I want to use [Next.js](https://nextjs.org/) because that's what I've been using at work.
