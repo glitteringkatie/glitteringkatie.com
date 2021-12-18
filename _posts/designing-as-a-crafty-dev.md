@@ -1,6 +1,6 @@
 ---
 title: "Designing as a crafty dev"
-date: "2021-12-17"
+date: "2021-12-18"
 tags: ['work']
 coverImage: '../assets/blog/designing-as-a-crafty-dev/layouts.png'
 coverPosition: "top"
