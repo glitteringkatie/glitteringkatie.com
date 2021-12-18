@@ -193,12 +193,12 @@ const IndexComponent = ({ allPosts }: Props) => {
         <title>glittering katie</title>
       </Head>
       <Container>
-        <div className="flex flex-col md:flex-row mx-auto items-center pb-20">
+        <div className="flex flex-col-reverse md:flex-row mx-auto items-center pb-20">
           <div className="flex-1">
             <h2 className={headerStyles}>About me</h2>
             {blog.bio}
           </div>
-          <div className="flex-1 pl-6">
+          <div className="flex-1 pb-10 md:pb-0 md:pl-6">
             {blog.profilePic ? (
               <img src={blog.profilePic} alt={blog.altText} />
             ) : null}
