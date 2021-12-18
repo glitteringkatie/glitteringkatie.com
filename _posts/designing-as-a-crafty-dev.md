@@ -2,7 +2,7 @@
 title: "Designing as a crafty dev"
 date: "2021-12-18"
 tags: ['work']
-coverImage: '../assets/blog/designing-as-a-crafty-dev/layouts.png'
+coverImage: 'https://glitteringkatie.com/assets/blog/designing-as-a-crafty-dev/layouts.png'
 coverPosition: "top"
 excerpt: "I've always been a crafty person with an eye for design. I designed all previous iterations of this website! But I'm by no means a graphic/web/frontend designer, so it is super easy to get overwhelmed when planning out a new design."
 ---
