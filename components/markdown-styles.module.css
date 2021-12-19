@@ -34,7 +34,7 @@
 }
 
 .markdown a {
-  @apply text-deciduous hover:text-fern font-bold;
+  @apply text-deciduous hover:text-fern font-bold break-words;
 }
 
 .markdown code {
