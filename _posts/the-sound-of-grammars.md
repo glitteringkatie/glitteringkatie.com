@@ -8,7 +8,7 @@ coverPosition: "top"
 
 > I am currently working my way through _Parsing Techniques: A Practical Guide_ by Ceriel J.H. Jacobs and Dick Grune which is available as a [PDF on Grune’s site](https://dickgrune.com/Books/PTAPG_1st_Edition/BookBody.pdf). As I continued in the book I found myself having a hard time following classifications and grammar levels when they were used interchangeably. I am using this blog post to hash it all out for myself so I can practice keeping the order and meaning straight by explaining these concepts to my good friend, the internet.
 
-![Sound of Music hills with Maria twirling around, but with Noam Chomsky's face photoshoped in](../assets/blog/the-sound-of-grammars/the-sound-of-music.jpg)
+![Sound of Music hills with Maria twirling around, but with Noam Chomsky's face photoshoped in](/assets/blog/the-sound-of-grammars/the-sound-of-music.jpg)
 
 Let’s start at the very beginning ([a very good place to start](https://open.spotify.com/track/1BQh9oqKFvcRqgR4rmB536?si=XnWXs8LsTuCKgebEkWBgkw)): what is the Chomsky Hierarchy? Well it’s a hierarchy of formal grammars described by [Noam Chomsky](https://en.wikipedia.org/wiki/Noam_Chomsky). Hm, that wasn’t exactly the _very beginning_, was it?
 

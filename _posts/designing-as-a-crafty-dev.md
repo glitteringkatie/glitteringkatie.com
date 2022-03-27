@@ -88,7 +88,7 @@ In Figma, I developed a logo icon and a logo with my name in it. The icon lends 
 
 Using Figma still, I put my logo icon, my full logo, and a swatch of my colors and fonts together. I want to pause here and say I never really used Figma before this project, so I don't know all of the ins and outs, just kind of futzed with it until I had something that looked reasonable.
 
-![unorganized screenshot of my logos & font/color swatch](../assets/blog/designing-as-a-crafty-dev/swatch.png)
+![unorganized screenshot of my logos & font/color swatch](/assets/blog/designing-as-a-crafty-dev/swatch.png)
 
 ## Layout
 
@@ -106,7 +106,7 @@ Real talk? Step all the way away from your design editor. Just do this in a docu
 
 Once we have realistic content and have decided on colors, fonts, and logos, it's time to put this puzzle together! Make a layout for every page you intend on having, no matter how simple that page will be. I promise taking the time to do all of this planning *will* lead to a better thought-out website, and it *will* make your coding process more straightforward.
 
-![screenshot of all of my layouts planned in figma](../assets/blog/designing-as-a-crafty-dev/layouts.png)
+![screenshot of all of my layouts planned in figma](/assets/blog/designing-as-a-crafty-dev/layouts.png)
 
 ## You got this
 
