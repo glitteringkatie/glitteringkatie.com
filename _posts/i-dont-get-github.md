@@ -2,7 +2,7 @@
 title: "🤔 I Don’t Get GitHub"
 date: "2018-06-02"
 tags: ["work"]
-coverImage: "https://images.unsplash.com/photo-1520923642038-b4259acecbd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1419&q=80"
+coverImage: "/assets/blog/default5.jpeg"
 ---
 
 In college I had my nose to the grindstone with school and work and internships that I was never really a side project type of person. When I get home from work now I’m usually not on the computer — I’ll watch TV or run or cook or read. Like most people, I probably waste too much time in front of the TV or scrolling through social media. I’m ready for that to change.

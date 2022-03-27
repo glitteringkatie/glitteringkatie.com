@@ -2,7 +2,7 @@
 title: "📽 Talk: GraphQ-Squirrel"
 date: "2019-09-12"
 tags: ["work"]
-coverImage: "https://images.unsplash.com/photo-1571845413709-ba4ddc85eb12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1166&q=80"
+coverImage: "/assets/blog/default4.jpeg"
 ---
 
 For [elm-conf](https://elm-conf.com) 2019, I created a [6 degrees of Kevin Bacon](https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon) inspired game for the Marvel universe. I found a [Marvel GraphQL endpoint](https://github.com/Novvum/MarvelQL) and created [6 degrees of Squirrel Girl](https://github.com/glitteringkatie/squirrel-degrees). You can find a pdf of my slides [here](./graphqsquirrel.pdf). Enjoy!

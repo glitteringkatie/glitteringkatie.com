@@ -3,7 +3,7 @@ title: "📓 Writing for Intern Katie"
 date: "2018-10-11"
 canonical: "https://medium.com/xandr-tech/writing-for-intern-katie-a26b705f74cc"
 tags: ["work"]
-coverImage: "https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=728&q=80"
+coverImage: "/assets/blog/default10.jpeg"
 ---
 
 > This was written for my former employer's tech blog, formally known as AppNexus, currently known as Xandr. You can find the orignal post on their Medium blog [here](https://medium.com/xandr-tech/writing-for-intern-katie-a26b705f74cc).

@@ -2,7 +2,7 @@
 title: "⛰ The Sound of Grammars"
 date: "2018-04-06"
 tags: ["work"]
-coverImage: "../assets/blog/the-sound-of-grammars/the-sound-of-music.jpg"
+coverImage: "/assets/blog/the-sound-of-grammars/the-sound-of-music.jpg"
 coverPosition: "top"
 ---
 

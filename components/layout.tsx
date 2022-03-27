@@ -167,7 +167,6 @@ const Layout = ({ page = 'home', children, post }: Props) => {
               type="range"
               min={WORK}
               max={LIFE}
-              defaultValue={BALANCE}
               value={balanceValue}
               style={{
                 backgroundSize: backgroundSize[balanceValue],

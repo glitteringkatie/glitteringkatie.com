@@ -1,29 +1,41 @@
-import cn from 'classnames';
-import Link from 'next/link';
+import Image from 'next/image';
+import Default1 from '../public/assets/blog/default1.jpeg';
+import Default2 from '../public/assets/blog/default2.jpeg';
+import Default3 from '../public/assets/blog/default3.jpeg';
+import Default4 from '../public/assets/blog/default4.jpeg';
+import Default5 from '../public/assets/blog/default5.jpeg';
+import Default6 from '../public/assets/blog/default6.jpeg';
+import Default7 from '../public/assets/blog/default7.jpeg';
+import Default8 from '../public/assets/blog/default8.jpeg';
+import Default9 from '../public/assets/blog/default9.jpeg';
+import Default10 from '../public/assets/blog/default10.jpeg';
+import Default11 from '../public/assets/blog/default11.jpeg';
+import Default12 from '../public/assets/blog/default12.jpeg';
+import Default13 from '../public/assets/blog/default13.jpeg';
+import Default14 from '../public/assets/blog/default14.jpeg';
 
 type Props = {
   title: string;
   src: string;
-  slug?: string;
   position?: string;
   altText?: string;
 };
 
 const defaultCoverImages: string[] = [
-  'https://images.unsplash.com/photo-1571846052945-f70f6b2542d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
-  'https://images.unsplash.com/photo-1571845413709-ba4ddc85eb12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1166&q=80',
-  'https://images.unsplash.com/photo-1583311578285-9d6e88b29358?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-  'https://images.unsplash.com/photo-1605815764787-e3a5ee7b478a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  'https://images.unsplash.com/photo-1574027542183-77efe00ca49f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80',
-  'https://images.unsplash.com/photo-1576669803361-2f85b619711b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  'https://images.unsplash.com/photo-1549609096-f4629a5bbd88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80',
-  'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=728&q=80',
-  'https://images.unsplash.com/photo-1520923642038-b4259acecbd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1419&q=80',
-  'https://images.unsplash.com/photo-1612869544295-eda1013274aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
-  'https://images.unsplash.com/photo-1554921027-b91f0beeb07d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-  'https://images.unsplash.com/photo-1558114073-e77f284dfb76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  'https://images.unsplash.com/photo-1415902051846-2ad925a71020?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80',
-  'https://images.unsplash.com/photo-1625061661591-14d9e67e1ee7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
+  Default1,
+  Default2,
+  Default3,
+  Default4,
+  Default5,
+  Default6,
+  Default7,
+  Default8,
+  Default9,
+  Default10,
+  Default11,
+  Default12,
+  Default13,
+  Default14,
 ];
 
 export const getDefaultImage = () => {
@@ -32,31 +44,18 @@ export const getDefaultImage = () => {
   ];
 };
 
-const CoverImage = ({ title, src, slug, position, altText }: Props) => {
+const CoverImage = ({ title, src, position, altText }: Props) => {
   const randomImage = getDefaultImage();
-  const objPosition = position === 'top' ? 'object-top' : 'object-center';
-  const image = (
-    <img
-      src={src ?? randomImage}
-      alt={altText || `Cover Image for ${title}`}
-      className={cn(
-        'object-cover object-center w-full h-64 md:h-96',
-        objPosition,
-        {
-          'hover:shadow-medium transition-shadow duration-200': slug,
-        }
-      )}
-    />
-  );
+
   return (
-    <div className="sm:mx-0">
-      {slug ? (
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a aria-label={title}>{image}</a>
-        </Link>
-      ) : (
-        image
-      )}
+    <div className="w-full h-64 md:h-96 relative">
+      <Image
+        src={src ?? randomImage}
+        layout="fill"
+        objectFit="cover"
+        objectPosition={position || 'center'}
+        alt={altText || `Cover Image for ${title}`}
+      />
     </div>
   );
 };
