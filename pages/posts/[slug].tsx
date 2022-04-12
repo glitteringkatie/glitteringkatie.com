@@ -13,8 +13,6 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import rehypeImageSize from 'rehype-img-size';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 type Props = {
   post: PostType;
@@ -111,17 +109,7 @@ export async function getStaticProps({ params }: Params) {
   const mdxSource = await serialize(post.content || '', {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        // @ts-expect-error: I don't want to type this
-        [rehypeImageSize, { dir: 'public' }],
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: 'wrap',
-          },
-        ],
-      ],
+      rehypePlugins: [[rehypeImageSize, { dir: 'public' }]],
     },
   });
   const posts = await getAllPosts(['slug', 'title', 'date']);
