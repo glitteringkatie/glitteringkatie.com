@@ -112,6 +112,7 @@ export async function getStaticProps({ params }: Params) {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
       rehypePlugins: [
+        // @ts-expect-error: I don't want to type this
         [rehypeImageSize, { dir: 'public' }],
         rehypeSlug,
         [
