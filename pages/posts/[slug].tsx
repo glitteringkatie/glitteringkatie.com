@@ -13,6 +13,8 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
 import rehypeImageSize from 'rehype-img-size';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 type Props = {
   post: PostType;
@@ -109,7 +111,16 @@ export async function getStaticProps({ params }: Params) {
   const mdxSource = await serialize(post.content || '', {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [[rehypeImageSize, { dir: 'public' }]],
+      rehypePlugins: [
+        [rehypeImageSize, { dir: 'public' }],
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'wrap',
+          },
+        ],
+      ],
     },
   });
   const posts = await getAllPosts(['slug', 'title', 'date']);
