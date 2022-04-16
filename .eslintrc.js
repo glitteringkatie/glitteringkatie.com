@@ -48,6 +48,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
 
     '@next/next/no-img-element': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
 
     // This is documented as the default, but apparently now needs to be
     // set explicitly

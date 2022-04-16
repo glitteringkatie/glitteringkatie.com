@@ -109,7 +109,8 @@ export async function getStaticProps({ params }: Params) {
   const mdxSource = await serialize(post.content || '', {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [[rehypeImageSize, { dir: 'public' }]],
+      //@ts-ignore
+      rehypePlugins: [rehypeImageSize, { dir: 'public' }],
     },
   });
   const posts = await getAllPosts(['slug', 'title', 'date']);
