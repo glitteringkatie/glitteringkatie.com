@@ -2,6 +2,7 @@
 title: "Katie's VSCode Cheatsheet"
 date: "2022-04-11"
 tags: ["work"]
+coverImage: "https://glitteringkatie.com/assets/blog/default6.jpeg"
 ---
 
 ## Assumptions!

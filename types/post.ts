@@ -1,5 +1,3 @@
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
-
 type PostType = {
   slug: string;
   title: string;
@@ -13,7 +11,6 @@ type PostType = {
   };
   content: string;
   canonical?: string;
-  mdxSource: MDXRemoteSerializeResult;
 };
 
 export default PostType;
