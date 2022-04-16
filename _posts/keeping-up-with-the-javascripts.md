@@ -2,7 +2,7 @@
 title: "🍿 Keeping Up With the JavaScripts"
 date: "2020-11-23"
 tags: ["work"]
-coverImage: "/assets/blog/default6.jpeg"
+coverImage: "https://glitteringkatie.com/assets/blog/default6.jpeg"
 ---
 
 In July 2020 I found myself as part of the many people affected by COVID-19 related layoffs. Before that, I was writing anything from Elm to Ruby to Elixir at NoRedInk. And before _that_ I was working with JavaScript and React for three years at AppNexus.

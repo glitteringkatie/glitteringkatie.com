@@ -2,7 +2,7 @@
 title: "Painting Ikea Furniture"
 date: "2022-03-05"
 tags: ["life"]
-coverImage: "/assets/blog/painting-ikea-furniture/coverImage.jpeg"
+coverImage: "https://glitteringkatie.com/assets/blog/painting-ikea-furniture/coverImage.jpeg"
 ---
 
 When it comes to home decor, being stuck inside our own spaces during a global pandemic has mostly driven each of us one of two ways: either wanting to eliminate visual noise around them OR amping up how their personality is reflected in their space. If you want to change something up, paint is always a really easy way! But when you have a laminate piece, popularly found at IKEA, painting requires a bit more prep.

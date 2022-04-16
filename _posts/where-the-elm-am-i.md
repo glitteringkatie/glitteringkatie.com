@@ -2,7 +2,7 @@
 title: "📽 Talk: Where the Elm am I?"
 date: "2019-04-26"
 tags: ["work"]
-coverImage: "/assets/blog/default9.jpeg"
+coverImage: "https://glitteringkatie.com/assets/blog/default9.jpeg"
 ---
 
 After recently joining [NoRedInk](https://www.noredink.com/) and moving to San Francisco, I gave a talk at [Elm in the Spring](https://elminthespring.org/) 2019 about exploring one of the larger [Elm](https://elm-lang.org/) codebases and paralleled it to exploring a new city. You can find a pdf of my slides [here](where-the-elm.pdf). Enjoy!

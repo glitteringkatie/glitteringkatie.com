@@ -2,7 +2,7 @@
 title: "🕵🏼‍♀️ The Case of the Missing Packages"
 date: "2019-03-08"
 tags: ["work"]
-coverImage: "/assets/blog/default8.jpeg"
+coverImage: "https://glitteringkatie.com/assets/blog/default8.jpeg"
 ---
 
 Onboarding: follow the instructions and most developers will get set up. But me? I’m not most developers. I’m Katie Hughes and I’m the private eye whose setup always goes awry. That is, until my bad luck met its match: a package manager by the name of [Nix](https://nixos.org/nix/).

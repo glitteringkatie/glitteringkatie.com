@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Post from '../types/post';
 import { getDefaultImage } from './cover-image';
 
@@ -35,16 +34,11 @@ const PostPreview = ({ post, headerLevel = 'h3' }: Props) => {
     <div className="flex-1 pb-4">
       <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
         <a className="post-preview">
-          <div className="w-full h-64 md:h-96 relative">
-            <Image
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              // className="object-cover object-center"
-              src={coverImage}
-              alt={altText}
-            />
-          </div>
+          <img
+            className="object-cover object-center w-full h-64 md:h-96"
+            src={coverImage}
+            alt={altText}
+          />
           {getHeader(headerLevel, post.title)}
           <div
             className="text-sm"

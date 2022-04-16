@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import cn from 'classnames';
 import Default1 from '../public/assets/blog/default1.jpeg';
 import Default2 from '../public/assets/blog/default2.jpeg';
 import Default3 from '../public/assets/blog/default3.jpeg';
@@ -17,6 +18,7 @@ import Default14 from '../public/assets/blog/default14.jpeg';
 type Props = {
   title: string;
   src: string;
+  slug?: string;
   position?: string;
   altText?: string;
 };
@@ -44,18 +46,32 @@ export const getDefaultImage = () => {
   ];
 };
 
-const CoverImage = ({ title, src, position, altText }: Props) => {
+const CoverImage = ({ title, src, slug, position, altText }: Props) => {
   const randomImage = getDefaultImage();
+  const objPosition = position === 'top' ? 'object-top' : 'object-center';
+  const image = (
+    <img
+      src={src ?? randomImage}
+      alt={altText || `Cover Image for ${title}`}
+      className={cn(
+        'object-cover object-center w-full h-64 md:h-96',
+        objPosition,
+        {
+          'hover:shadow-medium transition-shadow duration-200': slug,
+        }
+      )}
+    />
+  );
 
   return (
-    <div className="w-full h-64 md:h-96 relative">
-      <Image
-        src={src ?? randomImage}
-        layout="fill"
-        objectFit="cover"
-        objectPosition={position || 'center'}
-        alt={altText || `Cover Image for ${title}`}
-      />
+    <div className="sm:mx-0">
+      {slug ? (
+        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+          <a aria-label={title}>{image}</a>
+        </Link>
+      ) : (
+        image
+      )}
     </div>
   );
 };
