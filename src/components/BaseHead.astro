@@ -1,0 +1,57 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'glittering katie',
+  description = 'A tech and lifestyle blog by Katie Hughes',
+  ogImage = '/assets/unfurl.png',
+  canonical,
+} = Astro.props;
+
+const GA_ID = import.meta.env.GOOGLE_ANALYTICS_TRACKING_ID;
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+
+{canonical && <link rel="canonical" href={canonical} />}
+
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+<link rel="manifest" href="/favicon/site.webmanifest" />
+<link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#000000" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" />
+<meta name="msapplication-TileColor" content="#000000" />
+<meta name="theme-color" content="#000" />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@glitteringkatie" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@400;500;600&family=Fira+Mono&display=swap"
+  rel="stylesheet"
+/>
+
+{GA_ID && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', GA_ID, { page_path: window.location.pathname });
+    </script>
+  </>
+)}

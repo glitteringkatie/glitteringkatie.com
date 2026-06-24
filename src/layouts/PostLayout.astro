@@ -1,0 +1,95 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import PostBody from '../components/PostBody.astro';
+import { formatDate } from '../utils/date';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  date: string;
+  coverImage?: string;
+  altText?: string;
+  canonical?: string;
+  ogImage?: string;
+  newer?: { slug: string; title: string } | null;
+  older?: { slug: string; title: string } | null;
+}
+
+const { title, date, coverImage, altText, canonical, ogImage, newer, older } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`${title} | glittering katie`}
+      ogImage={ogImage || coverImage}
+      canonical={canonical}
+    />
+  </head>
+  <body>
+    <div class="min-h-screen bg-cream flex flex-col">
+      <nav class="py-4 sm:py-8 flex w-full md:w-5xl max-w-5xl mx-auto px-4 items-center">
+        <a href="/" class="flex-1">
+          <img src="/glitteringkatie.svg" alt="glittering katie" class="w-2/3 sm:w-96" />
+        </a>
+        <a href="/posts" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">
+          blog
+        </a>
+      </nav>
+
+      {coverImage && (
+        <div class="mb-8 md:mb-16 sm:mx-0">
+          <img
+            src={coverImage}
+            alt={altText || `Cover image for ${title}`}
+            class="object-cover object-center w-full h-64 md:h-96"
+          />
+        </div>
+      )}
+
+      <main class="flex-1">
+        <article class="mb-32">
+          <header class="max-w-3xl mx-auto">
+            <h1 class="font-serif font-semibold text-3xl md:text-5xl lg:text-6xl leading-tight mb-4 px-5 text-center">
+              {title}
+            </h1>
+            <div class="max-w-2xl mx-auto mb-12 text-lg">
+              <time datetime={date} class="text-dimGray text-sm">{formatDate(date)}</time>
+            </div>
+          </header>
+          <PostBody>
+            <slot />
+          </PostBody>
+        </article>
+
+        <div class="flex max-w-3xl mx-auto px-5 pb-16">
+          <div class="flex-1 flex justify-start">
+            {newer && (
+              <a href={`/posts/${newer.slug}`} class="flex text-fern hover:text-pine">
+                <span class="text-3xl mr-3">←</span>
+                <div class="font-serif font-semibold">
+                  <div class="text-3xl">newer</div>
+                  <div>{newer.title}</div>
+                </div>
+              </a>
+            )}
+          </div>
+          <div class="flex-1 flex justify-end">
+            {older && (
+              <a href={`/posts/${older.slug}`} class="flex text-fern hover:text-pine">
+                <div class="font-serif font-semibold text-right">
+                  <div class="text-3xl">older</div>
+                  <div>{older.title}</div>
+                </div>
+                <span class="text-2xl ml-3">→</span>
+              </a>
+            )}
+          </div>
+        </div>
+      </main>
+
+      <Footer showSocials={true} />
+    </div>
+  </body>
+</html>

@@ -1,5 +1,6 @@
-module.exports = {
-  purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,ts,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -26,12 +27,6 @@ module.exports = {
       },
       backgroundSize: {
         stretch: '100% 100%',
-      },
-      height: {
-        unset: 'unset !important',
-      },
-      position: {
-        unset: 'unset !important',
       },
     },
   },
