@@ -128,17 +128,17 @@ main {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* All cards: shadow lifts on hover */
-.bookmark-scene:hover .bookmark-card {
+/* All cards in gallery: shadow lifts on hover */
+#gallery-grid .bookmark-scene:hover .bookmark-card {
   box-shadow: 3px 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* Non-flippable cards: matched transition + scale up slightly on hover */
-.bookmark-card:not(.bookmark-card--flippable) {
+/* Non-flippable cards in gallery: matched transition + scale up slightly on hover */
+#gallery-grid .bookmark-card:not(.bookmark-card--flippable) {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.bookmark-scene:hover .bookmark-card:not(.bookmark-card--flippable) {
+#gallery-grid .bookmark-scene:hover .bookmark-card:not(.bookmark-card--flippable) {
   transform: rotate(var(--rotation, 0deg)) scale(1.04);
 }
 
