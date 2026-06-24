@@ -16,16 +16,30 @@ const PLACEHOLDER_BACK = "data:image/svg+xml," + encodeURIComponent(`
   <text x="60" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#aaa">image</text>
 </svg>`);
 
+export function formatVisitDate(d) {
+  if (!d) return '';
+  if (/^\d{4}$/.test(d)) return d;
+  if (/^\d{4}-\d{2}$/.test(d)) {
+    const [year, month] = d.split('-');
+    const name = new Date(Number(year), Number(month) - 1, 1)
+      .toLocaleString('default', { month: 'long' });
+    return `${name} ${year}`;
+  }
+  return d;
+}
+
 export function createBookmarkCard(bookmark) {
   const scene = document.createElement("div");
   scene.className = "bookmark-scene";
   scene.id = "card-" + bookmark.id;
   scene.dataset.id = bookmark.id;
   scene.style.setProperty("--color-accent", bookmark.accentColor || "#2c2c2c");
+  const rotation = (Math.random() - 0.5) * 14;
 
   const card = document.createElement("div");
   card.className = "bookmark-card" + (bookmark.backImage != null ? " bookmark-card--flippable" : "");
   card.style.aspectRatio = "3/8";
+  card.style.setProperty('--rotation', `${rotation}deg`);
 
   const front = document.createElement("div");
   front.className = "bookmark-card__face bookmark-card__face--front";
@@ -52,19 +66,27 @@ export function createBookmarkCard(bookmark) {
     card.appendChild(back);
   }
 
-  scene.appendChild(card);
-
   const caption = document.createElement("div");
   caption.className = "bookmark-caption";
-  const storeNameEl = document.createElement("span");
-  storeNameEl.className = "bookmark-caption__store";
-  storeNameEl.textContent = bookmark.storeName;
-  const cityEl = document.createElement("span");
-  cityEl.className = "bookmark-caption__city";
-  cityEl.textContent = bookmark.city;
-  caption.appendChild(storeNameEl);
-  caption.appendChild(cityEl);
+
+  const nameEl = document.createElement(bookmark.link ? "a" : "span");
+  nameEl.className = "bookmark-caption__store";
+  nameEl.textContent = bookmark.storeName;
+  if (bookmark.link) {
+    nameEl.href = bookmark.link;
+    nameEl.target = "_blank";
+    nameEl.rel = "noopener noreferrer";
+  }
+
+  const metaParts = [bookmark.city, formatVisitDate(bookmark.visitDate)].filter(Boolean);
+  const metaEl = document.createElement("span");
+  metaEl.className = "bookmark-caption__meta";
+  metaEl.textContent = metaParts.join(" · ");
+
+  caption.appendChild(nameEl);
+  caption.appendChild(metaEl);
   scene.appendChild(caption);
+  scene.appendChild(card);
 
   return scene;
 }

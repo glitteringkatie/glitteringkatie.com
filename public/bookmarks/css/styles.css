@@ -12,7 +12,7 @@
   --max-width:       64rem;
   --header-height:   88px; /* corrected by JS after render */
   --bookmark-width:  120px;
-  --bookmark-radius: 4px 4px 30px 30px;
+  --bookmark-radius: 4px;
   --flip-duration:   0.55s;
 }
 
@@ -121,20 +121,30 @@ main {
   /* height set per-card via aspect-ratio from image dimensions */
   position: relative;
   transform-style: preserve-3d;
+  transform: rotate(var(--rotation, 0deg));
   transition:
     transform var(--flip-duration) ease-in-out,
     box-shadow 0.3s ease;
-  box-shadow: 0 0 var(--color-fern);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Non-flippable cards: chunky GK-style offset shadow on hover */
+/* All cards: shadow lifts on hover */
+.bookmark-scene:hover .bookmark-card {
+  box-shadow: 3px 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* Non-flippable cards: matched transition + scale up slightly on hover */
+.bookmark-card:not(.bookmark-card--flippable) {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
 .bookmark-scene:hover .bookmark-card:not(.bookmark-card--flippable) {
-  box-shadow: -0.5em -0.5em var(--color-fern);
+  transform: rotate(var(--rotation, 0deg)) scale(1.04);
 }
 
 /* Flippable cards: flip animation on hover */
 .bookmark-scene:hover .bookmark-card--flippable {
-  transform: rotateY(180deg);
+  transform: rotate(var(--rotation, 0deg)) rotateY(180deg);
 }
 
 /* ---- Card faces ---- */
@@ -176,11 +186,20 @@ main {
   line-height: 1.3;
 }
 
-.bookmark-caption__city {
+.bookmark-caption__meta {
   font-family: var(--font-sans);
   font-size: 0.7rem;
   color: var(--color-muted);
   font-style: italic;
+}
+
+.bookmark-caption__store[href] {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bookmark-caption__store[href]:hover {
+  color: var(--color-fern);
 }
 
 /* ---- Notes (modal only) ---- */
@@ -263,8 +282,23 @@ main {
   font-size: 0.78rem;
   color: var(--color-muted);
   font-style: italic;
-  margin-bottom: 0.5rem;
 }
+
+.store-modal__link {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-pine);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+  display: block;
+}
+
+.store-modal__link:hover {
+  color: var(--color-fern);
+}
+
+.store-modal__link[hidden] { display: none; }
 
 .store-modal__bookmarks {
   display: flex;
