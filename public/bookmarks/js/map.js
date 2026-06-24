@@ -1,5 +1,5 @@
 import { BOOKMARKS } from './data.js';
-import { createBookmarkCard, formatVisitDate } from './gallery.js';
+import { formatVisitDate } from './gallery.js';
 
 let mapInstance = null;
 let mapInitialised = false;
@@ -67,20 +67,59 @@ export function openStoreModal(store) {
   const container = modal.querySelector(".store-modal__bookmarks");
   container.innerHTML = "";
   store.bookmarks.forEach(bookmark => {
-    const scene = createBookmarkCard(bookmark);
-    if (!bookmark.backImage) scene.style.cursor = "default";
+    const entry = document.createElement("div");
+    entry.className = "store-modal__entry";
+
+    const images = document.createElement("div");
+    images.className = "store-modal__images";
+
+    const makeRotation = () => (Math.random() - 0.5) * 4;
+
+    const makeFigure = (src, alt, label, rotation) => {
+      const fig = document.createElement("figure");
+      fig.className = "store-modal__figure";
+      if (rotation) fig.style.transform = `rotate(${rotation}deg)`;
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt;
+      img.className = "store-modal__image";
+      fig.appendChild(img);
+      if (label) {
+        const cap = document.createElement("figcaption");
+        cap.className = "store-modal__image-label";
+        cap.textContent = label;
+        fig.appendChild(cap);
+      }
+      return fig;
+    };
+
+    const hasBoth = !!bookmark.backImage;
+    images.appendChild(makeFigure(
+      bookmark.frontImage,
+      "Front of " + bookmark.storeName + " bookmark",
+      hasBoth ? "front" : null,
+      hasBoth ? makeRotation() : null
+    ));
+
+    if (hasBoth) {
+      images.appendChild(makeFigure(
+        bookmark.backImage,
+        "Back of " + bookmark.storeName + " bookmark",
+        "back",
+        makeRotation()
+      ));
+    }
+
+    entry.appendChild(images);
+
     if (bookmark.notes) {
       const notes = document.createElement("p");
       notes.className = "bookmark-notes";
       notes.textContent = bookmark.notes;
-      scene.appendChild(notes);
+      entry.appendChild(notes);
     }
-    container.appendChild(scene);
-  });
 
-  container.addEventListener("click", (e) => {
-    const card = e.target.closest(".bookmark-card--flippable");
-    if (card) card.classList.toggle("is-flipped");
+    container.appendChild(entry);
   });
 
   modal.removeAttribute("hidden");

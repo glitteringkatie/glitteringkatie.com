@@ -309,6 +309,42 @@ main {
   padding-top: 1rem;
 }
 
+.store-modal__entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.store-modal__images {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.store-modal__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.store-modal__image {
+  width: 120px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+.store-modal__image-label {
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
 /* ---- Mobile: gallery only ---- */
 @media (max-width: 640px) {
   #btn-map, #btn-gallery { display: none; }
