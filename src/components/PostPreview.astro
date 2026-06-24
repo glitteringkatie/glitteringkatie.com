@@ -1,17 +1,18 @@
 ---
-import { getRandomDefaultImage } from '../utils/images';
+import { getRoundRobinImage } from '../utils/images';
 
 interface Props {
   slug: string;
   title: string;
+  index: number;
   coverImage?: string;
   altText?: string;
   excerpt: string;
   headerLevel?: 'h2' | 'h3';
 }
 
-const { slug, title, coverImage, altText, excerpt, headerLevel = 'h3' } = Astro.props;
-const image = coverImage || getRandomDefaultImage();
+const { slug, title, index, coverImage, altText, excerpt, headerLevel = 'h3' } = Astro.props;
+const image = coverImage || getRoundRobinImage(index);
 ---
 <div class="flex-1 pb-4">
   <a href={`/posts/${slug}`} class="post-preview">

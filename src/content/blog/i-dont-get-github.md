@@ -2,7 +2,6 @@
 title: "🤔 I Don’t Get GitHub"
 date: "2018-06-02"
 tags: ["work"]
-coverImage: "https://glitteringkatie.com/assets/blog/default5.jpeg"
 ---
 
 In college I had my nose to the grindstone with school and work and internships that I was never really a side project type of person. When I get home from work now I’m usually not on the computer — I’ll watch TV or run or cook or read. Like most people, I probably waste too much time in front of the TV or scrolling through social media. I’m ready for that to change.

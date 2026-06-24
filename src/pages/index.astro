@@ -10,12 +10,13 @@ const allPosts = await getCollection('blog');
 const latestPosts = allPosts
   .sort((a, b) => b.data.date.localeCompare(a.data.date))
   .slice(0, 3)
-  .map(post => ({
+  .map((post, i) => ({
     slug: post.slug,
     title: post.data.title,
     coverImage: post.data.coverImage,
     altText: post.data.altText,
     excerpt: getExcerpt(post.body),
+    index: i,
   }));
 ---
 <BaseLayout page="home">
@@ -29,6 +30,7 @@ const latestPosts = allPosts
           <PostPreview
             slug={post.slug}
             title={post.title}
+            index={post.index}
             coverImage={post.coverImage}
             altText={post.altText}
             excerpt={post.excerpt}

@@ -1,7 +1,6 @@
-import { useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { balanceStore } from '../store/balance';
-import { DEFAULT_COVER_IMAGES } from '../utils/images';
+import { getRoundRobinImage } from '../utils/images';
 
 export type PostData = {
   slug: string;
@@ -20,13 +19,6 @@ interface Props {
 export default function PostsGrid({ posts }: Props) {
   const balance = useStore(balanceStore);
 
-  const fallbacksRef = useRef<string[]>([]);
-  if (fallbacksRef.current.length === 0) {
-    fallbacksRef.current = posts.map(
-      () => DEFAULT_COVER_IMAGES[Math.floor(Math.random() * DEFAULT_COVER_IMAGES.length)]
-    );
-  }
-
   const filtered = posts.filter(
     p => balance === 'balance' || p.tags.includes(balance)
   );
@@ -39,8 +31,9 @@ export default function PostsGrid({ posts }: Props) {
 
   return (
     <div className="md:grid grid-cols-3 gap-x-8 items-top mx-auto pb-6">
-      {filtered.map((post, i) => {
-        const image = post.coverImage || fallbacksRef.current[posts.indexOf(post)] || fallbacksRef.current[i];
+      {filtered.map(post => {
+        const globalIndex = posts.indexOf(post);
+        const image = post.coverImage || getRoundRobinImage(globalIndex);
         return (
           <div key={post.slug} className="flex-1 pb-4">
             <a href={`/posts/${post.slug}`} className="post-preview">

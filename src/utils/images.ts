@@ -3,5 +3,5 @@ export const DEFAULT_COVER_IMAGES = Array.from(
   (_, i) => `/assets/blog/default${i + 1}.jpeg`
 );
 
-export const getRandomDefaultImage = () =>
-  DEFAULT_COVER_IMAGES[Math.floor(Math.random() * DEFAULT_COVER_IMAGES.length)];
+export const getRoundRobinImage = (index: number) =>
+  DEFAULT_COVER_IMAGES[index % DEFAULT_COVER_IMAGES.length];
