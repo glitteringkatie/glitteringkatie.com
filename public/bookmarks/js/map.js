@@ -67,14 +67,15 @@ export function openStoreModal(store) {
   const container = modal.querySelector(".store-modal__bookmarks");
   container.innerHTML = "";
   store.bookmarks.forEach(bookmark => {
-    const card = createBookmarkCard(bookmark);
+    const scene = createBookmarkCard(bookmark);
+    if (!bookmark.backImage) scene.style.cursor = "default";
     if (bookmark.notes) {
       const notes = document.createElement("p");
       notes.className = "bookmark-notes";
       notes.textContent = bookmark.notes;
-      card.appendChild(notes);
+      scene.appendChild(notes);
     }
-    container.appendChild(card);
+    container.appendChild(scene);
   });
 
   container.addEventListener("click", (e) => {

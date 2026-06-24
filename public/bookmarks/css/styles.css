@@ -142,8 +142,8 @@ main {
   transform: rotate(var(--rotation, 0deg)) scale(1.04);
 }
 
-/* Flippable cards: flip on hover or when toggled by click */
-.bookmark-scene:hover .bookmark-card--flippable,
+/* Flippable cards: flip on hover (gallery only) or click-toggle (modal) */
+#gallery-grid .bookmark-scene:hover .bookmark-card--flippable,
 .bookmark-card--flippable.is-flipped {
   transform: rotate(var(--rotation, 0deg)) rotateY(180deg);
 }
@@ -315,6 +315,10 @@ main {
   #view-map { display: none !important; }
   .site-nav { justify-content: center; }
   .site-logo { flex: none; }
+  .store-modal__panel {
+    width: 100%;
+    border-left: none;
+  }
 }
 
 /* ---- Footer ---- */
