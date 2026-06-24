@@ -6,9 +6,17 @@ import Container from '../components/Container.astro';
   <Container>
     <div class="max-w-2xl mx-auto px-5 py-16">
 
+      <div class="flex flex-col items-center mb-12">
+        <img src="/glitteringkatie.svg" alt="glittering katie" class="w-64 mb-6" />
+        <p class="font-sans text-sm text-dimGray text-center">
+          First published 2020. Revised continuously.<br />
+          Portland, Oregon.
+        </p>
+      </div>
+
       <h1 class="font-serif font-semibold text-5xl md:text-6xl mb-8">colophon</h1>
 
-      <div class="prose-like mb-16 space-y-4 text-lg leading-relaxed text-warmBlack">
+      <div class="mb-16 space-y-4 text-lg leading-relaxed text-warmBlack">
         <p>
           Welcome to the <a href="https://en.wikipedia.org/wiki/Colophon_(publishing)" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">colophon</a>!
         </p>
@@ -80,6 +88,28 @@ import Container from '../components/Container.astro';
               <dd class="text-warmBlack">{detail}</dd>
             </div>
           ))}
+        </dl>
+      </section>
+
+      <section class="mb-16">
+        <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Find this site</h2>
+        <dl class="space-y-4">
+          <div class="flex gap-4">
+            <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">Source code</dt>
+            <dd>
+              <a href="https://github.com/glitteringkatie/glitteringkatie.com" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">
+                github.com/glitteringkatie/glitteringkatie.com
+              </a>
+            </dd>
+          </div>
+          <div class="flex gap-4">
+            <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">RSS feed</dt>
+            <dd>
+              <a href="/rss.xml" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">
+                glitteringkatie.com/rss.xml
+              </a>
+            </dd>
+          </div>
         </dl>
       </section>
 
