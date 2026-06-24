@@ -8,6 +8,12 @@ export default function SocialLinks() {
         @heykatiehues
       </a>
       <a
+        href="https://instagram.com/glitteringkatie"
+        className="text-pine hover:text-cream transition-colors font-sans"
+        aria-label="@glitteringkatie on instagram">
+        @glitteringkatie
+      </a>
+      <a
         href="https://github.com/glitteringkatie"
         className="text-pine hover:text-cream transition-colors font-sans"
         aria-label="@glitteringkatie on github">
