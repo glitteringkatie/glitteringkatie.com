@@ -1,24 +1,22 @@
 import { useStore } from '@nanostores/react';
 import { balanceStore, type Balance } from '../store/balance';
-import { FaGithub, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 type SocialEntry = {
   category: Balance | 'balance';
-  icon: 'twitter' | 'insta' | 'github' | 'linkedin';
+  icon: 'insta' | 'github' | 'linkedin';
   url: string;
   display: string;
 };
 
 const socials: SocialEntry[] = [
-  { category: 'balance', icon: 'twitter', url: 'https://twitter.com/glitteringkatie', display: 'twitter.com/glitteringkatie' },
-  { category: 'life', icon: 'insta', url: 'https://www.instagram.com/glitteringkatie/', display: 'instagram.com/glitteringkatie' },
-  { category: 'life', icon: 'insta', url: 'https://www.instagram.com/heykatiehues/', display: 'instagram.com/heykatiehues' },
-  { category: 'work', icon: 'github', url: 'https://github.com/glitteringkatie', display: 'github.com/glitteringkatie' },
-  { category: 'work', icon: 'linkedin', url: 'https://www.linkedin.com/in/katelhughes93', display: 'linkedin.com/in/katelhughes93' },
+  { category: 'life', icon: 'insta', url: 'https://www.instagram.com/glitteringkatie/', display: '@glitteringkatie' },
+  { category: 'life', icon: 'insta', url: 'https://www.instagram.com/heykatiehues/', display: '@heykatiehues' },
+  { category: 'work', icon: 'github', url: 'https://github.com/glitteringkatie', display: '@glitteringkatie' },
+  { category: 'work', icon: 'linkedin', url: 'https://www.linkedin.com/in/katelhughes93', display: '@katelhughes93' },
 ];
 
 const icons = {
-  twitter: <FaTwitter className="text-xl md:text-3xl mr-3" />,
   insta: <FaInstagram className="text-xl md:text-3xl mr-3" />,
   github: <FaGithub className="text-xl md:text-3xl mr-3" />,
   linkedin: <FaLinkedin className="text-xl md:text-3xl mr-3" />,
