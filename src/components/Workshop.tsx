@@ -114,7 +114,7 @@ export default function Workshop() {
 
   useEffect(() => {
     callApi(null, 'get').then(setData);
-    const saved = sessionStorage.getItem(SESSION_KEY);
+    const saved = localStorage.getItem(SESSION_KEY);
     if (saved) {
       passwordRef.current = saved;
       setEditMode(true);
@@ -131,7 +131,7 @@ export default function Workshop() {
     try {
       await callApi(passwordInput, 'verify');
       passwordRef.current = passwordInput;
-      sessionStorage.setItem(SESSION_KEY, passwordInput);
+      localStorage.setItem(SESSION_KEY, passwordInput);
       setEditMode(true);
       setShowPrompt(false);
       setPasswordInput('');
@@ -147,7 +147,7 @@ export default function Workshop() {
     setShowPrompt(false);
     setPasswordInput('');
     passwordRef.current = '';
-    sessionStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(SESSION_KEY);
   };
 
   const updateData = (newData: Data) => {
