@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { FaRegSquare, FaCheckSquare } from 'react-icons/fa';
+import { FaRegSquare, FaCheckSquare, FaLock, FaLockOpen } from 'react-icons/fa';
 
 type Item = { id: string; text: string; done: boolean };
 type Data = { todos: Item[]; ideas: Item[] };
 
 const SESSION_KEY = 'gk-workshop-pw';
 
-async function callApi(password: string, action: string, data?: Data) {
+async function callApi(password: string | null, action: string, data?: Data) {
   const res = await fetch('/api/workshop', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -20,22 +20,24 @@ async function callApi(password: string, action: string, data?: Data) {
 function List({
   title,
   items,
+  editable,
   onToggle,
   onRemove,
   onAdd,
 }: {
   title: string;
   items: Item[];
-  onToggle: (id: string) => void;
-  onRemove: (id: string) => void;
-  onAdd: (text: string) => void;
+  editable: boolean;
+  onToggle?: (id: string) => void;
+  onRemove?: (id: string) => void;
+  onAdd?: (text: string) => void;
 }) {
   const [input, setInput] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const submit = () => {
     const text = input.trim();
-    if (!text) return;
+    if (!text || !onAdd) return;
     onAdd(text);
     setInput('');
     inputRef.current?.focus();
@@ -53,8 +55,9 @@ function List({
         {items.map(item => (
           <li key={item.id} className="flex items-baseline group gap-3">
             <button
-              onClick={() => onToggle(item.id)}
-              className={`shrink-0 transition-colors mt-0.5 ${item.done ? 'text-dimGray' : 'text-pine hover:text-fern'}`}
+              onClick={() => editable && onToggle?.(item.id)}
+              disabled={!editable}
+              className={`shrink-0 transition-colors mt-0.5 ${item.done ? 'text-dimGray' : 'text-pine'} ${editable ? 'hover:text-fern cursor-pointer' : 'cursor-default'}`}
               aria-label={item.done ? 'uncheck' : 'check'}
             >
               {item.done ? <FaCheckSquare /> : <FaRegSquare />}
@@ -62,66 +65,90 @@ function List({
             <span className={`flex-1 text-lg leading-snug ${item.done ? 'line-through text-dimGray' : 'text-warmBlack'}`}>
               {item.text}
             </span>
-            <button
-              onClick={() => onRemove(item.id)}
-              className="opacity-0 group-hover:opacity-100 text-dimGray hover:text-warmBlack transition-opacity text-xl leading-none shrink-0"
-              aria-label="remove"
-            >
-              ×
-            </button>
+            {editable && (
+              <button
+                onClick={() => onRemove?.(item.id)}
+                className="opacity-0 group-hover:opacity-100 text-dimGray hover:text-warmBlack transition-opacity text-xl leading-none shrink-0"
+                aria-label="remove"
+              >
+                ×
+              </button>
+            )}
           </li>
         ))}
       </ul>
-      <div className="flex gap-3 items-baseline">
-        <input
-          ref={inputRef}
-          type="text"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && submit()}
-          placeholder={`add to ${title}…`}
-          className="flex-1 bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors"
-        />
-        <button
-          onClick={submit}
-          className="text-pine hover:text-fern font-serif font-semibold text-2xl transition-colors shrink-0 leading-none"
-        >
-          +
-        </button>
-      </div>
+      {editable && (
+        <div className="flex gap-3 items-baseline">
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && submit()}
+            placeholder={`add to ${title}…`}
+            className="flex-1 bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors"
+          />
+          <button
+            onClick={submit}
+            className="text-pine hover:text-fern font-serif font-semibold text-2xl transition-colors shrink-0 leading-none"
+          >
+            +
+          </button>
+        </div>
+      )}
     </section>
   );
 }
 
 export default function Workshop() {
   const [data, setData] = useState<Data | null>(null);
+  const [editMode, setEditMode] = useState(false);
+  const [showPrompt, setShowPrompt] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
-  const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const [verifying, setVerifying] = useState(false);
   const [syncStatus, setSyncStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const passwordRef = useRef('');
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const promptInputRef = useRef<HTMLInputElement>(null);
 
-  const login = async (pw: string) => {
-    setLoading(true);
+  useEffect(() => {
+    callApi(null, 'get').then(setData);
+    const saved = sessionStorage.getItem(SESSION_KEY);
+    if (saved) {
+      passwordRef.current = saved;
+      setEditMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (showPrompt) promptInputRef.current?.focus();
+  }, [showPrompt]);
+
+  const unlock = async () => {
+    setVerifying(true);
     setLoginError(false);
     try {
-      const result = await callApi(pw, 'get');
-      passwordRef.current = pw;
-      sessionStorage.setItem(SESSION_KEY, pw);
-      setData(result);
-    } catch (e) {
-      setLoginError((e as Error).message === 'unauthorized');
-      sessionStorage.removeItem(SESSION_KEY);
+      await callApi(passwordInput, 'verify');
+      passwordRef.current = passwordInput;
+      sessionStorage.setItem(SESSION_KEY, passwordInput);
+      setEditMode(true);
+      setShowPrompt(false);
+      setPasswordInput('');
+    } catch {
+      setLoginError(true);
     } finally {
-      setLoading(false);
+      setVerifying(false);
     }
   };
 
-  useEffect(() => {
-    const saved = sessionStorage.getItem(SESSION_KEY);
-    if (saved) login(saved);
-  }, []);
+  const lock = () => {
+    setEditMode(false);
+    setShowPrompt(false);
+    setPasswordInput('');
+    passwordRef.current = '';
+    sessionStorage.removeItem(SESSION_KEY);
+  };
 
   const updateData = (newData: Data) => {
     setData(newData);
@@ -147,46 +174,53 @@ export default function Workshop() {
       updateData({ ...data!, [key]: [...data![key], { id: String(Date.now()), text, done: false }] }),
   });
 
-  if (data) {
-    return (
-      <div className="max-w-xl">
-        <div className="text-xs text-dimGray/60 pb-8 text-right h-6">
-          {syncStatus === 'saving' && 'saving…'}
-          {syncStatus === 'saved' && 'saved'}
-          {syncStatus === 'error' && 'sync error — changes may not have saved'}
-        </div>
-        <List title="todo" items={data.todos} {...actions('todos')} />
-        <List title="ideas" items={data.ideas} {...actions('ideas')} />
-      </div>
-    );
-  }
+  if (!data) return <p className="text-dimGray italic">loading…</p>;
 
   return (
-    <div className="max-w-xs">
-      <div className="space-y-6">
-        {loginError && <p className="text-red-600 text-sm">wrong password</p>}
-        <div>
-          <label className="font-sans uppercase tracking-widest text-xs text-dimGray block pb-2">
-            password
-          </label>
-          <input
-            type="password"
-            value={passwordInput}
-            onChange={e => { setPasswordInput(e.target.value); setLoginError(false); }}
-            onKeyDown={e => e.key === 'Enter' && login(passwordInput)}
-            placeholder="enter password"
-            autoFocus
-            className="w-full bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors"
-          />
+    <div className="max-w-xl">
+      <div className="flex justify-between items-center pb-8 min-h-[2rem]">
+        <div className="text-xs text-dimGray/60">
+          {syncStatus === 'saving' && 'saving…'}
+          {syncStatus === 'saved' && 'saved'}
+          {syncStatus === 'error' && 'sync error'}
         </div>
-        <button
-          onClick={() => login(passwordInput)}
-          disabled={loading || !passwordInput}
-          className="bg-pine text-cream pt-3 px-6 pb-2 rounded-full font-serif font-semibold text-lg transition-colors hover:bg-fern disabled:opacity-40"
-        >
-          {loading ? 'unlocking…' : 'unlock'}
-        </button>
+        <div className="flex items-center gap-3">
+          {showPrompt && !editMode && (
+            <div className="flex items-center gap-2">
+              {loginError && <span className="text-xs text-red-500">wrong password</span>}
+              <input
+                ref={promptInputRef}
+                type="password"
+                value={passwordInput}
+                onChange={e => { setPasswordInput(e.target.value); setLoginError(false); }}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') unlock();
+                  if (e.key === 'Escape') { setShowPrompt(false); setPasswordInput(''); setLoginError(false); }
+                }}
+                placeholder="password"
+                className="bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-sm pb-0.5 w-28 placeholder:text-dimGray/40 transition-colors"
+              />
+              <button
+                onClick={unlock}
+                disabled={verifying || !passwordInput}
+                className="text-pine hover:text-fern text-sm transition-colors disabled:opacity-40"
+              >
+                {verifying ? '…' : 'unlock'}
+              </button>
+            </div>
+          )}
+          <button
+            onClick={editMode ? lock : () => setShowPrompt(p => !p)}
+            className="text-dimGray/50 hover:text-dimGray transition-colors"
+            aria-label={editMode ? 'lock editing' : 'unlock editing'}
+          >
+            {editMode ? <FaLockOpen className="text-base" /> : <FaLock className="text-base" />}
+          </button>
+        </div>
       </div>
+
+      <List title="todo" items={data.todos} editable={editMode} {...(editMode ? actions('todos') : {})} />
+      <List title="ideas" items={data.ideas} editable={editMode} {...(editMode ? actions('ideas') : {})} />
     </div>
   );
 }

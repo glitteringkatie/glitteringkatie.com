@@ -1,5 +1,8 @@
 import { getStore } from '@netlify/blobs';
 
+const authorized = (password) =>
+  password && password === process.env.WORKSHOP_PASSWORD;
+
 export default async (req) => {
   let body;
   try {
@@ -9,11 +12,6 @@ export default async (req) => {
   }
 
   const { password, action, data } = body;
-
-  if (!password || password !== process.env.WORKSHOP_PASSWORD) {
-    return new Response('unauthorized', { status: 401 });
-  }
-
   const store = getStore('workshop');
 
   if (action === 'get') {
@@ -21,7 +19,14 @@ export default async (req) => {
     return Response.json(value ?? { todos: [], ideas: [] });
   }
 
-  if (action === 'update' && data) {
+  if (action === 'verify') {
+    if (!authorized(password)) return new Response('unauthorized', { status: 401 });
+    return Response.json({ ok: true });
+  }
+
+  if (action === 'update') {
+    if (!authorized(password)) return new Response('unauthorized', { status: 401 });
+    if (!data) return new Response('bad request', { status: 400 });
     await store.set('data', JSON.stringify(data));
     return Response.json({ ok: true });
   }
