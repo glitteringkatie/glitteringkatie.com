@@ -1,5 +1,5 @@
 import { renderGallery } from './gallery.js';
-import { showMap } from './map.js';
+import { showMap, groupByStore, openStoreModal } from './map.js';
 
 const btnGallery  = document.getElementById("btn-gallery");
 const btnMap      = document.getElementById("btn-map");
@@ -30,3 +30,12 @@ function syncHeaderHeight() {
 window.addEventListener("resize", syncHeaderHeight);
 renderGallery();
 syncHeaderHeight();
+
+document.getElementById("gallery-grid").addEventListener("click", (e) => {
+  if (e.target.closest("a")) return;
+  const scene = e.target.closest(".bookmark-scene");
+  if (!scene) return;
+  const id = scene.dataset.id;
+  const store = groupByStore().find(s => s.bookmarks.some(b => b.id === id));
+  if (store) openStoreModal(store);
+});

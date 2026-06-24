@@ -77,6 +77,11 @@ export function openStoreModal(store) {
     container.appendChild(card);
   });
 
+  container.addEventListener("click", (e) => {
+    const card = e.target.closest(".bookmark-card--flippable");
+    if (card) card.classList.toggle("is-flipped");
+  });
+
   modal.removeAttribute("hidden");
   requestAnimationFrame(() => modal.classList.add("store-modal--open"));
 
