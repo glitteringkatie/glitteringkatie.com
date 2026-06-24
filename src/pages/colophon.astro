@@ -1,118 +1,131 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Container from '../components/Container.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 ---
-<BaseLayout title="colophon | glittering katie" description="The fonts, colors, and tools behind glittering katie.">
-  <Container>
-    <div class="max-w-2xl mx-auto px-5 py-16">
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="colophon | glittering katie" description="The fonts, colors, and tools behind glittering katie." />
+  </head>
+  <body>
+    <div class="min-h-screen bg-cream flex flex-col">
+      <nav class="py-4 sm:py-8 flex w-full md:w-5xl max-w-5xl mx-auto px-4 items-center">
+        <a href="/" class="flex-1">
+          <img src="/glitteringkatie.svg" alt="glittering katie" class="w-2/3 sm:w-96" />
+        </a>
+        <a href="/posts" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">
+          blog
+        </a>
+      </nav>
 
-      <div class="flex flex-col items-center mb-12">
-        <img src="/glitteringkatie.svg" alt="glittering katie" class="w-64 mb-6" />
-        <p class="font-sans text-sm text-dimGray text-center">
-          First published 2020. Revised continuously.<br />
-          Portland, Oregon.
-        </p>
-      </div>
+      <main class="flex-1">
+        <div class="max-w-2xl mx-auto px-5 py-16">
 
-      <h1 class="font-serif font-semibold text-5xl md:text-6xl mb-8">colophon</h1>
+          <h1 class="font-serif font-semibold text-5xl md:text-6xl mb-3">colophon</h1>
+          <p class="text-dimGray text-sm mb-16">First published 2020. Revised continuously. Portland, Oregon.</p>
 
-      <div class="mb-16 space-y-4 text-lg leading-relaxed text-warmBlack">
-        <p>
-          Welcome to the <a href="https://en.wikipedia.org/wiki/Colophon_(publishing)" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">colophon</a>!
-        </p>
-        <p>
-          In traditional printing, this is where any publishing information would go: fonts used, ink colors used, date of publication, <em>where</em> it was published.
-        </p>
-        <p>
-          I <em>love</em> design and there&rsquo;s something special about a colophon that feels like a peek behind the curtains. I also love when digital media harkens back to old print making or publishing traditions. That&rsquo;s why I wanted to include a colophon on my site. Enjoy!
-        </p>
-      </div>
-
-      <section class="mb-16">
-        <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Typefaces</h2>
-        <div class="space-y-8">
-          <div>
-            <p class="font-serif text-4xl text-warmBlack mb-1">Source Serif Pro</p>
-            <p class="text-sm text-dimGray">Serif &mdash; headings, body text, display</p>
+          <div class="mb-16 space-y-4 text-lg leading-relaxed text-warmBlack">
+            <p>
+              Welcome to the <a href="https://en.wikipedia.org/wiki/Colophon_(publishing)" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">colophon</a>!
+            </p>
+            <p>
+              In traditional printing, this is where any publishing information would go: fonts used, ink colors used, date of publication, <em>where</em> it was published.
+            </p>
+            <p>
+              I <em>love</em> design and there&rsquo;s something special about a colophon that feels like a peek behind the curtains. I also love when digital media harkens back to old print making or publishing traditions. That&rsquo;s why I wanted to include a colophon on my site. Enjoy!
+            </p>
           </div>
-          <div>
-            <p class="font-sans text-3xl text-warmBlack mb-1">Work Sans</p>
-            <p class="text-sm text-dimGray">Sans-serif &mdash; labels, navigation, metadata</p>
-          </div>
-          <div>
-            <p class="font-code text-2xl text-warmBlack mb-1">Fira Mono</p>
-            <p class="text-sm text-dimGray">Monospace &mdash; code blocks</p>
-          </div>
-        </div>
-      </section>
 
-      <section class="mb-16">
-        <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Ink Colors</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {[
-            { name: 'pine', hex: '#004225' },
-            { name: 'deciduous', hex: '#2D5E2C' },
-            { name: 'fern', hex: '#637D59' },
-            { name: 'mint', hex: '#89AA88' },
-            { name: 'salmon', hex: '#FFCBA4' },
-            { name: 'cream', hex: '#FEF9F1' },
-            { name: 'dim gray', hex: '#575552' },
-            { name: 'warm black', hex: '#100E0E' },
-          ].map(({ name, hex }) => (
-            <div class="flex flex-col gap-2">
-              <div
-                class="w-full aspect-square rounded-sm border border-warmBlack/10"
-                style={`background-color: ${hex};`}
-              />
+          <section class="mb-16">
+            <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Typefaces</h2>
+            <div class="space-y-8">
               <div>
-                <p class="font-sans text-sm font-medium text-warmBlack">{name}</p>
-                <p class="font-code text-xs text-dimGray">{hex}</p>
+                <p class="font-serif text-4xl text-warmBlack mb-1">Source Serif Pro</p>
+                <p class="text-sm text-dimGray">Serif &mdash; headings, body text, display</p>
+              </div>
+              <div>
+                <p class="font-sans text-3xl text-warmBlack mb-1">Work Sans</p>
+                <p class="text-sm text-dimGray">Sans-serif &mdash; labels, navigation, metadata</p>
+              </div>
+              <div>
+                <p class="font-code text-2xl text-warmBlack mb-1">Fira Mono</p>
+                <p class="text-sm text-dimGray">Monospace &mdash; code blocks</p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      <section class="mb-16">
-        <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Tech Stack</h2>
-        <dl class="space-y-4">
-          {[
-            { term: 'Framework', detail: 'Astro 4 (static output) with React 18 islands' },
-            { term: 'Styles', detail: 'Tailwind CSS v3' },
-            { term: 'Hosting', detail: 'Netlify, auto-deployed from GitHub' },
-            { term: 'Workshop storage', detail: 'Netlify Blobs via Netlify Functions' },
-            { term: 'AI assistance', detail: 'Claude Code by Anthropic' },
-          ].map(({ term, detail }) => (
-            <div class="flex gap-4">
-              <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">{term}</dt>
-              <dd class="text-warmBlack">{detail}</dd>
+          <section class="mb-16">
+            <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Ink Colors</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { name: 'pine', hex: '#004225' },
+                { name: 'deciduous', hex: '#2D5E2C' },
+                { name: 'fern', hex: '#637D59' },
+                { name: 'mint', hex: '#89AA88' },
+                { name: 'salmon', hex: '#FFCBA4' },
+                { name: 'cream', hex: '#FEF9F1' },
+                { name: 'dim gray', hex: '#575552' },
+                { name: 'warm black', hex: '#100E0E' },
+              ].map(({ name, hex }) => (
+                <div class="flex flex-col gap-2">
+                  <div
+                    class="w-full aspect-square rounded-sm border border-warmBlack/10"
+                    style={`background-color: ${hex};`}
+                  />
+                  <div>
+                    <p class="font-sans text-sm font-medium text-warmBlack">{name}</p>
+                    <p class="font-code text-xs text-dimGray">{hex}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </dl>
-      </section>
+          </section>
 
-      <section class="mb-16">
-        <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Find this site</h2>
-        <dl class="space-y-4">
-          <div class="flex gap-4">
-            <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">Source code</dt>
-            <dd>
-              <a href="https://github.com/glitteringkatie/glitteringkatie.com" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">
-                github.com/glitteringkatie/glitteringkatie.com
-              </a>
-            </dd>
-          </div>
-          <div class="flex gap-4">
-            <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">RSS feed</dt>
-            <dd>
-              <a href="/rss.xml" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">
-                glitteringkatie.com/rss.xml
-              </a>
-            </dd>
-          </div>
-        </dl>
-      </section>
+          <section class="mb-16">
+            <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Tech Stack</h2>
+            <dl class="space-y-4">
+              {[
+                { term: 'Framework', detail: 'Astro 4 (static output) with React 18 islands' },
+                { term: 'Styles', detail: 'Tailwind CSS v3' },
+                { term: 'Hosting', detail: 'Netlify, auto-deployed from GitHub' },
+                { term: 'Workshop storage', detail: 'Netlify Blobs via Netlify Functions' },
+                { term: 'AI assistance', detail: 'Claude Code by Anthropic' },
+              ].map(({ term, detail }) => (
+                <div class="flex gap-4">
+                  <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">{term}</dt>
+                  <dd class="text-warmBlack">{detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
 
+          <section class="mb-16">
+            <h2 class="font-sans uppercase tracking-widest text-xs text-dimGray mb-6">Find this site</h2>
+            <dl class="space-y-4">
+              <div class="flex gap-4">
+                <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">Source code</dt>
+                <dd>
+                  <a href="https://github.com/glitteringkatie/glitteringkatie.com" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">
+                    github.com/glitteringkatie/glitteringkatie.com
+                  </a>
+                </dd>
+              </div>
+              <div class="flex gap-4">
+                <dt class="font-sans text-sm text-dimGray w-36 shrink-0 pt-0.5">RSS feed</dt>
+                <dd>
+                  <a href="/rss.xml" class="text-pine hover:text-fern underline underline-offset-2 transition-colors">
+                    glitteringkatie.com/rss.xml
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+        </div>
+      </main>
+
+      <Footer />
     </div>
-  </Container>
-</BaseLayout>
+  </body>
+</html>
