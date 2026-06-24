@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const allPosts = await getCollection('blog');
+const sorted = allPosts.sort((a, b) => b.data.date.localeCompare(a.data.date));
+const idx = sorted.findIndex(p => p.slug === entry.slug);
+const newer = sorted[idx - 1] ? { slug: sorted[idx - 1].slug, title: sorted[idx - 1].data.title } : null;
+const older = sorted[idx + 1] ? { slug: sorted[idx + 1].slug, title: sorted[idx + 1].data.title } : null;
+---
+<PostLayout
+  title={entry.data.title}
+  date={entry.data.date}
+  coverImage={entry.data.coverImage}
+  altText={entry.data.altText}
+  canonical={entry.data.canonical}
+  newer={newer}
+  older={older}
+>
+  <Content />
+</PostLayout>

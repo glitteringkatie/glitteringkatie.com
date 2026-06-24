@@ -1,0 +1,302 @@
+:root {
+  --color-bg:     #FEF9F1;
+  --color-ink:    #100E0E;
+  --color-muted:  #575552;
+  --color-pine:   #004225;
+  --color-fern:   #637D59;
+  --color-mint:   #89AA88;
+
+  --font-serif: 'Source Serif Pro', serif;
+  --font-sans:  'Work Sans', sans-serif;
+
+  --max-width:       64rem;
+  --header-height:   88px; /* corrected by JS after render */
+  --bookmark-width:  120px;
+  --bookmark-radius: 4px 4px 30px 30px;
+  --flip-duration:   0.55s;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Nav ---- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.site-logo {
+  flex: 1;
+}
+
+.site-logo img {
+  width: 240px;
+  height: auto;
+  display: block;
+}
+
+/* ---- View toggle ---- */
+.view-toggle {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-muted);
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.toggle-btn--active {
+  color: var(--color-pine);
+}
+
+.toggle-btn:hover {
+  color: var(--color-fern);
+}
+
+/* ---- Views ---- */
+main {
+  flex: 1;
+}
+
+.view { display: none; }
+.view--active { display: block; }
+
+#view-map {
+  height: calc(100vh - var(--header-height));
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Gallery grid ---- */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 2.5rem;
+  padding: 2.5rem 2rem 4rem;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---- Bookmark scene (3D context) ---- */
+.bookmark-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  perspective: 800px;
+  cursor: default;
+}
+
+/* ---- Bookmark card ---- */
+.bookmark-card {
+  width: var(--bookmark-width);
+  /* height set per-card via aspect-ratio from image dimensions */
+  position: relative;
+  transform-style: preserve-3d;
+  transition:
+    transform var(--flip-duration) ease-in-out,
+    box-shadow 0.3s ease;
+  box-shadow: 0 0 var(--color-fern);
+}
+
+/* Non-flippable cards: chunky GK-style offset shadow on hover */
+.bookmark-scene:hover .bookmark-card:not(.bookmark-card--flippable) {
+  box-shadow: -0.5em -0.5em var(--color-fern);
+}
+
+/* Flippable cards: flip animation on hover */
+.bookmark-scene:hover .bookmark-card--flippable {
+  transform: rotateY(180deg);
+}
+
+/* ---- Card faces ---- */
+.bookmark-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--bookmark-radius);
+  overflow: hidden;
+}
+
+.bookmark-card__face--back {
+  transform: rotateY(180deg);
+}
+
+.bookmark-card__image {
+  width:  100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Caption ---- */
+.bookmark-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  text-align: center;
+  max-width: calc(var(--bookmark-width) + 20px);
+}
+
+.bookmark-caption__store {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-pine);
+  line-height: 1.3;
+}
+
+.bookmark-caption__city {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* ---- Notes (modal only) ---- */
+.bookmark-notes {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-family: var(--font-serif);
+  font-style: italic;
+  text-align: center;
+  max-width: var(--bookmark-width);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+/* ---- Store modal ---- */
+.store-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+
+.store-modal[hidden] { display: none; }
+
+.store-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.store-modal__panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(380px, 90vw);
+  background: var(--color-bg);
+  padding: 2rem 1.75rem;
+  overflow-y: auto;
+  border-left: 1px solid #ddd8d0;
+  transform: translateX(100%);
+  transition: transform 0.25s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.store-modal--open .store-modal__panel {
+  transform: translateX(0);
+}
+
+.store-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-muted);
+  padding: 0.25rem 0.4rem;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.store-modal__close:hover {
+  color: var(--color-pine);
+}
+
+.store-modal__store-name {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-pine);
+  padding-right: 2.5rem;
+  line-height: 1.3;
+}
+
+.store-modal__city {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.store-modal__bookmarks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--color-mint);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-ink);
+}
+
+.site-footer a {
+  color: var(--color-pine);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer a:hover {
+  color: var(--color-bg);
+}
+
+/* ---- Leaflet tweaks ---- */
+.leaflet-tooltip {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  border-color: var(--color-fern);
+}

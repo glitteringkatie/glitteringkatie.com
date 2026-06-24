@@ -1,0 +1,116 @@
+@tailwind base;
+
+@layer base {
+  p {
+    @apply font-sans pb-4;
+  }
+}
+
+.post-preview > img {
+  box-shadow: 0 0 #637d59;
+  transition: box-shadow 0.3s ease;
+}
+
+.post-preview:hover > img {
+  box-shadow: -0.75em -0.75em #637d59;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  margin: 0 15px;
+  width: 200px;
+  height: 7px;
+  background: #bbb7b1;
+  border-radius: 5px;
+  background-image: linear-gradient(#637d59, #637d59);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #637d59;
+  cursor: ew-resize;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #637d59;
+  cursor: ew-resize;
+  transition: background 0.3s ease-in-out;
+}
+
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-moz-range-track {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+/* Markdown content styles */
+.markdown {
+  @apply text-lg leading-relaxed;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-6;
+}
+
+.markdown p {
+  @apply pb-0;
+}
+
+.markdown ul {
+  @apply list-disc pl-8;
+}
+
+.markdown ol {
+  @apply list-decimal pl-8;
+}
+
+.markdown h2 {
+  @apply font-serif font-semibold text-3xl mt-12 mb-4 leading-snug;
+}
+
+.markdown h3 {
+  @apply font-serif font-semibold text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown h4 {
+  @apply font-sans font-light tracking-widest uppercase text-xl mt-8 mb-4 leading-snug;
+}
+
+.markdown a {
+  @apply text-deciduous hover:text-fern font-bold break-words;
+}
+
+.markdown code {
+  @apply py-1 px-1.5 m-0 rounded font-code;
+  font-size: 85%;
+  background-color: rgba(193, 185, 175, 0.3);
+}
+
+.markdown pre {
+  @apply p-6 rounded font-code overflow-auto;
+  line-height: 1.45;
+  background-color: rgba(193, 185, 175, 0.3);
+}
+
+.markdown pre code {
+  @apply inline p-0 m-0;
+  background-color: transparent;
+  border: 0;
+}
+
+@tailwind components;
+@tailwind utilities;

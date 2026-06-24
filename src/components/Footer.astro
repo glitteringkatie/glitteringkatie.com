@@ -1,0 +1,20 @@
+---
+import SocialLinks from './SocialLinks';
+
+interface Props {
+  showSocials?: boolean;
+}
+const { showSocials = false } = Astro.props;
+
+const year = new Date().getFullYear();
+---
+<footer class="pt-12 pb-8 bg-mint">
+  {showSocials && <SocialLinks />}
+  <p class="text-lg text-center pb-0">Katie Hughes &copy; {year}.</p>
+  <p class="text-lg text-center">
+    Built with ✨,{' '}
+    <a href="https://astro.build/" class="text-pine hover:text-cream transition-colors">Astro</a>,
+    {' '}and{' '}
+    <a href="https://claude.ai/code" class="text-pine hover:text-cream transition-colors">Claude Code</a>.
+  </p>
+</footer>
