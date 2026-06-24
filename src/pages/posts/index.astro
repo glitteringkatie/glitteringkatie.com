@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
+import PostsGrid from '../../components/PostsGrid';
+import { getExcerpt } from '../../utils/excerpt';
+import type { PostData } from '../../components/PostsGrid';
+
+const allPosts = await getCollection('blog');
+const posts: PostData[] = allPosts
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
+  .map(post => ({
+    slug: post.slug,
+    title: post.data.title,
+    date: post.data.date,
+    tags: post.data.tags,
+    coverImage: post.data.coverImage,
+    altText: post.data.altText,
+    excerpt: getExcerpt(post.body),
+  }));
+---
+<BaseLayout title="glittering katie | all posts" page="blog" showSocials={true}>
+  <Container>
+    <PostsGrid posts={posts} client:load />
+  </Container>
+</BaseLayout>

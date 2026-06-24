@@ -1,0 +1,29 @@
+---
+import { getRandomDefaultImage } from '../utils/images';
+
+interface Props {
+  slug: string;
+  title: string;
+  coverImage?: string;
+  altText?: string;
+  excerpt: string;
+  headerLevel?: 'h2' | 'h3';
+}
+
+const { slug, title, coverImage, altText, excerpt, headerLevel = 'h3' } = Astro.props;
+const image = coverImage || getRandomDefaultImage();
+---
+<div class="flex-1 pb-4">
+  <a href={`/posts/${slug}`} class="post-preview">
+    <img
+      class="object-cover object-center w-full h-64 md:h-96"
+      src={image}
+      alt={altText || `Cover image for ${title}`}
+    />
+    {headerLevel === 'h2'
+      ? <h2 class="font-serif font-semibold text-center text-lg pb-2 pt-2">{title}</h2>
+      : <h3 class="font-serif font-semibold text-center text-lg pb-2 pt-2">{title}</h3>
+    }
+    <div class="text-sm" set:html={excerpt} />
+  </a>
+</div>
