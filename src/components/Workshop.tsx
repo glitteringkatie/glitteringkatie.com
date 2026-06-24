@@ -3,56 +3,18 @@ import { FaRegSquare, FaCheckSquare } from 'react-icons/fa';
 
 type Item = { id: string; text: string; done: boolean };
 type Data = { todos: Item[]; ideas: Item[] };
-type Config = { passwordHash: string; githubToken: string; gistId: string };
-type AppState = 'loading' | 'setup' | 'locked' | 'unlocked';
 
-const CONFIG_KEY = 'gk-workshop-config';
-const CACHE_KEY = 'gk-workshop-cache';
-const GIST_FILE = 'workshop.json';
-const EMPTY_DATA: Data = { todos: [], ideas: [] };
+const SESSION_KEY = 'gk-workshop-pw';
 
-async function sha256(text: string): Promise<string> {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-const gistHeaders = (token: string) => ({
-  Authorization: `Bearer ${token}`,
-  Accept: 'application/vnd.github+json',
-  'Content-Type': 'application/json',
-});
-
-async function fetchGist(token: string, gistId: string): Promise<Data> {
-  const res = await fetch(`https://api.github.com/gists/${gistId}`, {
-    headers: gistHeaders(token),
-  });
-  if (!res.ok) throw new Error('fetch failed');
-  const json = await res.json();
-  const content = json.files?.[GIST_FILE]?.content;
-  return content ? JSON.parse(content) : EMPTY_DATA;
-}
-
-async function patchGist(token: string, gistId: string, data: Data): Promise<void> {
-  await fetch(`https://api.github.com/gists/${gistId}`, {
-    method: 'PATCH',
-    headers: gistHeaders(token),
-    body: JSON.stringify({ files: { [GIST_FILE]: { content: JSON.stringify(data, null, 2) } } }),
-  });
-}
-
-async function createGist(token: string, initial: Data): Promise<string> {
-  const res = await fetch('https://api.github.com/gists', {
+async function callApi(password: string, action: string, data?: Data) {
+  const res = await fetch('/api/workshop', {
     method: 'POST',
-    headers: gistHeaders(token),
-    body: JSON.stringify({
-      description: 'glitteringkatie.com workshop',
-      public: false,
-      files: { [GIST_FILE]: { content: JSON.stringify(initial, null, 2) } },
-    }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password, action, data }),
   });
-  if (!res.ok) throw new Error('create failed');
-  const json = await res.json();
-  return json.id as string;
+  if (res.status === 401) throw new Error('unauthorized');
+  if (!res.ok) throw new Error('error');
+  return res.json();
 }
 
 function List({
@@ -132,83 +94,42 @@ function List({
 }
 
 export default function Workshop() {
-  const [appState, setAppState] = useState<AppState>('loading');
-  const [data, setData] = useState<Data>(EMPTY_DATA);
-  const [config, setConfig] = useState<Config | null>(null);
+  const [data, setData] = useState<Data | null>(null);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState(false);
   const [syncStatus, setSyncStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const passwordRef = useRef('');
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Setup form
-  const [setupPassword, setSetupPassword] = useState('');
-  const [setupToken, setSetupToken] = useState('');
-  const [setupError, setSetupError] = useState('');
-  const [setupLoading, setSetupLoading] = useState(false);
-
-  // Login form
-  const [loginPassword, setLoginPassword] = useState('');
-  const [loginError, setLoginError] = useState(false);
-  const [loginLoading, setLoginLoading] = useState(false);
+  const login = async (pw: string) => {
+    setLoading(true);
+    setLoginError(false);
+    try {
+      const result = await callApi(pw, 'get');
+      passwordRef.current = pw;
+      sessionStorage.setItem(SESSION_KEY, pw);
+      setData(result);
+    } catch (e) {
+      setLoginError((e as Error).message === 'unauthorized');
+      sessionStorage.removeItem(SESSION_KEY);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const stored = localStorage.getItem(CONFIG_KEY);
-    if (stored) {
-      setConfig(JSON.parse(stored));
-      setAppState('locked');
-    } else {
-      setAppState('setup');
-    }
+    const saved = sessionStorage.getItem(SESSION_KEY);
+    if (saved) login(saved);
   }, []);
-
-  const handleSetup = async () => {
-    if (!setupPassword || !setupToken) return;
-    setSetupLoading(true);
-    setSetupError('');
-    try {
-      const hash = await sha256(setupPassword);
-      const gistId = await createGist(setupToken, EMPTY_DATA);
-      const newConfig: Config = { passwordHash: hash, githubToken: setupToken, gistId };
-      localStorage.setItem(CONFIG_KEY, JSON.stringify(newConfig));
-      setConfig(newConfig);
-      setData(EMPTY_DATA);
-      setAppState('unlocked');
-    } catch {
-      setSetupError('Could not create gist — check that your token has the gist scope.');
-    } finally {
-      setSetupLoading(false);
-    }
-  };
-
-  const handleLogin = async () => {
-    if (!config) return;
-    setLoginLoading(true);
-    setLoginError(false);
-    const hash = await sha256(loginPassword);
-    if (hash !== config.passwordHash) {
-      setLoginError(true);
-      setLoginPassword('');
-      setLoginLoading(false);
-      return;
-    }
-    try {
-      const gistData = await fetchGist(config.githubToken, config.gistId);
-      setData(gistData);
-      localStorage.setItem(CACHE_KEY, JSON.stringify(gistData));
-    } catch {
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) setData(JSON.parse(cached));
-    }
-    setLoginLoading(false);
-    setAppState('unlocked');
-  };
 
   const updateData = (newData: Data) => {
     setData(newData);
-    localStorage.setItem(CACHE_KEY, JSON.stringify(newData));
     if (saveTimer.current) clearTimeout(saveTimer.current);
     setSyncStatus('saving');
     saveTimer.current = setTimeout(async () => {
       try {
-        if (config) await patchGist(config.githubToken, config.gistId, newData);
+        await callApi(passwordRef.current, 'update', newData);
         setSyncStatus('saved');
         setTimeout(() => setSyncStatus('idle'), 2000);
       } catch {
@@ -219,103 +140,53 @@ export default function Workshop() {
 
   const actions = (key: keyof Data) => ({
     onToggle: (id: string) =>
-      updateData({ ...data, [key]: data[key].map(item => item.id === id ? { ...item, done: !item.done } : item) }),
+      updateData({ ...data!, [key]: data![key].map(item => item.id === id ? { ...item, done: !item.done } : item) }),
     onRemove: (id: string) =>
-      updateData({ ...data, [key]: data[key].filter(item => item.id !== id) }),
+      updateData({ ...data!, [key]: data![key].filter(item => item.id !== id) }),
     onAdd: (text: string) =>
-      updateData({ ...data, [key]: [...data[key], { id: String(Date.now()), text, done: false }] }),
+      updateData({ ...data!, [key]: [...data![key], { id: String(Date.now()), text, done: false }] }),
   });
 
-  if (appState === 'loading') return null;
-
-  if (appState === 'setup') {
+  if (data) {
     return (
-      <div className="max-w-md">
-        <h2 className="font-serif font-semibold text-2xl pb-2">first time setup</h2>
-        <p className="text-dimGray text-sm pb-8">
-          Your todos will sync to a private GitHub Gist.{' '}
-          <a
-            href="https://github.com/settings/tokens/new?scopes=gist&description=glitteringkatie+workshop"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-pine hover:text-fern underline"
-          >
-            Create a token here
-          </a>{' '}
-          with the <code className="font-code text-xs bg-dimGray/10 px-1 py-0.5 rounded">gist</code> scope.
-        </p>
-        {setupError && <p className="text-red-600 text-sm pb-4">{setupError}</p>}
-        <div className="space-y-6">
-          <div>
-            <label className="font-sans uppercase tracking-widest text-xs text-dimGray block pb-2">password</label>
-            <input
-              type="password"
-              value={setupPassword}
-              onChange={e => setSetupPassword(e.target.value)}
-              placeholder="choose a password"
-              className="w-full bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors"
-            />
-          </div>
-          <div>
-            <label className="font-sans uppercase tracking-widest text-xs text-dimGray block pb-2">github token</label>
-            <input
-              type="password"
-              value={setupToken}
-              onChange={e => setSetupToken(e.target.value)}
-              placeholder="ghp_..."
-              className="w-full bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors font-code text-sm"
-            />
-          </div>
-          <button
-            onClick={handleSetup}
-            disabled={setupLoading || !setupPassword || !setupToken}
-            className="bg-pine text-cream pt-3 px-6 pb-2 rounded-full font-serif font-semibold text-lg transition-colors hover:bg-fern disabled:opacity-40"
-          >
-            {setupLoading ? 'setting up…' : 'set up workshop'}
-          </button>
+      <div className="max-w-xl">
+        <div className="text-xs text-dimGray/60 pb-8 text-right h-6">
+          {syncStatus === 'saving' && 'saving…'}
+          {syncStatus === 'saved' && 'saved'}
+          {syncStatus === 'error' && 'sync error — changes may not have saved'}
         </div>
-      </div>
-    );
-  }
-
-  if (appState === 'locked') {
-    return (
-      <div className="max-w-xs">
-        <div className="space-y-6">
-          {loginError && <p className="text-red-600 text-sm">wrong password</p>}
-          <div>
-            <label className="font-sans uppercase tracking-widest text-xs text-dimGray block pb-2">password</label>
-            <input
-              type="password"
-              value={loginPassword}
-              onChange={e => { setLoginPassword(e.target.value); setLoginError(false); }}
-              onKeyDown={e => e.key === 'Enter' && handleLogin()}
-              placeholder="enter password"
-              autoFocus
-              className="w-full bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors"
-            />
-          </div>
-          <button
-            onClick={handleLogin}
-            disabled={loginLoading || !loginPassword}
-            className="bg-pine text-cream pt-3 px-6 pb-2 rounded-full font-serif font-semibold text-lg transition-colors hover:bg-fern disabled:opacity-40"
-          >
-            {loginLoading ? 'unlocking…' : 'unlock'}
-          </button>
-        </div>
+        <List title="todo" items={data.todos} {...actions('todos')} />
+        <List title="ideas" items={data.ideas} {...actions('ideas')} />
       </div>
     );
   }
 
   return (
-    <div className="max-w-xl">
-      <div className="text-xs text-dimGray/60 pb-8 text-right">
-        {syncStatus === 'saving' && 'saving…'}
-        {syncStatus === 'saved' && 'saved'}
-        {syncStatus === 'error' && 'sync error'}
+    <div className="max-w-xs">
+      <div className="space-y-6">
+        {loginError && <p className="text-red-600 text-sm">wrong password</p>}
+        <div>
+          <label className="font-sans uppercase tracking-widest text-xs text-dimGray block pb-2">
+            password
+          </label>
+          <input
+            type="password"
+            value={passwordInput}
+            onChange={e => { setPasswordInput(e.target.value); setLoginError(false); }}
+            onKeyDown={e => e.key === 'Enter' && login(passwordInput)}
+            placeholder="enter password"
+            autoFocus
+            className="w-full bg-transparent border-b border-dimGray/40 focus:border-pine outline-none text-lg pb-1 placeholder:text-dimGray/40 transition-colors"
+          />
+        </div>
+        <button
+          onClick={() => login(passwordInput)}
+          disabled={loading || !passwordInput}
+          className="bg-pine text-cream pt-3 px-6 pb-2 rounded-full font-serif font-semibold text-lg transition-colors hover:bg-fern disabled:opacity-40"
+        >
+          {loading ? 'unlocking…' : 'unlock'}
+        </button>
       </div>
-      <List title="todo" items={data.todos} {...actions('todos')} />
-      <List title="ideas" items={data.ideas} {...actions('ideas')} />
     </div>
   );
 }

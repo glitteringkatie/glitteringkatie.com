@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
     "@nanostores/react": "^0.7.3",
+    "@netlify/blobs": "^10.7.9",
     "classnames": "2.3.1",
     "date-fns": "2.21.3",
     "nanostores": "^0.11.3",
