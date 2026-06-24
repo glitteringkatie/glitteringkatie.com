@@ -2,7 +2,7 @@
 title: "💌 A Love Letter to JavaScript"
 date: "2020-02-14"
 tags: ["work"]
-coverImage: "https://glitteringkatie.com/assets/blog/default1.jpeg"
+coverImage: "/assets/blog/default1.jpeg"
 ---
 
 Dear JavaScript,

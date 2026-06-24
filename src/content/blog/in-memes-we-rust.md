@@ -2,7 +2,7 @@
 title: "🧽 In Memes We Rust"
 date: "2018-07-25"
 tags: ["work"]
-coverImage: "https://glitteringkatie.com/assets/blog/in-memes-we-rust/theydontstop.jpg"
+coverImage: "/assets/blog/in-memes-we-rust/theydontstop.jpg"
 ---
 
 This may seem like a familiar scenario:

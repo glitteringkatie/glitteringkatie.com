@@ -12,7 +12,7 @@ type SocialEntry = {
 const socials: SocialEntry[] = [
   { category: 'balance', icon: 'twitter', url: 'https://twitter.com/glitteringkatie', display: 'twitter.com/glitteringkatie' },
   { category: 'life', icon: 'insta', url: 'https://www.instagram.com/glitteringkatie/', display: 'instagram.com/glitteringkatie' },
-  { category: 'life', icon: 'insta', url: 'https://www.instagram.com/craftsandkate/', display: 'instagram.com/craftsandkate' },
+  { category: 'life', icon: 'insta', url: 'https://www.instagram.com/heykatiehues/', display: 'instagram.com/heykatiehues' },
   { category: 'work', icon: 'github', url: 'https://github.com/glitteringkatie', display: 'github.com/glitteringkatie' },
   { category: 'work', icon: 'linkedin', url: 'https://www.linkedin.com/in/katelhughes93', display: 'linkedin.com/in/katelhughes93' },
 ];
@@ -94,7 +94,7 @@ export default function HomeContent() {
           <img src={profilePic} alt={altText} />
         </div>
       </div>
-      <div className="mx-auto items-center p-16 bg-blob bg-stretch bg-center bg-no-repeat text-cream text-center">
+      <div className="mx-auto items-center py-20 px-16 bg-blob bg-stretch bg-center bg-no-repeat text-cream text-center">
         <h2 className="lowercase font-serif font-semibold text-4xl md:text-6xl pb-4">{findMe}</h2>
         <ul className="text-sm md:text-xl table mx-auto pb-8">
           {displaySocials.map(social => (

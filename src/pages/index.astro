@@ -22,7 +22,7 @@ const latestPosts = allPosts
   <Container>
     <HomeContent client:load />
 
-    <div class="flex flex-col justify-center items-center pb-20">
+    <div class="flex flex-col justify-center items-center pt-16 pb-20">
       <h2 class="text-center uppercase font-light text-3xl tracking-widest pb-4">My Latest Posts</h2>
       <div class="md:grid grid-cols-3 gap-x-8 items-top mx-auto py-4">
         {latestPosts.map(post => (

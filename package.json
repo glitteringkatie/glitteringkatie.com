@@ -11,6 +11,7 @@
     "lint": "eslint --cache 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.18",
     "@nanostores/react": "^0.7.3",
     "classnames": "2.3.1",
     "date-fns": "2.21.3",

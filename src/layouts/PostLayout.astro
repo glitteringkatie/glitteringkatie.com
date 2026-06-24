@@ -50,7 +50,7 @@ const { title, date, coverImage, altText, canonical, ogImage, newer, older } = A
 
       <main class="flex-1">
         <article class="mb-32">
-          <header class="max-w-3xl mx-auto">
+          <header class="max-w-2xl mx-auto">
             <h1 class="font-serif font-semibold text-3xl md:text-5xl lg:text-6xl leading-tight mb-4 px-5 text-center">
               {title}
             </h1>
@@ -63,7 +63,7 @@ const { title, date, coverImage, altText, canonical, ogImage, newer, older } = A
           </PostBody>
         </article>
 
-        <div class="flex max-w-3xl mx-auto px-5 pb-16">
+        <div class="flex max-w-2xl mx-auto px-5 pb-16">
           <div class="flex-1 flex justify-start">
             {newer && (
               <a href={`/posts/${newer.slug}`} class="flex text-fern hover:text-pine">
