@@ -9,4 +9,10 @@ module.exports = withImages({
   env: {
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
   },
+  async rewrites() {
+    return [
+      { source: '/bookmarks',  destination: '/bookmarks/index.html' },
+      { source: '/bookmarks/', destination: '/bookmarks/index.html' },
+    ];
+  },
 });

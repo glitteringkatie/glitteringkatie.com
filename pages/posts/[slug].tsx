@@ -11,8 +11,6 @@ import Head from 'next/head';
 import markdownToHtml from '../../lib/markdownToHtml';
 import PostType from '../../types/post';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { serialize } from 'next-mdx-remote/serialize';
-import remarkGfm from 'remark-gfm';
 
 type Props = {
   post: PostType;
