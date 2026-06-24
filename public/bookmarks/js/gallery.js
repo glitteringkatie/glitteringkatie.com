@@ -34,7 +34,7 @@ export function createBookmarkCard(bookmark) {
   scene.id = "card-" + bookmark.id;
   scene.dataset.id = bookmark.id;
   scene.style.setProperty("--color-accent", bookmark.accentColor || "#2c2c2c");
-  const rotation = (Math.random() - 0.5) * 14;
+  const rotation = (Math.random() - 0.5) * 10;
 
   const card = document.createElement("div");
   card.className = "bookmark-card" + (bookmark.backImage != null ? " bookmark-card--flippable" : "");
