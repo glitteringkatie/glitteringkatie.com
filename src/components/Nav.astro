@@ -1,0 +1,18 @@
+---
+interface Props {
+  showLogo?: boolean;
+}
+const { showLogo = true } = Astro.props;
+---
+<nav class="py-4 sm:py-8 flex w-full md:w-5xl max-w-5xl mx-auto px-4 items-center">
+  {showLogo && (
+    <a href="/" class="flex-1">
+      <img src="/glitteringkatie.svg" alt="glittering katie" class="w-2/3 sm:w-96" />
+    </a>
+  )}
+  <div class={`flex gap-6 items-center${!showLogo ? ' w-full justify-center' : ''}`}>
+    <a href="/" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">blog</a>
+    <a href="/bookmarks/index.html" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">bookmarks</a>
+    <a href="/colophon" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">colophon</a>
+  </div>
+</nav>

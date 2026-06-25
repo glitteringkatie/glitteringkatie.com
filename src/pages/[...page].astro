@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatDate } from '../utils/date';
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection('blog');
+  const sorted = allPosts.sort((a, b) => b.data.date.localeCompare(a.data.date));
+  return paginate(sorted, { pageSize: 5 });
+}
+
+const { page } = Astro.props;
+
+const renderedPosts = await Promise.all(
+  page.data.map(async post => {
+    const { Content } = await post.render();
+    return { post, Content };
+  })
+);
+---
+<BaseLayout>
+  <div class="max-w-2xl mx-auto px-5 pb-24">
+    {renderedPosts.map(({ post, Content }, i) => (
+      <article class:list={["py-12", i > 0 && "border-t border-dimGray/20"]}>
+        <header class="mb-6">
+          <h2 class="font-serif font-semibold text-3xl md:text-4xl leading-tight mb-2">
+            <a href={`/posts/${post.slug}`} class="text-pine hover:text-fern transition-colors">
+              {post.data.title}
+            </a>
+          </h2>
+          <time datetime={post.data.date} class="text-dimGray text-sm">
+            {formatDate(post.data.date)}
+          </time>
+        </header>
+        <div class="markdown">
+          <Content />
+        </div>
+        <footer class="mt-6">
+          <a href={`/posts/${post.slug}`} class="font-serif text-sm text-dimGray hover:text-pine transition-colors">
+            permalink
+          </a>
+        </footer>
+      </article>
+    ))}
+
+    <nav class="flex justify-between pt-12 border-t border-dimGray/20 font-serif font-semibold text-xl">
+      <div>
+        {page.url.prev && (
+          <a href={page.url.prev} class="text-pine hover:text-fern transition-colors">← newer</a>
+        )}
+      </div>
+      <div>
+        {page.url.next && (
+          <a href={page.url.next} class="text-pine hover:text-fern transition-colors">older →</a>
+        )}
+      </div>
+    </nav>
+  </div>
+  <button
+    id="back-to-top"
+    aria-label="Back to top"
+    class="hidden md:block fixed bottom-8 right-8 bg-pine text-cream font-serif font-semibold text-sm px-4 py-2 rounded-full opacity-0 pointer-events-none transition-opacity duration-300 hover:bg-fern"
+  >
+    ↑ top
+  </button>
+</BaseLayout>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    const show = window.scrollY > 600;
+    btn.style.opacity = show ? '1' : '0';
+    btn.style.pointerEvents = show ? 'auto' : 'none';
+  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>

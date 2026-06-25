@@ -4,6 +4,8 @@ node_modules/
 # Build output
 dist/
 .astro/
+.next/
+out/
 
 # dotenv
 .env
@@ -26,3 +28,6 @@ coverage/
 # Misc
 .eslintcache
 .npm
+
+# Local Netlify folder
+.netlify

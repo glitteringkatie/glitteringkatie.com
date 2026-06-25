@@ -1,7 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import BalanceSlider from '../components/BalanceSlider';
+import Nav from '../components/Nav.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -9,20 +9,10 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonical?: string;
-  page?: 'home' | 'blog';
   showSocials?: boolean;
 }
 
-const {
-  title,
-  description,
-  ogImage,
-  canonical,
-  page = 'home',
-  showSocials = false,
-} = Astro.props;
-
-const padding = page === 'home' ? 'py-8 md:pt-16' : 'py-8';
+const { title, description, ogImage, canonical, showSocials = false } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -31,12 +21,8 @@ const padding = page === 'home' ? 'py-8 md:pt-16' : 'py-8';
   </head>
   <body>
     <div class="min-h-screen bg-cream flex flex-col">
-      <header class={padding}>
-        <h1 aria-label={page} class="sr-only">{page}</h1>
-        <a href="/" aria-label="glittering katie home page">
-          <img src="/glitteringkatie.svg" alt="glittering katie" class="max-w-2xl w-full mx-auto pb-4 px-8" />
-        </a>
-        <BalanceSlider client:load />
+      <header>
+        <Nav />
       </header>
       <main class="flex-1">
         <slot />
