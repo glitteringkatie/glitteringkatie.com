@@ -18,11 +18,13 @@ const { title, description, ogImage, canonical, showSocials = false } = Astro.pr
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} ogImage={ogImage} canonical={canonical} />
+    <slot name="head" />
   </head>
   <body>
     <div class="min-h-screen bg-cream flex flex-col">
       <header>
         <Nav />
+        <slot name="header" />
       </header>
       <main class="flex-1">
         <slot />

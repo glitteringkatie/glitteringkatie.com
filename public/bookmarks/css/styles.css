@@ -28,56 +28,6 @@ body {
   flex-direction: column;
 }
 
-/* ---- Nav ---- */
-.site-nav {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-@media (min-width: 640px) {
-  .site-nav { padding: 2rem 1rem; }
-}
-
-.site-logo {
-  flex: 1;
-}
-
-.site-logo img {
-  width: 66%;
-  height: auto;
-  display: block;
-}
-
-@media (min-width: 640px) {
-  .site-logo img { width: 384px; }
-}
-
-.site-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.site-link {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-pine);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-@media (min-width: 640px) {
-  .site-link { font-size: 1.875rem; }
-}
-
-.site-link:hover {
-  color: var(--color-fern);
-}
 
 /* ---- View toggle ---- */
 .view-toggle-bar {
@@ -386,9 +336,6 @@ main {
 @media (max-width: 640px) {
   .view-toggle-bar { display: none; }
   #view-map { display: none !important; }
-  .site-nav { justify-content: center; }
-  .site-logo { flex: none; }
-  .site-links { display: none; }
   .store-modal__panel {
     width: 100%;
     border-left: none;

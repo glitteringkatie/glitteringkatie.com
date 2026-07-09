@@ -10,9 +10,47 @@ const { showLogo = true } = Astro.props;
       <img src="/glitteringkatie.svg" alt="glittering katie" class="w-2/3 sm:w-96" />
     </a>
   )}
-  <div class={`flex gap-6 items-center${!showLogo ? ' w-full justify-center' : ''}`}>
-    <a href="/" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">blog</a>
-    <a href="/bookmarks/index.html" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">bookmarks</a>
-    <a href="/colophon" class="font-serif font-semibold text-2xl sm:text-3xl text-pine hover:text-fern">colophon</a>
+  <div class={`hidden sm:flex gap-6 items-center${!showLogo ? ' w-full justify-center' : ''}`}>
+    <a href="/" class="font-serif font-semibold text-3xl text-pine hover:text-fern">blog</a>
+    <a href="/bookmarks" class="font-serif font-semibold text-3xl text-pine hover:text-fern">bookmarks</a>
+    <a href="/colophon" class="font-serif font-semibold text-3xl text-pine hover:text-fern">colophon</a>
   </div>
+  <button
+    id="nav-toggle"
+    class="sm:hidden p-1 text-pine hover:text-fern"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    aria-label="Open navigation menu"
+  >
+    <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+    <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="hidden">
+      <line x1="5" y1="5" x2="19" y2="19"/>
+      <line x1="19" y1="5" x2="5" y2="19"/>
+    </svg>
+  </button>
 </nav>
+<div id="mobile-menu" class="hidden sm:hidden flex flex-col border-t border-warmBlack/10 pb-4">
+  <a href="/" class="font-serif font-semibold text-2xl text-pine hover:text-fern px-4 py-3 text-center">blog</a>
+  <a href="/bookmarks" class="font-serif font-semibold text-2xl text-pine hover:text-fern px-4 py-3 text-center">bookmarks</a>
+  <a href="/colophon" class="font-serif font-semibold text-2xl text-pine hover:text-fern px-4 py-3 text-center">colophon</a>
+</div>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle?.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    const isOpen = !menu.classList.contains('hidden');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+</script>

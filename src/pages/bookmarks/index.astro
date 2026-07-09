@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Bookmarks — glittering katie">
+  <link slot="head" rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link slot="head" rel="stylesheet" href="/bookmarks/css/styles.css" />
+
+  <div slot="header" class="view-toggle-bar">
+    <div class="view-toggle" role="group" aria-label="Switch view">
+      <button id="btn-gallery" class="toggle-btn toggle-btn--active" aria-pressed="true">gallery</button>
+      <button id="btn-map" class="toggle-btn" aria-pressed="false">map</button>
+    </div>
+  </div>
+
+  <section id="view-gallery" class="view view--active" aria-label="Bookmark gallery">
+    <div id="gallery-grid" class="gallery-grid"></div>
+  </section>
+
+  <section id="view-map" class="view" aria-label="Bookstore map">
+    <div id="map"></div>
+  </section>
+
+  <div id="store-modal" class="store-modal" role="dialog" aria-modal="true" aria-label="Bookstore bookmarks" hidden>
+    <div class="store-modal__backdrop"></div>
+    <div class="store-modal__panel">
+      <button class="store-modal__close" aria-label="Close">&#x2715;</button>
+      <h2 class="store-modal__store-name"></h2>
+      <p class="store-modal__city"></p>
+      <a class="store-modal__link" target="_blank" rel="noopener noreferrer" hidden></a>
+      <div class="store-modal__bookmarks"></div>
+    </div>
+  </div>
+
+  <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script is:inline type="module" src="/bookmarks/js/app.js"></script>
+</BaseLayout>
