@@ -22,8 +22,8 @@ const renderedPosts = await Promise.all(
   <div class="max-w-2xl mx-auto px-5 pb-24">
     {renderedPosts.map(({ post, Content }, i) => (
       <article class:list={["py-12", i > 0 && "border-t border-dimGray/20"]}>
-        <header class="mb-6">
-          <h2 class="font-serif font-semibold text-3xl md:text-4xl leading-tight mb-2">
+        <header class="pt-4 mb-10">
+          <h2 class="font-serif font-semibold text-3xl md:text-4xl leading-tight mb-3">
             <a href={`/posts/${post.slug}`} class="text-pine hover:text-fern transition-colors">
               {post.data.title}
             </a>
