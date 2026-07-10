@@ -62,7 +62,7 @@ function List({
             >
               {item.done ? <FaCheckSquare /> : <FaRegSquare />}
             </button>
-            <span className={`flex-1 text-lg leading-snug ${item.done ? 'line-through text-dimGray' : 'text-warmBlack'}`}>
+            <span className={`flex-1 min-w-0 break-words text-lg leading-snug ${item.done ? 'line-through text-dimGray' : 'text-warmBlack'}`}>
               {item.text}
             </span>
             {editable && (
